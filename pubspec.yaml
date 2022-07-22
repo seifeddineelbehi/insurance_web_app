@@ -45,6 +45,8 @@ dependencies:
   get: ^4.6.1
   get_storage: ^2.0.3
   shared_preferences: ^2.0.13
+  fl_chart: ^0.36.1
+  data_table_2: ^2.0.3
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +82,8 @@ flutter:
   # https://flutter.dev/assets-and-images/#from-packages
   assets:
     - assets/translations/
+    - assets/images/
+    - assets/icons/
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

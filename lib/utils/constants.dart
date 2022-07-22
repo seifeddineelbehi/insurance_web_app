@@ -9,6 +9,11 @@ const kPageColor = Color(0xFFFFFAFA);
 const kTextColor = Color(0xFF333333);
 const kInscriptionColor = Color(0xFFFFBA37);
 
+const primaryColor = Color(0xFF2697FF);
+const secondaryColor = Color(0xFF2A2D3E);
+const bgColor = Color(0xFF212332);
+
+const defaultPadding = 16.0;
 //******************** Text Styles *************************
 
 var kBigTitleBlackBold = GoogleFonts.poppins(

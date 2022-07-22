@@ -15,8 +15,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool _iconBool = false;
-  IconData _iconLight = Icons.wb_sunny;
-  IconData _iconDark = Icons.nights_stay;
+  final IconData _iconLight = Icons.wb_sunny;
+  final IconData _iconDark = Icons.nights_stay;
 
   final ThemeData _lightTheme = ThemeData(
     primarySwatch: Colors.amber,

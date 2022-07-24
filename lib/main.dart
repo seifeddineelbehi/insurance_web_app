@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_template/utils/utils.dart';
 import 'package:flutter_template/utils/dependency_injection.dart' as di;
 import 'package:flutter_template/viewModel/home_test_view_model.dart';
+import 'package:flutter_template/views/pages/login/login_screen.dart';
 import 'package:flutter_template/views/pages/main/main_screen.dart';
 import 'package:flutter_template/views/views.dart';
 import 'package:get/get.dart';
@@ -83,7 +84,15 @@ class _MyAppState extends State<MyApp> {
             create: (context) => MenuController(),
           ),
         ],
-        child: const MainScreen(),
+        /*child: GetMaterialApp(
+          initialRoute: LoginPage.id,
+          routes: {
+            MainScreen.id: (context) => const MainScreen(),
+            MyHomePage.id: (context) => const MyHomePage(),
+            LoginPage.id: (context) => const LoginPage(),
+          },
+        ),*/
+        child: const LoginPage(),
       ),
     );
   }

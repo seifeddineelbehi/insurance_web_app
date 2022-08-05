@@ -6,8 +6,11 @@ import 'package:google_fonts/google_fonts.dart';
 const kPrimaryColor = Color(0xFFF44749);
 const kSecondaryColor = Color(0xFFFFEECE);
 const kPageColor = Color(0xFFFFFAFA);
+const kBackgroundColor = Color(0xFFBDBCBC);
 const kTextColor = Color(0xFF333333);
 const kInscriptionColor = Color(0xFFFFBA37);
+const kVehiculeAColor = Color(0xFFFFFF54);
+const kVehiculeBColor = Color(0xFF52CE6E);
 
 const primaryColor = Color(0xFF2697FF);
 const secondaryColor = Color(0xFF2A2D3E);

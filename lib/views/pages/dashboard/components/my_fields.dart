@@ -1,4 +1,6 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_template/views/pages/Administrateurs/add_admin_screen.dart';
 
 import '../../../../model/MyFiles.dart';
 import '../../../../utils/constants.dart';
@@ -30,7 +32,9 @@ class MyFiles extends StatelessWidget {
                       defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+
+              },
               icon: Icon(Icons.add),
               label: Text("Add New"),
             ),

@@ -10,6 +10,7 @@ import 'package:flutter_template/viewModel/admins_screen_view_model.dart';
 import 'package:flutter_template/viewModel/clients_screen_view_model.dart';
 import 'package:flutter_template/viewModel/home_view_model.dart';
 import 'package:flutter_template/viewModel/login_view_model.dart';
+import 'package:flutter_template/views/pages/Administrateurs/AdminScreenDetails.dart';
 import 'package:flutter_template/views/pages/Administrateurs/add_admin_screen.dart';
 import 'package:flutter_template/views/pages/Clients/add_client.dart';
 import 'package:flutter_template/views/pages/Clients/clients_screen.dart';
@@ -60,6 +61,7 @@ class _MyAppState extends State<MyApp> {
         SplashScreen.path: (context, state, data) => const SplashScreen(),
         LoginPage.path: (context, state, data) => const LoginPage(),
         MainScreen.path: (context, state, data) => const MainScreen(),
+        AdminsDashboard.path: (context, state, data) => const AdminsDashboard(),
         AddAdmin.path: (context, state, data) => const AddAdmin(),
         AddClient.path: (context, state, data) => const AddClient(),
         ClientDashboard.path: (context, state, data) => const ClientDashboard(),

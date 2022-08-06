@@ -4,7 +4,9 @@ import 'package:beamer/beamer.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_template/Services/constat_service.dart';
 import 'package:flutter_template/model/constat_model.dart';
+import 'package:flutter_template/utils/apis.dart';
 import 'package:flutter_template/utils/palette.dart';
 import 'package:flutter_template/utils/size_config.dart';
 import 'package:flutter_template/views/pages/Constats/details_constat_screen.dart';
@@ -24,10 +26,29 @@ class ConstatTable extends StatefulWidget {
 }
 
 class _ConstatTableState extends State<ConstatTable> {
+  TextEditingController controller = TextEditingController();
+  String _searchResult = '';
+  List<ConstatModel> constatFiltered = [];
+  List<ConstatModel> AllConstats = [];
+
+  _getConstat() async {
+    HomeViewModel homeViewModel =
+        Provider.of<HomeViewModel>(context, listen: false);
+    var Response =
+        await ConstatService.getAllConstatNonTraite() as List<ConstatModel>;
+    if (Response.isNotEmpty) {
+      homeViewModel.setAllConstatNonTraite(Response);
+      setState(() {
+        AllConstats = homeViewModel.AllConstatNonTraite;
+        constatFiltered = AllConstats;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     //final homeViewModel = Provider.of<HomeViewModel>(context);
-    //final List<ConstatModel> allConstatNonTraite = homeViewModel.AllConstatNonTraite;
+    //final List<ConstatModel> allConstatNonTraite = homeViewModel.getAllConstatNonTraite() as List<ConstatModel>;
     return Container(
       padding: const EdgeInsets.all(defaultPadding),
       decoration: const BoxDecoration(
@@ -49,13 +70,57 @@ class _ConstatTableState extends State<ConstatTable> {
           const Divider(
             thickness: 10,
           ),
+          Card(
+            child: ListTile(
+              leading: Icon(Icons.search),
+              title: TextField(
+                  controller: controller,
+                  decoration: const InputDecoration(
+                      hintText: 'Search', border: InputBorder.none),
+                  onChanged: (value) {
+                    setState(() {
+                      log('searche value :' + value);
+                      _searchResult = value;
+                      constatFiltered = AllConstats.where((constat) =>
+                              constat.id!.contains(_searchResult) ||
+                              constat.vehiculeA!.nomAssure!
+                                  .contains(_searchResult) ||
+                              constat.vehiculeA!.prenomAssure!
+                                  .contains(_searchResult) ||
+                              constat.vehiculeA!.numContratAssurance!
+                                  .contains(_searchResult) ||
+                              constat.vehiculeB!.nomAssure!
+                                  .contains(_searchResult) ||
+                              constat.vehiculeB!.prenomAssure!
+                                  .contains(_searchResult) ||
+                              constat.vehiculeB!.numContratAssurance!
+                                  .contains(_searchResult) ||
+                              constat.dateAccident!.contains(_searchResult))
+                          .toList();
+                    });
+                  }),
+              trailing: IconButton(
+                icon: const Icon(Icons.cancel),
+                onPressed: () {
+                  setState(() {
+                    controller.clear();
+                    _searchResult = '';
+                    constatFiltered = AllConstats;
+                  });
+                },
+              ),
+            ),
+          ),
           SizedBox(
             width: double.infinity,
             child: FutureBuilder<List<ConstatModel>>(
               future: context.read<HomeViewModel>().getAllConstatNonTraite(),
               builder: (context, snapshot) {
-                if (snapshot.hasData) {
+                if (snapshot.hasData &&
+                    snapshot.connectionState == ConnectionState.done) {
                   if (snapshot.data!.isNotEmpty) {
+                    AllConstats = snapshot.data!;
+                    constatFiltered = snapshot.data!;
                     return DataTable2(
                       showCheckboxColumn: false,
                       columnSpacing: defaultPadding,
@@ -95,9 +160,9 @@ class _ConstatTableState extends State<ConstatTable> {
                         ),
                       ],
                       rows: List.generate(
-                        snapshot.data!.length,
+                        constatFiltered.length,
                         (index) =>
-                            recentFileDataRow(snapshot.data![index], context),
+                            listConstatDataRow(constatFiltered[index], context),
                       ),
                     );
                   } else {
@@ -124,7 +189,7 @@ class _ConstatTableState extends State<ConstatTable> {
   }
 }
 
-DataRow recentFileDataRow(ConstatModel constat, BuildContext context) {
+DataRow listConstatDataRow(ConstatModel constat, BuildContext context) {
   final Nomclient1 = constat.vehiculeA?.nomAssure.toString();
   final Prenomclient1 = constat.vehiculeA?.prenomAssure.toString();
   final Nomclient2 = constat.vehiculeB?.nomAssure.toString();
@@ -132,7 +197,7 @@ DataRow recentFileDataRow(ConstatModel constat, BuildContext context) {
   return DataRow(
     onSelectChanged: (selected) {
       if (selected!) {
-        log('row-selected: ${constat.id}');
+        log('row-selected: ${constat.temoins!.isEmpty.toString()}');
         context.beamToNamed(DetailsConstat.path + "/" + constat.id!,
             data: constat);
       }

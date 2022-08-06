@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../model/vehicule_model.dart';
 import '../../../../utils/apis.dart';
+import '../../../../utils/constants.dart';
 import '../../../../utils/palette.dart';
 import '../../../../utils/size_config.dart';
 
@@ -23,6 +24,9 @@ class _CustomCroquisState extends State<CustomCroquis> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15),
+          border: Border.all(
+              width: cardDetailConstatBorderThikness,
+              color: kCardConstatDetailBordeColor),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.2),

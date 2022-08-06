@@ -20,6 +20,8 @@ import '../login/login_screen.dart';
 import 'components/side_menu.dart';
 import 'package:confirm_dialog/confirm_dialog.dart';
 
+import 'components/side_menu_item_widget.dart';
+
 class MainScreen extends StatefulWidget {
   static const String id = 'main_screen';
   static const path = '/home';
@@ -49,6 +51,8 @@ class _MainScreenState extends State<MainScreen> {
         setState(() {
           role = value.toString();
         });
+      } else {
+        Beamer.of(context).beamToReplacementNamed(LoginPage.path);
       }
     });
     /*log("feafeafeafea---------" +
@@ -69,85 +73,7 @@ class _MainScreenState extends State<MainScreen> {
       child: Scaffold(
         backgroundColor: kBackgroundColor,
         key: context.read<MenuController>().scaffoldKey,
-        drawer: Drawer(
-          backgroundColor: Theme.of(context).primaryColor,
-          child: ListView(
-            children: [
-              DrawerHeader(
-                child: Image.asset("assets/images/logo.png"),
-              ),
-              DrawerListTile(
-                title: "Dashboard",
-                svgSrc: "assets/icons/menu_dashbord.svg",
-                press: () => {
-                  setState(() {
-                    _currentIndex = 0;
-                  })
-                },
-              ),
-              DrawerListTile(
-                title: "Constat traité",
-                svgSrc: "assets/icons/menu_tran.svg",
-                press: () => {
-                  setState(() {
-                    _currentIndex = 0;
-                  })
-                },
-              ),
-              DrawerListTile(
-                title: "Clients",
-                svgSrc: "assets/icons/menu_task.svg",
-                press: () {
-                  setState(() {
-                    _currentIndex = 1;
-                  });
-                },
-              ),
-              DrawerListTile(
-                title: "Documents",
-                svgSrc: "assets/icons/menu_doc.svg",
-                press: () {},
-              ),
-              DrawerListTile(
-                title: "Store",
-                svgSrc: "assets/icons/menu_store.svg",
-                press: () {},
-              ),
-              DrawerListTile(
-                title: "Notification",
-                svgSrc: "assets/icons/menu_notification.svg",
-                press: () {},
-              ),
-              if (role.toLowerCase() == "Super Admin".toLowerCase())
-                DrawerListTile(
-                  title: "Administrateurs",
-                  svgSrc: "assets/icons/menu_profile.svg",
-                  press: () {
-                    setState(() {
-                      _currentIndex = 2;
-                    });
-                  },
-                ),
-              DrawerListTile(
-                title: "Settings",
-                svgSrc: "assets/icons/menu_setting.svg",
-                press: () {},
-              ),
-              DrawerListTile(
-                title: "Log out",
-                svgSrc: "assets/icons/menu_setting.svg",
-                press: () async {
-                  if (await confirm(context)) {
-                    _prefService.removeCache("token");
-                    _prefService.removeRole("role");
-                    context.read<LoginViewModel>().setLoggedIn(false);
-                    context.beamToNamed(LoginPage.path);
-                  }
-                },
-              ),
-            ],
-          ),
-        ),
+        drawer: SideMenu(role),
         body: SafeArea(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -157,89 +83,12 @@ class _MainScreenState extends State<MainScreen> {
                 Expanded(
                   // default flex = 1
                   // and it takes 1/6 part of the screen
-                  child: Drawer(
-                    child: ListView(
-                      children: [
-                        DrawerHeader(
-                          child: Image.asset("assets/images/logo.png"),
-                        ),
-                        DrawerListTile(
-                          title: "Dashboard",
-                          svgSrc: "assets/icons/menu_dashbord.svg",
-                          press: () => {
-                            setState(() {
-                              _currentIndex = 0;
-                            })
-                          },
-                        ),
-                        DrawerListTile(
-                          title: "Constat traité",
-                          svgSrc: "assets/icons/menu_tran.svg",
-                          press: () => {
-                            setState(() {
-                              _currentIndex = 0;
-                            })
-                          },
-                        ),
-                        DrawerListTile(
-                          title: "Clients",
-                          svgSrc: "assets/icons/menu_task.svg",
-                          press: () {
-                            setState(() {
-                              _currentIndex = 1;
-                            });
-                          },
-                        ),
-                        DrawerListTile(
-                          title: "Documents",
-                          svgSrc: "assets/icons/menu_doc.svg",
-                          press: () {},
-                        ),
-                        DrawerListTile(
-                          title: "Store",
-                          svgSrc: "assets/icons/menu_store.svg",
-                          press: () {},
-                        ),
-                        DrawerListTile(
-                          title: "Notification",
-                          svgSrc: "assets/icons/menu_notification.svg",
-                          press: () {},
-                        ),
-                        if (role.toLowerCase() == "Super Admin".toLowerCase())
-                          DrawerListTile(
-                            title: "Administrateurs",
-                            svgSrc: "assets/icons/menu_profile.svg",
-                            press: () {
-                              setState(() {
-                                _currentIndex = 2;
-                              });
-                            },
-                          ),
-                        DrawerListTile(
-                          title: "Settings",
-                          svgSrc: "assets/icons/menu_setting.svg",
-                          press: () {},
-                        ),
-                        DrawerListTile(
-                          title: "Log out",
-                          svgSrc: "assets/icons/menu_setting.svg",
-                          press: () async {
-                            if (await confirm(context)) {
-                              _prefService.removeCache("token");
-                              _prefService.removeRole("role");
-                              context.read<LoginViewModel>().setLoggedIn(false);
-                              context.beamToNamed(LoginPage.path);
-                            }
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: SideMenu(role),
                 ),
-              Expanded(
+              const Expanded(
                 // It takes 5/6 part of the screen
                 flex: 5,
-                child: _interfaces[_currentIndex],
+                child: DashboardScreen(),
               ),
             ],
           ),

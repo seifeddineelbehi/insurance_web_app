@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_template/utils/size_config.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 //******************** Colors *************************
@@ -12,11 +13,13 @@ const kInscriptionColor = Color(0xFFFFBA37);
 const kVehiculeAColor = Color(0xFFFFFF54);
 const kVehiculeBColor = Color(0xFF52CE6E);
 
+const kCardConstatDetailBordeColor = Colors.black54;
 const primaryColor = Color(0xFF2697FF);
 const secondaryColor = Color(0xFF2A2D3E);
 const bgColor = Color(0xFF212332);
 
 const defaultPadding = 16.0;
+var cardDetailConstatBorderThikness = SizeConfig.safeBlockHorizontal * 0.5;
 //******************** Text Styles *************************
 
 var kBigTitleBlackBold = GoogleFonts.poppins(

@@ -28,14 +28,19 @@ class _DetailsConstatState extends State<DetailsConstat> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SafeArea(
-        child: SingleChildScrollView(
-          primary: false,
-          padding: const EdgeInsets.all(defaultPadding),
+    return SafeArea(
+      child: SingleChildScrollView(
+        primary: false,
+        padding: const EdgeInsets.all(defaultPadding),
+        child: Container(
+          padding: const EdgeInsets.all(defaultPadding * 6),
+          decoration: const BoxDecoration(
+            color: kPageColor,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
           child: Column(
             children: [
-              constatHearde(constat: widget.constat),
+              constatHeader(constat: widget.constat),
               const SizedBox(height: defaultPadding),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,

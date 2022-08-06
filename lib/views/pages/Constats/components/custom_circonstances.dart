@@ -64,7 +64,9 @@ class CustomCirconstance extends StatelessWidget {
                           Expanded(
                             child: Center(
                               child: Text(
-                                item.toString(),
+                                (Circonstances.indexOf(item) + 1).toString() +
+                                    "-" +
+                                    item.toString(),
                                 style: GoogleFonts.poppins(
                                   color: Palette.textColor,
                                   fontWeight: FontWeight.w700,

@@ -61,12 +61,9 @@ class _AddClientBodyState extends State<AddClientBody> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               "Créer un nouveau Client ",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.blueGrey,
-              ),
+              style: kBigTitleBlackBold.copyWith(color: Colors.blueGrey),
             ),
             const Divider(
               thickness: 5,

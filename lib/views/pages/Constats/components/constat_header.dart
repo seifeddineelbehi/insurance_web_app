@@ -8,8 +8,8 @@ import '../../../../utils/constants.dart';
 import '../../../../utils/responsive.dart';
 import 'constat_header_info_card.dart';
 
-class constatHearde extends StatelessWidget {
-  const constatHearde({
+class constatHeader extends StatelessWidget {
+  const constatHeader({
     Key? key,
     required this.constat,
   }) : super(key: key);
@@ -20,7 +20,7 @@ class constatHearde extends StatelessWidget {
       children: [
         Text(
           "Constat",
-          style: Theme.of(context).textTheme.subtitle1,
+          style: kBigTitleBlackBold,
         ),
         Responsive(
           mobile: ConstatInfoCardGridView(
@@ -52,60 +52,67 @@ class ConstatInfoCardGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            /*ConstatHeaderInfoCard(
-                title: 'Date de l\'accident',
-                subTitle: constat.dateAccident.toString(),
-                icon: Icons.date_range),
-            ConstatHeaderInfoCard(
-                title: 'Heure',
-                subTitle: constat.heureAccident.toString(),
-                icon: Icons.lock_clock),
-            ConstatHeaderInfoCard(
-                title: 'Blessés même leger',
-                subTitle: constat.blesse.toString(),
-                icon: Icons.question_mark),*/
-            Expanded(
-              child: CustomConstatHeaderDetailWidget(
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 16),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              /*ConstatHeaderInfoCard(
                   title: 'Date de l\'accident',
-                  text: constat.dateAccident.toString()),
-            ),
-            Expanded(
-              child: CustomConstatHeaderDetailWidget(
-                  title: 'Heure', text: constat.heureAccident.toString()),
-            ),
-            Expanded(
-              child: CustomConstatHeaderDetailWidget(
-                  title: 'Blessés même leger', text: constat.blesse.toString()),
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Expanded(
-              flex: 2,
-              child: CustomConstatHeaderDetailWidget(
-                  title: 'Dégats materiels',
-                  text: constat.degatMateriel.toString()),
-            ),
-            /*ConstatHeaderInfoCard(
-                title: 'Dégats materiels',
-                subTitle: constat.degatMateriel.toString(),
-                icon: Icons.car_rental),*/
-            if (constat.temoins!.isNotEmpty)
+                  subTitle: constat.dateAccident.toString(),
+                  icon: Icons.date_range),
+              ConstatHeaderInfoCard(
+                  title: 'Heure',
+                  subTitle: constat.heureAccident.toString(),
+                  icon: Icons.lock_clock),
+              ConstatHeaderInfoCard(
+                  title: 'Blessés même leger',
+                  subTitle: constat.blesse.toString(),
+                  icon: Icons.question_mark),*/
               Expanded(
-                flex: 4,
-                child: CustomTemoinsHeaderDetailWidget(
-                    title: 'Temoins', temoins: constat.temoins!),
+                flex: 2,
+                child: CustomConstatHeaderDetailWidget(
+                    title: 'Date de l\'accident',
+                    text: constat.dateAccident.toString()),
               ),
-          ],
-        )
-      ],
+              Expanded(
+                flex: 2,
+                child: CustomConstatHeaderDetailWidget(
+                    title: 'Heure', text: constat.heureAccident.toString()),
+              ),
+              Expanded(
+                flex: 2,
+                child: CustomConstatHeaderDetailWidget(
+                    title: 'Blessés même leger',
+                    text: constat.blesse.toString()),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                flex: 2,
+                child: CustomConstatHeaderDetailWidget(
+                    title: 'Dégats materiels',
+                    text: constat.degatMateriel.toString()),
+              ),
+              /*ConstatHeaderInfoCard(
+                  title: 'Dégats materiels',
+                  subTitle: constat.degatMateriel.toString(),
+                  icon: Icons.car_rental),*/
+              if (constat.temoins!.isNotEmpty)
+                Expanded(
+                  flex: 4,
+                  child: CustomTemoinsHeaderDetailWidget(
+                      title: 'Temoins', temoins: constat.temoins!),
+                ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }

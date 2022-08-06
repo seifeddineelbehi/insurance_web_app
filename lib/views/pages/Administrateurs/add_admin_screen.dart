@@ -4,6 +4,7 @@ import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_template/model/admin_model.dart';
 import 'package:flutter_template/viewModel/add_admin_view_model.dart';
+import 'package:flutter_template/views/pages/Administrateurs/AdminScreenDetails.dart';
 import 'package:provider/provider.dart';
 
 import '../../../utils/constants.dart';
@@ -65,13 +66,8 @@ class _AddAdminBodyState extends State<AddAdminBody> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Text(
-              "Créer un nouveau Administrateur ",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.blueGrey,
-              ),
-            ),
+            Text("Créer un nouveau Administrateur ",
+                style: kBigTitleBlackBold.copyWith(color: Colors.blueGrey)),
             const Divider(
               thickness: 5,
             ),

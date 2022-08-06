@@ -40,7 +40,7 @@ class HomeViewModel with ChangeNotifier {
   Future<List<ConstatModel>> getAllConstatNonTraite() async {
     var constats = await ConstatService.getAllConstatNonTraite();
     if (constats is List<ConstatModel>) {
-      //setAllConstatNonTraite(constats);
+      setAllConstatNonTraite(constats);
       return constats;
     } else {
       log('aaaaaaa');

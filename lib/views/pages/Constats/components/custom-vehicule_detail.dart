@@ -11,6 +11,7 @@ import 'package:flutter_template/views/pages/Constats/components/signature_widge
 import 'package:flutter_template/views/pages/Constats/components/societe_assurance_widget.dart';
 
 import '../../../../utils/constants.dart';
+import '../../../../utils/size_config.dart';
 import 'custom_constat_header_detail_widget.dart';
 
 class CustumVehiculedetails extends StatefulWidget {
@@ -36,6 +37,9 @@ class _CustumVehiculedetailsState extends State<CustumVehiculedetails> {
       decoration: BoxDecoration(
         color: widget.color,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
+        border: Border.all(
+            width: cardDetailConstatBorderThikness,
+            color: kCardConstatDetailBordeColor),
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Center(

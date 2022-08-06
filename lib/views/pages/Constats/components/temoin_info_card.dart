@@ -23,6 +23,9 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15),
+          border: Border.all(
+              width: SizeConfig.safeBlockHorizontal * 0.5,
+              color: Colors.black54),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.2),
@@ -33,60 +36,57 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 22.0, vertical: 18.0),
-          child: Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    //width: SizeConfig.safeBlockHorizontal * 75,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+            padding:
+                const EdgeInsets.symmetric(horizontal: 22.0, vertical: 18.0),
+            child: Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      //width: SizeConfig.safeBlockHorizontal * 75,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            title,
+                            style: GoogleFonts.poppins(
+                              color: Palette.textColor,
+                              fontWeight: FontWeight.w700,
+                              fontSize: SizeConfig.kDefaultSize * 3,
+                            ),
+                          ),
+                          SizedBox(
+                            height: SizeConfig.safeBlockVertical * 0.5,
+                          ),
+                          if (temoins.isNotEmpty)
+                            for (var item in temoins) itemTemoin(item)
+                          else
                             Text(
-                              title,
+                              "Pas de temoins",
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.poppins(
                                 color: Palette.textColor,
                                 fontWeight: FontWeight.w700,
                                 fontSize: SizeConfig.kDefaultSize * 3,
                               ),
                             ),
-                            subTitle != ""
-                                ? Text(
-                                    subTitle,
-                                    style: GoogleFonts.poppins(
-                                      color: Palette.textColor,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: SizeConfig.kDefaultSize * 2,
-                                    ),
-                                  )
-                                : const SizedBox.shrink(),
-                          ],
-                        ),
-                        SizedBox(
-                          height: SizeConfig.safeBlockVertical * 0.5,
-                        ),
-                        for (var item in temoins) itemTemoin(item)
-                        /*ListView.builder(
+                          /*ListView.builder(
                             shrinkWrap: true,
 
                             itemCount: temoins.length,
                             itemBuilder: (BuildContext context, int index) {
                               return itemTemoin(temoins[index]);
                             })*/
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+                  ],
+                ),
+              ],
+            )),
       ),
     );
   }

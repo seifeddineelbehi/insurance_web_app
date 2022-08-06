@@ -97,6 +97,8 @@ class _ConstatTableState extends State<ConstatTable> {
                                   .contains(_searchResult) ||
                               constat.dateAccident!.contains(_searchResult))
                           .toList();
+                      log('constatFiltered length : ' +
+                          constatFiltered.length.toString());
                     });
                   }),
               trailing: IconButton(
@@ -114,6 +116,7 @@ class _ConstatTableState extends State<ConstatTable> {
           SizedBox(
             width: double.infinity,
             child: FutureBuilder<List<ConstatModel>>(
+              initialData: constatFiltered,
               future: context.read<HomeViewModel>().getAllConstatNonTraite(),
               builder: (context, snapshot) {
                 if (snapshot.hasData &&

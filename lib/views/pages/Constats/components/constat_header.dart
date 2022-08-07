@@ -103,12 +103,11 @@ class ConstatInfoCardGridView extends StatelessWidget {
                   title: 'Dégats materiels',
                   subTitle: constat.degatMateriel.toString(),
                   icon: Icons.car_rental),*/
-              if (constat.temoins!.isNotEmpty)
-                Expanded(
-                  flex: 4,
-                  child: CustomTemoinsHeaderDetailWidget(
-                      title: 'Temoins', temoins: constat.temoins!),
-                ),
+              Expanded(
+                flex: 4,
+                child: CustomTemoinsHeaderDetailWidget(
+                    title: 'Temoins', temoins: constat.temoins!),
+              ),
             ],
           )
         ],

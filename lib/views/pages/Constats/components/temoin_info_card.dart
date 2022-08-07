@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_template/model/temoin_model.dart';
 import 'package:flutter_template/utils/utils.dart';
@@ -16,6 +18,7 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log('temoins empty ' + temoins.isEmpty.toString());
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 16),
       child: Container(
@@ -60,9 +63,7 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
                           SizedBox(
                             height: SizeConfig.safeBlockVertical * 0.5,
                           ),
-                          if (temoins.isNotEmpty)
-                            for (var item in temoins) itemTemoin(item)
-                          else
+                          if (temoins.isEmpty)
                             Text(
                               "Pas de temoins",
                               maxLines: 1,
@@ -72,7 +73,10 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
                                 fontWeight: FontWeight.w700,
                                 fontSize: SizeConfig.kDefaultSize * 3,
                               ),
-                            ),
+                            )
+                          else
+                            for (var item in temoins) itemTemoin(item),
+
                           /*ListView.builder(
                             shrinkWrap: true,
 

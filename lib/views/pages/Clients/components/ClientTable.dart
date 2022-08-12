@@ -23,7 +23,7 @@ class _ClientsTableState extends State<ClientsTable> {
 
   @override
   void initState() {
-    fetchedClients = context.read<ClientsViewModel>().getAllClients();
+    //fetchedClients = context.read<ClientsViewModel>().getAllClients();
     super.initState();
   }
 
@@ -55,9 +55,10 @@ class _ClientsTableState extends State<ClientsTable> {
           SizedBox(
             width: double.infinity,
             child: FutureBuilder<List<ClientModel>>(
-              future: fetchedClients,
+              future: context.read<ClientsViewModel>().getAllClients(),
               builder: (context, snapshot) {
-                if (snapshot.hasData) {
+                if (snapshot.hasData &&
+                    snapshot.connectionState == ConnectionState.done) {
                   if (snapshot.data!.isNotEmpty) {
                     return DataTable2(
                       showCheckboxColumn: false,

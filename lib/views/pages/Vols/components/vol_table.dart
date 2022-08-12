@@ -14,6 +14,7 @@ import 'package:flutter_template/utils/size_config.dart';
 import 'package:flutter_template/viewModel/vol_view_model.dart';
 import 'package:flutter_template/views/pages/Constats/details_constat_screen.dart';
 import 'package:flutter_template/views/pages/Vols/vol_details_screen.dart';
+import 'package:flutter_template/views/pages/Vols/vols_screen.dart';
 import 'package:flutter_template/views/pages/login/login_screen.dart';
 import 'package:flutter_template/views/pages/main/main_screen.dart';
 import 'package:provider/provider.dart';
@@ -240,7 +241,14 @@ DataRow listConstatDataRow(
               Expanded(
                 child: InkWell(
                   onTap: () async {
-                    if (await confirm(context)) {
+                    if (await confirm(
+                      context,
+                      title: const Text('Marqué constat comme terminé'),
+                      content:
+                          const Text('Vous êtes sur de valider ce constat?'),
+                      textOK: const Text('Oui'),
+                      textCancel: const Text('Annuler'),
+                    )) {
                       var res = await context
                           .read<VolViewModel>()
                           .updateVol(vol.id!, "Traité");
@@ -252,7 +260,7 @@ DataRow listConstatDataRow(
                               content: Text(
                                   'Declaration de vol modifier avec succés ! ')),
                         );
-                        list.removeAt(list.indexOf(vol));
+                        context.beamToReplacementNamed(VolNonTraiteScreen.path);
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
@@ -283,7 +291,14 @@ DataRow listConstatDataRow(
               Expanded(
                 child: InkWell(
                   onTap: () async {
-                    if (await confirm(context)) {
+                    if (await confirm(
+                      context,
+                      title: const Text('Rejet du constat'),
+                      content:
+                          const Text('Vous êtes sur de rejeter ce constat?'),
+                      textOK: const Text('Oui'),
+                      textCancel: const Text('Annuler'),
+                    )) {
                       var res = await context
                           .read<VolViewModel>()
                           .updateVol(vol.id!, "Rejeté");
@@ -294,7 +309,7 @@ DataRow listConstatDataRow(
                           const SnackBar(
                               content: Text('Vol modifier avec succés ! ')),
                         );
-                        list.removeAt(list.indexOf(vol));
+                        context.beamToReplacementNamed(VolNonTraiteScreen.path);
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(

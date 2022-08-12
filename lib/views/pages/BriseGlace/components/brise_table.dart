@@ -16,6 +16,7 @@ import 'package:flutter_template/utils/size_config.dart';
 import 'package:flutter_template/viewModel/brise_view_model.dart';
 import 'package:flutter_template/viewModel/incendie_view_model.dart';
 import 'package:flutter_template/viewModel/vol_view_model.dart';
+import 'package:flutter_template/views/pages/BriseGlace/brise_glace_screen.dart';
 import 'package:flutter_template/views/pages/BriseGlace/detail_brise_screen.dart';
 import 'package:flutter_template/views/pages/Constats/details_constat_screen.dart';
 import 'package:flutter_template/views/pages/login/login_screen.dart';
@@ -245,7 +246,13 @@ DataRow listConstatDataRow(
               Expanded(
                 child: InkWell(
                   onTap: () async {
-                    if (await confirm(context)) {
+                    if (await confirm(context,
+                      title: const Text(
+                          'Marqué constat comme terminé'),
+                      content: const Text(
+                          'Vous êtes sur de valider ce constat?'),
+                      textOK: const Text('Oui'),
+                      textCancel: const Text('Annuler'),)) {
                       var res = await context
                           .read<BriseViewModel>()
                           .updateBrise(vol.id!, "Traité");
@@ -258,7 +265,7 @@ DataRow listConstatDataRow(
                                   'Declaration de Brise glace modifier avec succés ! ')),
                         );
 
-                        list.removeAt(list.indexOf(vol));
+                        context.beamToReplacementNamed(BriseGlaceNonTraiteScreen.path);
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
@@ -289,7 +296,12 @@ DataRow listConstatDataRow(
               Expanded(
                 child: InkWell(
                   onTap: () async {
-                    if (await confirm(context)) {
+                    if (await confirm(context,
+                      title: const Text('Rejet du constat'),
+                      content: const Text(
+                          'Vous êtes sur de rejeter ce constat?'),
+                      textOK: const Text('Oui'),
+                      textCancel: const Text('Annuler'),)) {
                       var res = await context
                           .read<BriseViewModel>()
                           .updateBrise(vol.id!, "Rejeté");
@@ -300,7 +312,7 @@ DataRow listConstatDataRow(
                           const SnackBar(
                               content: Text('Constat modifier avec succés ! ')),
                         );
-                        list.removeAt(list.indexOf(vol));
+                        context.beamToReplacementNamed(BriseGlaceNonTraiteScreen.path);
                       }
                     }
                   },

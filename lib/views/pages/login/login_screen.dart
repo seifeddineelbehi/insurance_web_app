@@ -194,7 +194,7 @@ class _BodyState extends State<Body> {
                   height: 10,
                 ),
                 Image.asset(
-                  'images/illustration-2.png',
+                  'assets/images/illustration-2.png',
                   width: 300,
                 ),
               ],
@@ -204,7 +204,7 @@ class _BodyState extends State<Body> {
 
         Expanded(
           child: Image.asset(
-            'images/logoGat.png',
+            'assets/images/logoGat.png',
             width: SizeConfig.screenWidth * 0.3,
           ),
         ),

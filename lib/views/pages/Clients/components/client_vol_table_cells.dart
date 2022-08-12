@@ -41,7 +41,7 @@ DataRow ClientVolDataRow(
           ),
         ),
       ),
-      vol.status! == "En cours de traitement"
+      vol.status! != "En cours de traitement"
           ? DataCell(
               Container(
                 child: Text(

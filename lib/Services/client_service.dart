@@ -35,8 +35,8 @@ class ClientsService {
         log('response.status : ' + response.statusCode.toString());
         if (res["list"] != null && res["list"].isNotEmpty) {
           res["list"].forEach((e) {
-            ClientModel clinet = ClientModel.fromJson(e);
-            data.add(clinet);
+            ClientModel client = ClientModel.fromJson(e);
+            data.add(client);
           });
           return data;
         }

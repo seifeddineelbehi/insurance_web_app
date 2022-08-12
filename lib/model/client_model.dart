@@ -59,11 +59,11 @@ class ClientModel {
             json["constatsAccidents"].map((x) => ConstatModel.fromJson(x))),
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
-        vols: List<VolModel>.from(
-            json["vols"].map((x) => ConstatModel.fromJson(x))),
+        vols:
+            List<VolModel>.from(json["vols"].map((x) => VolModel.fromJson(x))),
         incendies: List<IncendiesModel>.from(
-            json["incendies"].map((x) => ConstatModel.fromJson(x))),
+            json["incendies"].map((x) => IncendiesModel.fromJson(x))),
         briseGlace: List<BriseGlaceModel>.from(
-            json["briseGlace"].map((x) => ConstatModel.fromJson(x))),
+            json["briseGlace"].map((x) => BriseGlaceModel.fromJson(x))),
       );
 }

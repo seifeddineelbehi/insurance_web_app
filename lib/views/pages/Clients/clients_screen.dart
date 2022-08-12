@@ -91,23 +91,12 @@ class ClientsScreenBody extends StatelessWidget {
         primary: false,
         padding: const EdgeInsets.all(defaultPadding),
         child: Column(
-          children: [
-            const SizedBox(height: defaultPadding),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex: 5,
-                  child: Column(
-                    children: const [
-                      Header(headerTitle: "Liste des Clients"),
-                      SizedBox(height: defaultPadding),
-                      ClientsTable(),
-                    ],
-                  ),
-                ),
-              ],
-            )
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            SizedBox(height: defaultPadding),
+            Header(headerTitle: "Liste des Clients"),
+            SizedBox(height: defaultPadding),
+            ClientsTable(),
           ],
         ),
       ),

@@ -13,6 +13,11 @@ class PrefService {
     _preferences.setString("role", role);
   }
 
+  Future createUserName(String username) async {
+    SharedPreferences _preferences = await SharedPreferences.getInstance();
+    _preferences.setString("username", username);
+  }
+
   Future readCache(String token) async {
     SharedPreferences _preferences = await SharedPreferences.getInstance();
     var cache = _preferences.getString("token");
@@ -26,6 +31,13 @@ class PrefService {
     return cache;
   }
 
+  Future readUsername() async {
+    SharedPreferences _preferences = await SharedPreferences.getInstance();
+    var cache = _preferences.getString("username");
+    log('cache read role shared prefs : ' + cache!);
+    return cache;
+  }
+
   Future removeCache(String token) async {
     SharedPreferences _preferences = await SharedPreferences.getInstance();
     _preferences.remove(token);
@@ -34,5 +46,10 @@ class PrefService {
   Future removeRole(String role) async {
     SharedPreferences _preferences = await SharedPreferences.getInstance();
     _preferences.remove(role);
+  }
+
+  Future removeUsername(String username) async {
+    SharedPreferences _preferences = await SharedPreferences.getInstance();
+    _preferences.remove(username);
   }
 }

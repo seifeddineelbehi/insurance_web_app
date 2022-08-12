@@ -1,7 +1,12 @@
+import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_template/model/client_data.dart';
 import 'package:flutter_template/model/client_model.dart';
 import 'package:flutter_template/utils/size_config.dart';
+import 'package:flutter_template/views/pages/Clients/components/client_accident_table_cells.dart';
+import 'package:flutter_template/views/pages/Clients/components/client_brise_table_cells.dart';
+import 'package:flutter_template/views/pages/Clients/components/client_incendies_table_cells.dart';
+import 'package:flutter_template/views/pages/Clients/components/client_vol_table_cells.dart';
 import 'package:provider/provider.dart';
 
 import '../../../utils/constants.dart';
@@ -29,88 +34,278 @@ class _DetailClientState extends State<DetailClient> {
       color: Colors.blueGrey,
       child: Scaffold(
         backgroundColor: kPageColor,
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: defaultPadding,
-            ),
-            Center(
-              child: Text(
-                "Detail Client",
-                style: kBigTitleBlackBold,
-              ),
-            ),
-            const SizedBox(
-              height: defaultPadding,
-            ),
-            const Divider(
-              thickness: 10,
-            ),
-            Expanded(
-              child: SizedBox(
-                width: double.infinity,
-                child: FutureBuilder<ClientDataModel?>(
-                  future: context
-                      .read<ClientsViewModel>()
-                      .getClientData(widget.client.refAssurance!),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData && snapshot.data != null) {
-                      return ListView(
-                        shrinkWrap: true,
-                        physics: const BouncingScrollPhysics(),
-                        children: [
-                          CustomDetailWidget(
-                            title: "Nom",
-                            text: snapshot.data!.nomClient!,
+        body: CustomScrollView(
+          shrinkWrap: true,
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: true,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: defaultPadding,
+                  ),
+                  Center(
+                    child: Text(
+                      "Detail Client",
+                      style: kBigTitleBlackBold,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: defaultPadding,
+                  ),
+                  const Divider(
+                    thickness: 10,
+                  ),
+                  Expanded(
+                    child: FutureBuilder<ClientDataModel?>(
+                      future: context
+                          .read<ClientsViewModel>()
+                          .getClientData(widget.client.refAssurance!),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData && snapshot.data != null) {
+                          return ListView(
+                            shrinkWrap: true,
+                            physics: const BouncingScrollPhysics(),
+                            children: [
+                              CustomDetailWidget(
+                                title: "Nom",
+                                text: snapshot.data!.nomClient!,
+                              ),
+                              CustomDetailWidget(
+                                title: "Prénom",
+                                text: snapshot.data!.prenomClient!,
+                              ),
+                              CustomDetailWidget(
+                                title: "Adresse",
+                                text: snapshot.data!.addresseClient!,
+                              ),
+                              CustomDetailWidget(
+                                title: "Assureur",
+                                text: snapshot.data!.assureur!,
+                              ),
+                              CustomDetailWidget(
+                                title: "Agence",
+                                text: snapshot.data!.agence!,
+                              ),
+                              CustomDetailWidget(
+                                title: "Numéro Contrat",
+                                text: snapshot.data!.numContrat!,
+                              ),
+                              CustomDetailWidget(
+                                title: "Date Début Contrat",
+                                text: snapshot.data!.DBContrat!,
+                              ),
+                              CustomDetailWidget(
+                                title: "Date Fin Contrat",
+                                text: snapshot.data!.DFContrat!,
+                              ),
+                              CustomDetailWidget(
+                                title: "Voiture ",
+                                text: snapshot.data!.voiture!,
+                              ),
+                              CustomDetailWidget(
+                                title: "Immatriculation",
+                                text: snapshot.data!.immatriculation!,
+                              ),
+                            ],
+                          );
+                        } else {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                  if (widget.client.constatsAccidents!.isNotEmpty)
+                    const SizedBox(
+                      height: defaultPadding,
+                    ),
+                  if (widget.client.constatsAccidents!.isNotEmpty)
+                    Expanded(
+                      child: DataTable2(
+                        showCheckboxColumn: false,
+                        columnSpacing: defaultPadding,
+                        minWidth: 600,
+                        columns: [
+                          DataColumn(
+                            label: Text(
+                              "Client 1",
+                              style: kMediumTitleWhiteBold.copyWith(
+                                color: bgColor,
+                              ),
+                            ),
                           ),
-                          CustomDetailWidget(
-                            title: "Prénom",
-                            text: snapshot.data!.prenomClient!,
+                          DataColumn(
+                            label: Text(
+                              "Client 2",
+                              style: kMediumTitleWhiteBold.copyWith(
+                                color: bgColor,
+                              ),
+                            ),
                           ),
-                          CustomDetailWidget(
-                            title: "Adresse",
-                            text: snapshot.data!.addresseClient!,
+                          DataColumn(
+                            label: Text(
+                              "Date",
+                              style: kMediumTitleWhiteBold.copyWith(
+                                color: bgColor,
+                              ),
+                            ),
                           ),
-                          CustomDetailWidget(
-                            title: "Assureur",
-                            text: snapshot.data!.assureur!,
-                          ),
-                          CustomDetailWidget(
-                            title: "Agence",
-                            text: snapshot.data!.agence!,
-                          ),
-                          CustomDetailWidget(
-                            title: "Numéro Contrat",
-                            text: snapshot.data!.numContrat!,
-                          ),
-                          CustomDetailWidget(
-                            title: "Date Début Contrat",
-                            text: snapshot.data!.DBContrat!,
-                          ),
-                          CustomDetailWidget(
-                            title: "Date Fin Contrat",
-                            text: snapshot.data!.DFContrat!,
-                          ),
-                          CustomDetailWidget(
-                            title: "Voiture ",
-                            text: snapshot.data!.voiture!,
-                          ),
-                          CustomDetailWidget(
-                            title: "Immatriculation",
-                            text: snapshot.data!.immatriculation!,
+                          DataColumn(
+                            label: Text(
+                              "Etat",
+                              style: kMediumTitleWhiteBold.copyWith(
+                                color: bgColor,
+                              ),
+                            ),
                           ),
                         ],
-                      );
-                    } else {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                  },
-                ),
+                        rows: List.generate(
+                          widget.client.constatsAccidents!.length,
+                          (index) => listConstatClientDataRow(
+                              widget.client.constatsAccidents![index], context),
+                        ),
+                      ),
+                    ),
+                  if (widget.client.vols!.isNotEmpty)
+                    const SizedBox(
+                      height: defaultPadding,
+                    ),
+                  if (widget.client.vols!.isNotEmpty)
+                    Expanded(
+                      child: DataTable2(
+                        showCheckboxColumn: false,
+                        columnSpacing: defaultPadding,
+                        minWidth: 600,
+                        columns: [
+                          DataColumn(
+                            label: Text(
+                              "Date",
+                              style: kMediumTableColumnWhiteBold.copyWith(
+                                color: bgColor,
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              "Description",
+                              style: kMediumTableColumnWhiteBold.copyWith(
+                                color: bgColor,
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              "Etat",
+                              style: kMediumTableColumnWhiteBold.copyWith(
+                                color: bgColor,
+                              ),
+                            ),
+                          ),
+                        ],
+                        rows: List.generate(
+                          widget.client.vols!.length,
+                          (index) => ClientVolDataRow(
+                              widget.client.vols![index],
+                              context,
+                              widget.client.vols!),
+                        ),
+                      ),
+                    ),
+                  if (widget.client.incendies!.isNotEmpty)
+                    const SizedBox(
+                      height: defaultPadding,
+                    ),
+                  if (widget.client.incendies!.isNotEmpty)
+                    Expanded(
+                      child: DataTable2(
+                        showCheckboxColumn: false,
+                        columnSpacing: defaultPadding,
+                        minWidth: 600,
+                        columns: [
+                          DataColumn(
+                            label: Text(
+                              "Date",
+                              style: kMediumTableColumnWhiteBold.copyWith(
+                                color: bgColor,
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              "Description",
+                              style: kMediumTableColumnWhiteBold.copyWith(
+                                color: bgColor,
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              "Actions",
+                              style: kMediumTableColumnWhiteBold.copyWith(
+                                color: bgColor,
+                              ),
+                            ),
+                          ),
+                        ],
+                        rows: List.generate(
+                          widget.client.incendies!.length,
+                          (index) => ClientIncendiesDataRow(
+                              widget.client.incendies![index],
+                              context,
+                              widget.client.incendies!),
+                        ),
+                      ),
+                    ),
+                  if (widget.client.briseGlace!.isNotEmpty)
+                    const SizedBox(
+                      height: defaultPadding,
+                    ),
+                  if (widget.client.briseGlace!.isNotEmpty)
+                    Expanded(
+                        child: DataTable2(
+                      showCheckboxColumn: false,
+                      columnSpacing: defaultPadding,
+                      minWidth: 600,
+                      columns: [
+                        DataColumn(
+                          label: Text(
+                            "Date",
+                            style: kMediumTableColumnWhiteBold.copyWith(
+                              color: bgColor,
+                            ),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
+                            "Description",
+                            style: kMediumTableColumnWhiteBold.copyWith(
+                              color: bgColor,
+                            ),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
+                            "Etat",
+                            style: kMediumTableColumnWhiteBold.copyWith(
+                              color: bgColor,
+                            ),
+                          ),
+                        ),
+                      ],
+                      rows: List.generate(
+                        widget.client.briseGlace!.length,
+                        (index) => ClientBriseDataRow(
+                            widget.client.briseGlace![index],
+                            context,
+                            widget.client.briseGlace!),
+                      ),
+                    )),
+                ],
               ),
-            ),
+            )
           ],
         ),
       ),

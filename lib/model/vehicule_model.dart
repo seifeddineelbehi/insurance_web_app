@@ -1,5 +1,6 @@
 class VehiculeModel {
   String? id;
+  String? codeClient;
   String? assurePar;
   String? agence;
   String? debutValid;
@@ -29,6 +30,7 @@ class VehiculeModel {
   DateTime? updatedAt;
   VehiculeModel({
     this.id,
+    this.codeClient,
     this.assurePar,
     this.agence,
     this.debutValid,
@@ -59,6 +61,7 @@ class VehiculeModel {
   });
   factory VehiculeModel.fromJson(Map<String, dynamic> json) => VehiculeModel(
         id: json["_id"],
+        codeClient: json["codeClient"],
         assurePar: json["assurePar"],
         agence: json["agence"],
         debutValid: json["debutValid"],

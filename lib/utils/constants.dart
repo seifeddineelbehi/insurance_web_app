@@ -13,6 +13,9 @@ const kInscriptionColor = Color(0xFFFFBA37);
 const kVehiculeAColor = Color(0xFFFFFF54);
 const kVehiculeBColor = Color(0xFF52CE6E);
 
+const kRejeteColor = Color(0xFFF44749);
+const kTraiteColor = Color(0xFF52CE6E);
+
 const kCardConstatDetailBordeColor = Colors.black54;
 const primaryColor = Color(0xFF2697FF);
 const secondaryColor = Color(0xFF2A2D3E);
@@ -48,6 +51,12 @@ var kMediumTitleWhiteBold = GoogleFonts.poppins(
   color: const Color(0xFFFFFFFF),
   fontWeight: FontWeight.bold,
   fontSize: 19.2,
+);
+
+var kMediumTableColumnWhiteBold = GoogleFonts.poppins(
+  color: const Color(0xFFFFFFFF),
+  fontWeight: FontWeight.bold,
+  fontSize: 16.2,
 );
 var kSmallTextWhite = GoogleFonts.poppins(
   color: const Color(0xFFFFFFFF),

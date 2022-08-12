@@ -47,6 +47,11 @@ class SharedService {
     await _prefService.createRole(role.toString());
   }
 
+  static registerUserName(String username) async {
+    final PrefService _prefService = PrefService();
+    await _prefService.createUserName(username.toString());
+  }
+
   static Future<String?> getUserToken() async {
     final PrefService _prefService = PrefService();
     var isKeyExist = await _prefService.readCache("token");

@@ -48,4 +48,35 @@ class HomeViewModel with ChangeNotifier {
       return constat;
     }
   }
+
+  Future<List<ConstatModel>> getAllConstatTraite() async {
+    var constats = await ConstatService.getAllConstatTraite();
+    if (constats is List<ConstatModel>) {
+      //setAllConstatNonTraite(constats);
+      return constats;
+    } else {
+      log('aaaaaaa');
+      List<ConstatModel> constat = [];
+      return constat;
+    }
+  }
+
+  Future<List<ConstatModel>> getAllConstatRejete() async {
+    var constats = await ConstatService.getAllConstatRejete();
+    if (constats is List<ConstatModel>) {
+      //setAllConstatNonTraite(constats);
+      return constats;
+    } else {
+      log('aaaaaaa');
+      List<ConstatModel> constat = [];
+      return constat;
+    }
+  }
+
+
+
+  updateConstat(String idAccident, String response) async {
+    var res = await ConstatService.updateConstat(idAccident, response);
+    return res;
+  }
 }

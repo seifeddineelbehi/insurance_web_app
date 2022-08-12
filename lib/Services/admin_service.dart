@@ -33,6 +33,7 @@ class AdminService {
         // log("api" + res["user"].toString());
         if (res["token"] != null) {
           log("dhaaaal1");
+          //await getUserDetails();
           await SharedService.registerUserToken(res["token"]);
           await SharedService.registerUserRole(res["role"]);
 
@@ -46,13 +47,16 @@ class AdminService {
     }
   }
 
-  static Future<Object?> getUserDetails(
-      String endpoint, String userToken) async {
+  static Future<Object?> getUserDetails() async {
+    var token = "";
+    await AdminService()._prefService.readCache("token").then((value) {
+      token = value.toString();
+    });
     Map<String, String> requestHeaders = {
-      HttpHeaders.contentTypeHeader: " application/json",
-      'Authorization': userToken
+      HttpHeaders.contentTypeHeader: "application/json",
+      'Authorization': token
     };
-    Uri uri = Uri.http(endpoint, DetailAdmin);
+    Uri uri = Uri.parse(localURL + DetailAdmin);
 
     try {
       var response = await http.get(uri, headers: requestHeaders);
@@ -62,11 +66,13 @@ class AdminService {
 
         if (res != null) {
           AdminModel admin = AdminModel.fromJson(res['Admin']);
-
+          await SharedService.registerUserName(admin.username!);
           return admin;
         }
       }
-    } catch (exception) {}
+    } catch (exception) {
+      return false;
+    }
   }
 
   static Future<Object?> AddAdmin(String endpoint, AdminModel admin) async {
@@ -90,6 +96,44 @@ class AdminService {
     try {
       var response =
           await http.post(uri, headers: requestHeaders, body: jsonEncode(body));
+      if (response.statusCode == 200) {
+        var res = json.decode(response.body);
+        return res['success'];
+      }
+      if (response.body == 'Unauthorized') {
+        return false;
+      }
+      if (response.statusCode != 200) {
+        var res = json.decode(response.body);
+        return res['message'];
+      }
+    } catch (exception) {
+      return false;
+    }
+  }
+
+  static Future<Object?> UpdateAdmin(AdminModel admin) async {
+    var token = "";
+    await AdminService()._prefService.readCache("token").then((value) {
+      token = value.toString();
+    });
+    log('admin token update admin :' + token);
+    Map<String, String> requestHeaders = {
+      HttpHeaders.contentTypeHeader: " application/json",
+      'Authorization': token
+    };
+    var body = {
+      "id": admin.id,
+      "username": admin.username,
+      "password": admin.password,
+      "status": admin.status,
+      "role": admin.role
+    };
+    Uri uri = Uri.parse(localURL + UpdateAdminApi);
+    log('update admin uri:' + uri.toString());
+    try {
+      var response =
+          await http.put(uri, headers: requestHeaders, body: jsonEncode(body));
       if (response.statusCode == 200) {
         var res = json.decode(response.body);
         return res['success'];

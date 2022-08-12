@@ -1,5 +1,9 @@
 import 'package:flutter_template/model/conducteur_model.dart';
 import 'package:flutter_template/model/constat_model.dart';
+import 'package:flutter_template/model/vol_model.dart';
+
+import 'brise_glace_model.dart';
+import 'incendies_model.dart';
 
 class ClientModel {
   String? id;
@@ -9,10 +13,14 @@ class ClientModel {
   String? status;
   String? codeClient;
   String? refAssurance;
+  String? numContrat;
   String? delivreancePermis;
   int? numPermis;
   List<ConducteurModel>? conducteurs;
   List<ConstatModel>? constatsAccidents;
+  List<VolModel>? vols;
+  List<IncendiesModel>? incendies;
+  List<BriseGlaceModel>? briseGlace;
   DateTime? createdAt;
   DateTime? updatedAt;
 
@@ -27,7 +35,11 @@ class ClientModel {
     this.conducteurs,
     this.delivreancePermis,
     this.numPermis,
+    this.numContrat,
     this.constatsAccidents,
+    this.vols,
+    this.incendies,
+    this.briseGlace,
     this.createdAt,
     this.updatedAt,
   });
@@ -47,5 +59,11 @@ class ClientModel {
             json["constatsAccidents"].map((x) => ConstatModel.fromJson(x))),
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
+        vols: List<VolModel>.from(
+            json["vols"].map((x) => ConstatModel.fromJson(x))),
+        incendies: List<IncendiesModel>.from(
+            json["incendies"].map((x) => ConstatModel.fromJson(x))),
+        briseGlace: List<BriseGlaceModel>.from(
+            json["briseGlace"].map((x) => ConstatModel.fromJson(x))),
       );
 }

@@ -1,5 +1,6 @@
 import 'package:flutter_template/Services/shared_preferences_service.dart';
 import 'package:flutter_template/model/client_data.dart';
+import 'package:flutter_template/model/user_model.dart';
 import 'package:flutter_template/views/pages/Clients/add_client.dart';
 import 'dart:developer';
 import 'dart:io';
@@ -23,7 +24,7 @@ class ClientsService {
       HttpHeaders.contentTypeHeader: " application/json",
       'Authorization': token.toString()
     };
-    Uri uri = Uri.parse(localURL + getAllClinets);
+    Uri uri = Uri.parse(localURL + getAllClientsApi);
 
     try {
       var response = await http.get(uri, headers: requestHeaders);
@@ -65,11 +66,11 @@ class ClientsService {
           response.statusCode.toString());
       if (response.statusCode == 203) {
         log('dkhal getClientAssuranceDetail : ');
-        List<dynamic> res = json.decode(response.body);
+        Map<String, dynamic> res = json.decode(response.body);
         log('response.body getClientAssuranceDetail : ' +
             res.length.toString());
         if (res.isNotEmpty) {
-          ClientDataModel client = ClientDataModel.fromJson(res[0]);
+          ClientDataModel client = ClientDataModel.fromJson(res);
           //data.add(client);
           return client;
         }
@@ -112,6 +113,35 @@ class ClientsService {
       if (response.statusCode != 200) {
         var res = json.decode(response.body);
         return res['message'];
+      }
+    } catch (exception) {
+      return false;
+    }
+  }
+
+  static Future<Object?> getClientDetailsByCodeClient(String codeClient) async {
+    var token = "";
+    await ClientsService()._prefService.readCache("token").then((value) {
+      token = value.toString();
+    });
+    Map<String, String> requestHeaders = {
+      HttpHeaders.contentTypeHeader: "application/json",
+      'Authorization': token
+    };
+    Uri uri = Uri.parse(localURL + getDetailClientsApi + codeClient);
+    log('Uri ' + uri.toString());
+    try {
+      var response = await http.get(uri, headers: requestHeaders);
+      if (response.statusCode == 200) {
+        Map<String, dynamic> res = json.decode(response.body);
+        if (res['success'].toString() == 'true') {
+          log('dkhal dadldzad ' + res['success'].toString());
+          ClientModel client = ClientModel.fromJson(res['client']);
+          log('message ' + res['client'].toString());
+          return client;
+        } else {
+          return false;
+        }
       }
     } catch (exception) {
       return false;

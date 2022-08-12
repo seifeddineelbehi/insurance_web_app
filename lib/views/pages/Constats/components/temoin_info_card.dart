@@ -18,17 +18,16 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log('temoins empty ' + temoins.isEmpty.toString());
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 16),
+      padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Container(
         //width: SizeConfig.safeBlockHorizontal,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
-              width: SizeConfig.safeBlockHorizontal * 0.5,
-              color: Colors.black54),
+              width: cardDetailConstatBorderThikness,
+              color: kCardConstatDetailBordeColor),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.2),
@@ -40,7 +39,7 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
         ),
         child: Padding(
             padding:
-                const EdgeInsets.symmetric(horizontal: 22.0, vertical: 18.0),
+                const EdgeInsets.symmetric(horizontal: 22.0, vertical: 15.0),
             child: Row(
               children: [
                 Column(
@@ -71,7 +70,7 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
                               style: GoogleFonts.poppins(
                                 color: Palette.textColor,
                                 fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 3,
+                                fontSize: SizeConfig.kDefaultSize * 2,
                               ),
                             )
                           else

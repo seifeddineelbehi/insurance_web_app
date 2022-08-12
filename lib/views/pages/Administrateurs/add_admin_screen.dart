@@ -50,8 +50,8 @@ class AddAdminBody extends StatefulWidget {
 class _AddAdminBodyState extends State<AddAdminBody> {
   final _formKey = GlobalKey<FormState>();
   final AdminModel _admin = AdminModel();
-  String? _role = '';
-  String? _status = '';
+  String? _role = 'Admin';
+  String? _status = 'Active';
 
   @override
   Widget build(BuildContext context) {

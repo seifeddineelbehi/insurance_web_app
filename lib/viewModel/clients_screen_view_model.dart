@@ -62,4 +62,16 @@ class ClientsViewModel with ChangeNotifier {
       return null;
     }
   }
+
+  getClientDetailByCodeClient(String code) async {
+    var clients = await ClientsService.getClientDetailsByCodeClient(code);
+    if (clients != null && clients is ClientModel) {
+      //setClientData(clients);
+      log('aaaaaadeadeadaea' + clients.refAssurance!);
+      return clients;
+    } else {
+      log('aaaaaaa');
+      return null;
+    }
+  }
 }

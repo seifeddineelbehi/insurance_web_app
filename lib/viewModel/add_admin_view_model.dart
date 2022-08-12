@@ -16,4 +16,12 @@ class AddAdminViewModel with ChangeNotifier {
     log('response add admin' + response.toString());
     return response;
   }
+
+  UpdateAdmin(AdminModel admin) async {
+    log('dkhal add admin');
+
+    var response = await AdminService.UpdateAdmin(admin);
+    log('response update admin ' + response.toString());
+    return response;
+  }
 }

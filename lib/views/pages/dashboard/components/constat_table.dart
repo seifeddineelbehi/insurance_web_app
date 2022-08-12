@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:beamer/beamer.dart';
+import 'package:confirm_dialog/confirm_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_template/utils/palette.dart';
 import 'package:flutter_template/utils/size_config.dart';
 import 'package:flutter_template/views/pages/Constats/details_constat_screen.dart';
 import 'package:flutter_template/views/pages/login/login_screen.dart';
+import 'package:flutter_template/views/pages/main/main_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../model/RecentFile.dart';
@@ -70,47 +72,61 @@ class _ConstatTableState extends State<ConstatTable> {
           const Divider(
             thickness: 10,
           ),
-          Card(
-            child: ListTile(
-              leading: Icon(Icons.search),
-              title: TextField(
-                  controller: controller,
-                  decoration: const InputDecoration(
-                      hintText: 'Search', border: InputBorder.none),
-                  onChanged: (value) {
-                    setState(() {
-                      log('searche value :' + value);
-                      _searchResult = value;
-                      constatFiltered = AllConstats.where((constat) =>
-                              constat.id!.contains(_searchResult) ||
-                              constat.vehiculeA!.nomAssure!
-                                  .contains(_searchResult) ||
-                              constat.vehiculeA!.prenomAssure!
-                                  .contains(_searchResult) ||
-                              constat.vehiculeA!.numContratAssurance!
-                                  .contains(_searchResult) ||
-                              constat.vehiculeB!.nomAssure!
-                                  .contains(_searchResult) ||
-                              constat.vehiculeB!.prenomAssure!
-                                  .contains(_searchResult) ||
-                              constat.vehiculeB!.numContratAssurance!
-                                  .contains(_searchResult) ||
-                              constat.dateAccident!.contains(_searchResult))
-                          .toList();
-                      log('constatFiltered length : ' +
-                          constatFiltered.length.toString());
-                    });
-                  }),
-              trailing: IconButton(
-                icon: const Icon(Icons.cancel),
-                onPressed: () {
+          ListTile(
+            title: TextField(
+                controller: controller,
+                decoration: InputDecoration(
+                  hintText: "Search",
+                  fillColor: kPageColor,
+                  filled: true,
+                  border: const OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  suffixIcon: InkWell(
+                    onTap: () {},
+                    child: Container(
+                      padding: const EdgeInsets.all(defaultPadding * 0.75),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: defaultPadding / 2),
+                      decoration: const BoxDecoration(
+                        color: const Color(0xFFFFA113),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: SvgPicture.asset("assets/icons/Search.svg"),
+                    ),
+                  ),
+                ),
+                onChanged: (value) {
                   setState(() {
-                    controller.clear();
-                    _searchResult = '';
-                    constatFiltered = AllConstats;
+                    log('searche value :' + value);
+                    _searchResult = value;
+                    constatFiltered = AllConstats.where((constat) =>
+                        constat.id!.contains(_searchResult) ||
+                        constat.vehiculeA!.nomAssure!.contains(_searchResult) ||
+                        constat.vehiculeA!.prenomAssure!
+                            .contains(_searchResult) ||
+                        constat.vehiculeA!.numContratAssurance!
+                            .contains(_searchResult) ||
+                        constat.vehiculeB!.nomAssure!.contains(_searchResult) ||
+                        constat.vehiculeB!.prenomAssure!
+                            .contains(_searchResult) ||
+                        constat.vehiculeB!.numContratAssurance!
+                            .contains(_searchResult) ||
+                        constat.dateAccident!.contains(_searchResult)).toList();
+                    log('constatFiltered length : ' +
+                        constatFiltered.length.toString());
                   });
-                },
-              ),
+                }),
+            trailing: IconButton(
+              icon: const Icon(Icons.cancel),
+              onPressed: () {
+                setState(() {
+                  controller.clear();
+                  _searchResult = '';
+                  constatFiltered = AllConstats;
+                });
+              },
             ),
           ),
           SizedBox(
@@ -131,41 +147,41 @@ class _ConstatTableState extends State<ConstatTable> {
                       columns: [
                         DataColumn(
                           label: Text(
+                            "Date",
+                            style: kMediumTableColumnWhiteBold.copyWith(
+                              color: bgColor,
+                            ),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
                             "Client 1",
-                            style: kMediumTitleWhiteBold.copyWith(
-                              color: kPrimaryColor,
+                            style: kMediumTableColumnWhiteBold.copyWith(
+                              color: bgColor,
                             ),
                           ),
                         ),
                         DataColumn(
                           label: Text(
                             "Client 2",
-                            style: kMediumTitleWhiteBold.copyWith(
-                              color: kPrimaryColor,
+                            style: kMediumTableColumnWhiteBold.copyWith(
+                              color: bgColor,
                             ),
                           ),
                         ),
                         DataColumn(
                           label: Text(
-                            "Date",
-                            style: kMediumTitleWhiteBold.copyWith(
-                              color: kPrimaryColor,
-                            ),
-                          ),
-                        ),
-                        DataColumn(
-                          label: Text(
-                            "Etat",
-                            style: kMediumTitleWhiteBold.copyWith(
-                              color: kPrimaryColor,
+                            "Actions",
+                            style: kMediumTableColumnWhiteBold.copyWith(
+                              color: bgColor,
                             ),
                           ),
                         ),
                       ],
                       rows: List.generate(
                         constatFiltered.length,
-                        (index) =>
-                            listConstatDataRow(constatFiltered[index], context),
+                        (index) => listConstatDataRow(
+                            constatFiltered[index], context, constatFiltered),
                       ),
                     );
                   } else {
@@ -192,7 +208,8 @@ class _ConstatTableState extends State<ConstatTable> {
   }
 }
 
-DataRow listConstatDataRow(ConstatModel constat, BuildContext context) {
+DataRow listConstatDataRow(
+    ConstatModel constat, BuildContext context, List<ConstatModel> list) {
   final Nomclient1 = constat.vehiculeA?.nomAssure.toString();
   final Prenomclient1 = constat.vehiculeA?.prenomAssure.toString();
   final Nomclient2 = constat.vehiculeB?.nomAssure.toString();
@@ -206,6 +223,15 @@ DataRow listConstatDataRow(ConstatModel constat, BuildContext context) {
       }
     },
     cells: [
+      DataCell(Text(
+        constat.dateAccident!,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          color: secondaryColor,
+        ),
+      )),
       DataCell(
         Text(
           '$Nomclient1' + ' ' + '$Prenomclient1',
@@ -228,36 +254,128 @@ DataRow listConstatDataRow(ConstatModel constat, BuildContext context) {
           ),
         ),
       ),
-      DataCell(Text(
-        constat.dateAccident!,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          color: secondaryColor,
-        ),
-      )),
       DataCell(
         Container(
-          child: Text(
-            constat.status!,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: kPageColor,
-            ),
-          ),
-          height: 30,
-          width: SizeConfig.screenWidth,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: constat.status! == "En cours de traitement"
-                ? Colors.blue
-                : constat.status! == "Traité"
-                    ? Colors.green
-                    : Colors.red,
-            borderRadius: BorderRadius.circular(8),
+          padding: const EdgeInsets.all(defaultPadding * 0.7),
+          child: Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    context.beamToNamed(DetailsConstat.path + "/" + constat.id!,
+                        data: constat);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                        left: defaultPadding * 0.4,
+                        right: defaultPadding * 0.4),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: defaultPadding / 2),
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFFFA113),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: const Icon(
+                      Icons.remove_red_eye,
+                      size: defaultPadding * 1.3,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: InkWell(
+                  onTap: () async {
+                    if (await confirm(
+                      context,
+                      title: const Text('Marqué constat comme terminé'),
+                      content:
+                          const Text('Vous êtes sur de valider ce constat?'),
+                      textOK: const Text('Oui'),
+                      textCancel: const Text('Annuler'),
+                    )) {
+                      var res = await context
+                          .read<HomeViewModel>()
+                          .updateConstat(constat.id!, "Traité");
+                      list.removeAt(list.indexOf(constat));
+                      log("res : " + res.toString());
+                      if (res == true) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content: Text('Constat modifier avec succés ! ')),
+                        );
+                        context.beamToReplacementNamed(MainScreen.path);
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content:
+                                  Text('Erreur de validation de constat ! ')),
+                        );
+                      }
+                    }
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                        left: defaultPadding * 0.4,
+                        right: defaultPadding * 0.4),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: defaultPadding / 2),
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF66F601),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: const Icon(
+                      Icons.check,
+                      size: defaultPadding * 1.3,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: InkWell(
+                  onTap: () async {
+                    if (await confirm(
+                      context,
+                      title: const Text('Rejet du constat'),
+                      content:
+                          const Text('Vous êtes sur de rejeter ce constat?'),
+                      textOK: const Text('Oui'),
+                      textCancel: const Text('Annuler'),
+                    )) {
+                      var res = await context
+                          .read<HomeViewModel>()
+                          .updateConstat(constat.id!, "Rejeté");
+                      list.removeAt(list.indexOf(constat));
+                      log("res : " + res.toString());
+                      if (res == true) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content: Text('Constat modifier avec succés ! ')),
+                        );
+                        context.beamToReplacementNamed(MainScreen.path);
+                      }
+                    }
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                        left: defaultPadding * 0.4,
+                        right: defaultPadding * 0.4),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: defaultPadding / 2),
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFEF040C),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: const Icon(
+                      Icons.cancel_outlined,
+                      size: defaultPadding * 1.3,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

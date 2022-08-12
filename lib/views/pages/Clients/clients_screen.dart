@@ -3,6 +3,7 @@ import 'package:confirm_dialog/confirm_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_template/views/pages/Clients/add_client.dart';
 import 'package:flutter_template/views/pages/Clients/components/ClientTable.dart';
+import 'package:flutter_template/views/pages/dashboard/components/header.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Services/shared_preferences_service.dart';
@@ -98,40 +99,10 @@ class ClientsScreenBody extends StatelessWidget {
                 Expanded(
                   flex: 5,
                   child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          if (!Responsive.isDesktop(context))
-                            IconButton(
-                              icon: const Icon(Icons.menu),
-                              onPressed:
-                                  context.read<MenuController>().controlMenu,
-                            ),
-                          Text(
-                            "Liste des Clients",
-                            style: kBigTitleBlackBold,
-                          ),
-                          ElevatedButton.icon(
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.deepPurple,
-                              onPrimary: Colors.white,
-                              padding: EdgeInsets.symmetric(
-                                horizontal: defaultPadding * 1.5,
-                                vertical: defaultPadding /
-                                    (Responsive.isMobile(context) ? 2 : 1),
-                              ),
-                            ),
-                            onPressed: () {
-                              context.beamToNamed(AddClient.path);
-                            },
-                            icon: const Icon(Icons.add),
-                            label: const Text("Add New"),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: defaultPadding),
-                      const ClientsTable(),
+                    children: const [
+                      Header(headerTitle: "Liste des Clients"),
+                      SizedBox(height: defaultPadding),
+                      ClientsTable(),
                     ],
                   ),
                 ),

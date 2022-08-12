@@ -31,62 +31,59 @@ class CustomDetailWidget extends StatelessWidget {
             ),
           ],
         ),
-        child: Expanded(
-          child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 22.0, vertical: 18.0),
-            child: Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: SizeConfig.safeBlockHorizontal * 75,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                title,
-                                style: GoogleFonts.poppins(
-                                  color: Palette.textColor,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: SizeConfig.kDefaultSize * 3,
-                                ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 22.0, vertical: 18.0),
+          child: Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: SizeConfig.safeBlockHorizontal * 75,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              title,
+                              style: GoogleFonts.poppins(
+                                color: Palette.textColor,
+                                fontWeight: FontWeight.w700,
+                                fontSize: SizeConfig.kDefaultSize * 3,
                               ),
-                              subTitle != ""
-                                  ? Text(
-                                      subTitle,
-                                      style: GoogleFonts.poppins(
-                                        color: Palette.textColor,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: SizeConfig.kDefaultSize * 2,
-                                      ),
-                                    )
-                                  : const SizedBox.shrink(),
-                            ],
-                          ),
-                          SizedBox(
-                            height: SizeConfig.safeBlockVertical * 0.5,
-                          ),
-                          Text(
-                            text,
-                            style: GoogleFonts.poppins(
-                              color: Palette.textSecondaryColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: SizeConfig.kDefaultSize * 2,
                             ),
+                            subTitle != ""
+                                ? Text(
+                                    subTitle,
+                                    style: GoogleFonts.poppins(
+                                      color: Palette.textColor,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: SizeConfig.kDefaultSize * 2,
+                                    ),
+                                  )
+                                : const SizedBox.shrink(),
+                          ],
+                        ),
+                        SizedBox(
+                          height: SizeConfig.safeBlockVertical * 0.5,
+                        ),
+                        Text(
+                          text,
+                          style: GoogleFonts.poppins(
+                            color: Palette.textSecondaryColor,
+                            fontWeight: FontWeight.w600,
+                            fontSize: SizeConfig.kDefaultSize * 2,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

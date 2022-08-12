@@ -14,6 +14,14 @@ abstract class AdminRepository {
 
 class LoginViewModel with ChangeNotifier implements AdminRepository {
   AdminModel? _admin;
+
+  AdminModel get admin => _admin!;
+
+  setAdmin(AdminModel value) {
+    _admin = value;
+    notifyListeners();
+  }
+
   String? _role;
   bool? _loggedIn;
 
@@ -48,20 +56,15 @@ class LoginViewModel with ChangeNotifier implements AdminRepository {
       var role = await _prefService.readRole();
       setrole(role!);
       setLoggedIn(true);
+      await getUserInformation();
       return user;
     }
   }
 
   getUserInformation() async {
-    final userToken = await SharedService.getUserToken() as String;
-    var admin = await AdminService.getUserDetails(localURL, userToken);
+    var admin = await AdminService.getUserDetails();
 
-    setUser(admin as AdminModel);
-  }
-
-  setUser(AdminModel admin) {
-    _admin = admin;
-
-    notifyListeners();
+    setAdmin(admin as AdminModel);
+    log(admin.username! + " getUserInformation set user");
   }
 }

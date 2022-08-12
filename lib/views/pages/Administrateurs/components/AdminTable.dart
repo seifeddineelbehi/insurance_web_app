@@ -5,11 +5,13 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_template/model/admin_model.dart';
 import 'package:flutter_template/viewModel/admins_screen_view_model.dart';
+import 'package:flutter_template/views/pages/Administrateurs/AdminScreenDetails.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../utils/constants.dart';
 import '../../../../utils/size_config.dart';
 import '../../login/login_screen.dart';
+import '../update_admin_screen.dart';
 
 class AdminsTable extends StatefulWidget {
   const AdminsTable({Key? key}) : super(key: key);
@@ -85,11 +87,19 @@ class _AdminsTableState extends State<AdminsTable> {
                           ),
                         ),
                       ),
+                      DataColumn(
+                        label: Text(
+                          "Action",
+                          style: kMediumTitleWhiteBold.copyWith(
+                            color: kPrimaryColor,
+                          ),
+                        ),
+                      ),
                     ],
                     rows: List.generate(
                       snapshot.data!.length,
                       (index) =>
-                          recentFileDataRow(snapshot.data![index], context),
+                          AdminDetailDataRow(snapshot.data![index], context),
                     ),
                   );
                 } else {
@@ -106,12 +116,13 @@ class _AdminsTableState extends State<AdminsTable> {
   }
 }
 
-DataRow recentFileDataRow(AdminModel admin, BuildContext context) {
+DataRow AdminDetailDataRow(AdminModel admin, BuildContext context) {
   return DataRow(
     onSelectChanged: (selected) {
       if (selected!) {
         log('row-selected: ${admin.id}');
-        Beamer.of(context).beamToNamed(LoginPage.path);
+        context.beamToNamed(UpdateAdmin.path + "/" + admin.id!,
+            popToNamed: AdminsDashboard.path, data: admin);
       }
     },
     cells: [
@@ -156,6 +167,39 @@ DataRow recentFileDataRow(AdminModel admin, BuildContext context) {
           decoration: BoxDecoration(
             color: admin.role! == "Super admin" ? Colors.red : Colors.green,
             borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+      ),
+      DataCell(
+        Container(
+          padding: const EdgeInsets.all(defaultPadding * 0.7),
+          child: Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    context.beamToNamed(UpdateAdmin.path + "/" + admin.id!,
+                        popToNamed: AdminsDashboard.path, data: admin);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                        left: defaultPadding * 0.4,
+                        right: defaultPadding * 0.4),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: defaultPadding / 2),
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFFFA113),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: const Icon(
+                      Icons.edit,
+                      size: defaultPadding * 1.3,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

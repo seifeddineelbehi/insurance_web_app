@@ -70,7 +70,7 @@ class CustomCirconstance extends StatelessWidget {
                                 style: GoogleFonts.poppins(
                                   color: Palette.textColor,
                                   fontWeight: FontWeight.w700,
-                                  fontSize: SizeConfig.kDefaultSize * 3,
+                                  fontSize: SizeConfig.kDefaultSize * 2,
                                 ),
                               ),
                             ),

@@ -15,7 +15,7 @@ import '../../../utils/constants.dart';
 import '../../../utils/responsive.dart';
 import '../../../viewModel/home_view_model.dart';
 import '../../../viewModel/login_view_model.dart';
-import '../dashboard/dashboard_screen.dart';
+import '../dashboard/constat_non_traite_screen.dart';
 import '../login/login_screen.dart';
 import 'components/side_menu.dart';
 import 'package:confirm_dialog/confirm_dialog.dart';
@@ -36,11 +36,6 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final PrefService _prefService = PrefService();
   String role = "";
-  final List<Widget> _interfaces = [
-    const DashboardScreen(),
-    const ClientDashboard(),
-    const AdminsDashboard()
-  ];
 
   int _currentIndex = 0;
   @override
@@ -88,7 +83,7 @@ class _MainScreenState extends State<MainScreen> {
               const Expanded(
                 // It takes 5/6 part of the screen
                 flex: 5,
-                child: DashboardScreen(),
+                child: ConstatNonTraiteScreen(),
               ),
             ],
           ),

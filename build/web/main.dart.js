@@ -79683,7 +79683,7 @@ return A.cA(s,"/home",null,null)},
 $S:0}
 A.Nh.prototype={
 D(a,b){var s=this,r=null,q=t.p
-return new A.b8(B.Gg,A.b_(A.a([A.b_(A.a([s.Bo("About us"),s.Bo("Contact us"),s.Bo("Help")],q),B.o,B.n,B.j,r),A.b_(A.a([s.L2(!0,"Sign In")],q),B.o,B.n,B.j,r)],q),B.o,B.dd,B.j,r),r)},
+return new A.b8(B.Gg,A.b_(A.a([A.b_(A.a([s.Bo(" "),s.Bo(" "),s.Bo(" ")],q),B.o,B.n,B.j,r),A.b_(A.a([s.L2(!0,"Se connecter")],q),B.o,B.n,B.j,r)],q),B.o,B.dd,B.j,r),r)},
 L2(a,b){var s=null,r=A.S(b,s,s,s,A.rc(s,s,a?B.de:B.vg,s,s,s,s,s,s,s,s,s,s,B.K,s,s,!0,s,s,s,s,s,s,s,s),s,s)
 return new A.b8(B.Gc,A.m4(A.ax(A.a([r,B.P8,a?A.a_(s,s,B.f,s,s,new A.aR(B.de,s,s,A.aD(30),s,s,B.t),s,s,s,B.Gl,s,s,s):B.f0],t.p),B.o,B.n,B.j),B.f2,s,s,s,s),s)},
 Bo(a){return this.L2(!1,a)}}

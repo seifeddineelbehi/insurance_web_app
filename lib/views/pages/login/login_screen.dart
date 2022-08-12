@@ -75,14 +75,14 @@ class Menu extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              _menuItem(title: 'About us'),
-              _menuItem(title: 'Contact us'),
-              _menuItem(title: 'Help'),
+              _menuItem(title: ' '),
+              _menuItem(title: ' '),
+              _menuItem(title: ' '),
             ],
           ),
           Row(
             children: [
-              _menuItem(title: 'Sign In', isActive: true),
+              _menuItem(title: 'Se connecter', isActive: true),
             ],
           ),
         ],

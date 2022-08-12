@@ -34,278 +34,328 @@ class _DetailClientState extends State<DetailClient> {
       color: Colors.blueGrey,
       child: Scaffold(
         backgroundColor: kPageColor,
-        body: CustomScrollView(
+        body: ListView(
           shrinkWrap: true,
-          slivers: [
-            SliverFillRemaining(
-              hasScrollBody: true,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: defaultPadding,
-                  ),
-                  Center(
-                    child: Text(
-                      "Detail Client",
-                      style: kBigTitleBlackBold,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: defaultPadding,
-                  ),
-                  const Divider(
-                    thickness: 10,
-                  ),
-                  Expanded(
-                    child: FutureBuilder<ClientDataModel?>(
-                      future: context
-                          .read<ClientsViewModel>()
-                          .getClientData(widget.client.refAssurance!),
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData && snapshot.data != null) {
-                          return ListView(
-                            shrinkWrap: true,
-                            physics: const BouncingScrollPhysics(),
-                            children: [
-                              CustomDetailWidget(
-                                title: "Nom",
-                                text: snapshot.data!.nomClient!,
-                              ),
-                              CustomDetailWidget(
-                                title: "Prénom",
-                                text: snapshot.data!.prenomClient!,
-                              ),
-                              CustomDetailWidget(
-                                title: "Adresse",
-                                text: snapshot.data!.addresseClient!,
-                              ),
-                              CustomDetailWidget(
-                                title: "Assureur",
-                                text: snapshot.data!.assureur!,
-                              ),
-                              CustomDetailWidget(
-                                title: "Agence",
-                                text: snapshot.data!.agence!,
-                              ),
-                              CustomDetailWidget(
-                                title: "Numéro Contrat",
-                                text: snapshot.data!.numContrat!,
-                              ),
-                              CustomDetailWidget(
-                                title: "Date Début Contrat",
-                                text: snapshot.data!.DBContrat!,
-                              ),
-                              CustomDetailWidget(
-                                title: "Date Fin Contrat",
-                                text: snapshot.data!.DFContrat!,
-                              ),
-                              CustomDetailWidget(
-                                title: "Voiture ",
-                                text: snapshot.data!.voiture!,
-                              ),
-                              CustomDetailWidget(
-                                title: "Immatriculation",
-                                text: snapshot.data!.immatriculation!,
-                              ),
-                            ],
-                          );
-                        } else {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        }
-                      },
-                    ),
-                  ),
-                  if (widget.client.constatsAccidents!.isNotEmpty)
-                    const SizedBox(
-                      height: defaultPadding,
-                    ),
-                  if (widget.client.constatsAccidents!.isNotEmpty)
-                    Expanded(
-                      child: DataTable2(
-                        showCheckboxColumn: false,
-                        columnSpacing: defaultPadding,
-                        minWidth: 600,
-                        columns: [
-                          DataColumn(
-                            label: Text(
-                              "Client 1",
-                              style: kMediumTitleWhiteBold.copyWith(
-                                color: bgColor,
-                              ),
-                            ),
-                          ),
-                          DataColumn(
-                            label: Text(
-                              "Client 2",
-                              style: kMediumTitleWhiteBold.copyWith(
-                                color: bgColor,
-                              ),
-                            ),
-                          ),
-                          DataColumn(
-                            label: Text(
-                              "Date",
-                              style: kMediumTitleWhiteBold.copyWith(
-                                color: bgColor,
-                              ),
-                            ),
-                          ),
-                          DataColumn(
-                            label: Text(
-                              "Etat",
-                              style: kMediumTitleWhiteBold.copyWith(
-                                color: bgColor,
-                              ),
-                            ),
-                          ),
-                        ],
-                        rows: List.generate(
-                          widget.client.constatsAccidents!.length,
-                          (index) => listConstatClientDataRow(
-                              widget.client.constatsAccidents![index], context),
+          children: [
+            const SizedBox(
+              height: defaultPadding,
+            ),
+            Center(
+              child: Text(
+                "Detail Client",
+                style: kBigTitleBlackBold,
+              ),
+            ),
+            const SizedBox(
+              height: defaultPadding,
+            ),
+            const Divider(
+              thickness: 10,
+            ),
+            Expanded(
+              child: FutureBuilder<ClientDataModel?>(
+                future: context
+                    .read<ClientsViewModel>()
+                    .getClientData(widget.client.refAssurance!),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData && snapshot.data != null) {
+                    return ListView(
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      children: [
+                        CustomDetailWidget(
+                          title: "Nom",
+                          text: snapshot.data!.nomClient!,
                         ),
-                      ),
-                    ),
-                  if (widget.client.vols!.isNotEmpty)
-                    const SizedBox(
-                      height: defaultPadding,
-                    ),
-                  if (widget.client.vols!.isNotEmpty)
-                    Expanded(
-                      child: DataTable2(
-                        showCheckboxColumn: false,
-                        columnSpacing: defaultPadding,
-                        minWidth: 600,
-                        columns: [
-                          DataColumn(
-                            label: Text(
-                              "Date",
-                              style: kMediumTableColumnWhiteBold.copyWith(
-                                color: bgColor,
-                              ),
-                            ),
-                          ),
-                          DataColumn(
-                            label: Text(
-                              "Description",
-                              style: kMediumTableColumnWhiteBold.copyWith(
-                                color: bgColor,
-                              ),
-                            ),
-                          ),
-                          DataColumn(
-                            label: Text(
-                              "Etat",
-                              style: kMediumTableColumnWhiteBold.copyWith(
-                                color: bgColor,
-                              ),
-                            ),
-                          ),
-                        ],
-                        rows: List.generate(
-                          widget.client.vols!.length,
-                          (index) => ClientVolDataRow(
-                              widget.client.vols![index],
-                              context,
-                              widget.client.vols!),
+                        CustomDetailWidget(
+                          title: "Prénom",
+                          text: snapshot.data!.prenomClient!,
                         ),
-                      ),
-                    ),
-                  if (widget.client.incendies!.isNotEmpty)
-                    const SizedBox(
-                      height: defaultPadding,
-                    ),
-                  if (widget.client.incendies!.isNotEmpty)
-                    Expanded(
-                      child: DataTable2(
-                        showCheckboxColumn: false,
-                        columnSpacing: defaultPadding,
-                        minWidth: 600,
-                        columns: [
-                          DataColumn(
-                            label: Text(
-                              "Date",
-                              style: kMediumTableColumnWhiteBold.copyWith(
-                                color: bgColor,
-                              ),
-                            ),
-                          ),
-                          DataColumn(
-                            label: Text(
-                              "Description",
-                              style: kMediumTableColumnWhiteBold.copyWith(
-                                color: bgColor,
-                              ),
-                            ),
-                          ),
-                          DataColumn(
-                            label: Text(
-                              "Actions",
-                              style: kMediumTableColumnWhiteBold.copyWith(
-                                color: bgColor,
-                              ),
-                            ),
-                          ),
-                        ],
-                        rows: List.generate(
-                          widget.client.incendies!.length,
-                          (index) => ClientIncendiesDataRow(
-                              widget.client.incendies![index],
-                              context,
-                              widget.client.incendies!),
+                        CustomDetailWidget(
+                          title: "Adresse",
+                          text: snapshot.data!.addresseClient!,
                         ),
-                      ),
-                    ),
-                  if (widget.client.briseGlace!.isNotEmpty)
-                    const SizedBox(
-                      height: defaultPadding,
-                    ),
-                  if (widget.client.briseGlace!.isNotEmpty)
-                    Expanded(
-                        child: DataTable2(
-                      showCheckboxColumn: false,
-                      columnSpacing: defaultPadding,
-                      minWidth: 600,
-                      columns: [
-                        DataColumn(
-                          label: Text(
-                            "Date",
-                            style: kMediumTableColumnWhiteBold.copyWith(
-                              color: bgColor,
-                            ),
-                          ),
+                        CustomDetailWidget(
+                          title: "Assureur",
+                          text: snapshot.data!.assureur!,
                         ),
-                        DataColumn(
-                          label: Text(
-                            "Description",
-                            style: kMediumTableColumnWhiteBold.copyWith(
-                              color: bgColor,
-                            ),
-                          ),
+                        CustomDetailWidget(
+                          title: "Agence",
+                          text: snapshot.data!.agence!,
                         ),
-                        DataColumn(
-                          label: Text(
-                            "Etat",
-                            style: kMediumTableColumnWhiteBold.copyWith(
-                              color: bgColor,
-                            ),
-                          ),
+                        CustomDetailWidget(
+                          title: "Numéro Contrat",
+                          text: snapshot.data!.numContrat!,
+                        ),
+                        CustomDetailWidget(
+                          title: "Date Début Contrat",
+                          text: snapshot.data!.DBContrat!,
+                        ),
+                        CustomDetailWidget(
+                          title: "Date Fin Contrat",
+                          text: snapshot.data!.DFContrat!,
+                        ),
+                        CustomDetailWidget(
+                          title: "Voiture ",
+                          text: snapshot.data!.voiture!,
+                        ),
+                        CustomDetailWidget(
+                          title: "Immatriculation",
+                          text: snapshot.data!.immatriculation!,
                         ),
                       ],
-                      rows: List.generate(
-                        widget.client.briseGlace!.length,
-                        (index) => ClientBriseDataRow(
-                            widget.client.briseGlace![index],
-                            context,
-                            widget.client.briseGlace!),
-                      ),
-                    )),
-                ],
+                    );
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
               ),
-            )
+            ),
+            if (widget.client.constatsAccidents!.isNotEmpty)
+              const Divider(
+                thickness: 10,
+              ),
+            if (widget.client.constatsAccidents!.isNotEmpty)
+              Text(
+                "Liste des constats",
+                style: kMediumTitleBlackBold.copyWith(
+                  color: Colors.blueGrey,
+                ),
+              ),
+            if (widget.client.constatsAccidents!.isNotEmpty)
+              const SizedBox(
+                height: defaultPadding,
+              ),
+            if (widget.client.constatsAccidents!.isNotEmpty)
+              const Divider(
+                thickness: 10,
+              ),
+            if (widget.client.constatsAccidents!.isNotEmpty)
+              Expanded(
+                child: DataTable2(
+                  showCheckboxColumn: false,
+                  columnSpacing: defaultPadding,
+                  minWidth: 600,
+                  columns: [
+                    DataColumn(
+                      label: Text(
+                        "Client 1",
+                        style: kMediumTitleWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        "Client 2",
+                        style: kMediumTitleWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        "Date",
+                        style: kMediumTitleWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        "Etat",
+                        style: kMediumTitleWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                  rows: List.generate(
+                    widget.client.constatsAccidents!.length,
+                    (index) => listConstatClientDataRow(
+                        widget.client.constatsAccidents![index], context),
+                  ),
+                ),
+              ),
+            if (widget.client.vols!.isNotEmpty)
+              const Divider(
+                thickness: 10,
+              ),
+            if (widget.client.vols!.isNotEmpty)
+              Text(
+                "Liste des vols",
+                style: kMediumTitleBlackBold.copyWith(
+                  color: Colors.blueGrey,
+                ),
+              ),
+            if (widget.client.vols!.isNotEmpty)
+              const SizedBox(
+                height: defaultPadding,
+              ),
+            if (widget.client.vols!.isNotEmpty)
+              const Divider(
+                thickness: 10,
+              ),
+            if (widget.client.vols!.isNotEmpty)
+              Expanded(
+                child: DataTable2(
+                  showCheckboxColumn: false,
+                  columnSpacing: defaultPadding,
+                  minWidth: 600,
+                  columns: [
+                    DataColumn(
+                      label: Text(
+                        "Date",
+                        style: kMediumTableColumnWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        "Description",
+                        style: kMediumTableColumnWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        "Etat",
+                        style: kMediumTableColumnWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                  rows: List.generate(
+                    widget.client.vols!.length,
+                    (index) => ClientVolDataRow(widget.client.vols![index],
+                        context, widget.client.vols!),
+                  ),
+                ),
+              ),
+            if (widget.client.incendies!.isNotEmpty)
+              const Divider(
+                thickness: 10,
+              ),
+            if (widget.client.incendies!.isNotEmpty)
+              Text(
+                "Liste des Incendies",
+                style: kMediumTitleBlackBold.copyWith(
+                  color: Colors.blueGrey,
+                ),
+              ),
+            if (widget.client.incendies!.isNotEmpty)
+              const SizedBox(
+                height: defaultPadding,
+              ),
+            if (widget.client.incendies!.isNotEmpty)
+              const Divider(
+                thickness: 10,
+              ),
+            if (widget.client.incendies!.isNotEmpty)
+              Expanded(
+                child: DataTable2(
+                  showCheckboxColumn: false,
+                  columnSpacing: defaultPadding,
+                  minWidth: 600,
+                  columns: [
+                    DataColumn(
+                      label: Text(
+                        "Date",
+                        style: kMediumTableColumnWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        "Description",
+                        style: kMediumTableColumnWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        "Actions",
+                        style: kMediumTableColumnWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                  rows: List.generate(
+                    widget.client.incendies!.length,
+                    (index) => ClientIncendiesDataRow(
+                        widget.client.incendies![index],
+                        context,
+                        widget.client.incendies!),
+                  ),
+                ),
+              ),
+            if (widget.client.briseGlace!.isNotEmpty)
+              const Divider(
+                thickness: 10,
+              ),
+            if (widget.client.briseGlace!.isNotEmpty)
+              Text(
+                "Liste des Brises glasses",
+                style: kMediumTitleBlackBold.copyWith(
+                  color: Colors.blueGrey,
+                ),
+              ),
+            if (widget.client.briseGlace!.isNotEmpty)
+              const SizedBox(
+                height: defaultPadding,
+              ),
+            if (widget.client.briseGlace!.isNotEmpty)
+              const Divider(
+                thickness: 10,
+              ),
+            if (widget.client.briseGlace!.isNotEmpty)
+              Expanded(
+                  child: DataTable2(
+                showCheckboxColumn: false,
+                columnSpacing: defaultPadding,
+                minWidth: 600,
+                columns: [
+                  DataColumn(
+                    label: Text(
+                      "Date",
+                      style: kMediumTableColumnWhiteBold.copyWith(
+                        color: bgColor,
+                      ),
+                    ),
+                  ),
+                  DataColumn(
+                    label: Text(
+                      "Description",
+                      style: kMediumTableColumnWhiteBold.copyWith(
+                        color: bgColor,
+                      ),
+                    ),
+                  ),
+                  DataColumn(
+                    label: Text(
+                      "Etat",
+                      style: kMediumTableColumnWhiteBold.copyWith(
+                        color: bgColor,
+                      ),
+                    ),
+                  ),
+                ],
+                rows: List.generate(
+                  widget.client.briseGlace!.length,
+                  (index) => ClientBriseDataRow(
+                      widget.client.briseGlace![index],
+                      context,
+                      widget.client.briseGlace!),
+                ),
+              )),
           ],
         ),
       ),

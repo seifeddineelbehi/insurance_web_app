@@ -21,7 +21,8 @@ class CustomConstatHeaderDetailWidget extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
         border: Border.all(
-            width: cardDetailConstatBorderThikness, color: kCardConstatDetailBordeColor),
+            width: cardDetailConstatBorderThikness,
+            color: kCardConstatDetailBordeColor),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
@@ -37,10 +38,10 @@ class CustomConstatHeaderDetailWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            SelectableText(
               title,
               maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+              showCursor: true,
               style: GoogleFonts.poppins(
                 color: Palette.textColor,
                 fontWeight: FontWeight.w700,
@@ -50,10 +51,10 @@ class CustomConstatHeaderDetailWidget extends StatelessWidget {
             SizedBox(
               height: SizeConfig.safeBlockVertical * 0.5,
             ),
-            Text(
+            SelectableText(
               text,
               maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+              showCursor: true,
               style: GoogleFonts.poppins(
                 color: Palette.textSecondaryColor,
                 fontWeight: FontWeight.w600,

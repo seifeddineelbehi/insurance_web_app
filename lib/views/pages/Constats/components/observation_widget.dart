@@ -33,7 +33,7 @@ class CustomObservation extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Dégat apparent',
+                'Observation',
                 style: GoogleFonts.poppins(
                   color: Palette.textColor,
                   fontWeight: FontWeight.w700,
@@ -43,7 +43,7 @@ class CustomObservation extends StatelessWidget {
               SizedBox(
                 height: SizeConfig.safeBlockVertical * 0.5,
               ),
-              Text(
+              SelectableText(
                 vehicule.observation.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,

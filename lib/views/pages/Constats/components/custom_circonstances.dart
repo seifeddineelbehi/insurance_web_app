@@ -63,7 +63,7 @@ class CustomCirconstance extends StatelessWidget {
                           ),
                           Expanded(
                             child: Center(
-                              child: Text(
+                              child: SelectableText(
                                 (Circonstances.indexOf(item) + 1).toString() +
                                     "-" +
                                     item.toString(),

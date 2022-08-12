@@ -44,7 +44,7 @@ class IdentiteConsucteur extends StatelessWidget {
               SizedBox(
                 height: SizeConfig.safeBlockVertical * 0.5,
               ),
-              Text(
+              SelectableText(
                 'Nom : ' + vehicule.nomConducteur.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -52,7 +52,7 @@ class IdentiteConsucteur extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'Prenom : ' + vehicule.prenomConducteur.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -60,7 +60,7 @@ class IdentiteConsucteur extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'Adresse ' + vehicule.addresseConducteur.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -68,7 +68,7 @@ class IdentiteConsucteur extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'Permis de conduire N°:' + vehicule.permisConducteur.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -76,7 +76,7 @@ class IdentiteConsucteur extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'Délivré le : ' +
                     vehicule.delivrancePermisConducteur.toString(),
                 style: GoogleFonts.poppins(

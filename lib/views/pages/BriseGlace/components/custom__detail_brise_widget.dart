@@ -51,10 +51,10 @@ class CustomDetailBriseWidget extends StatelessWidget {
             SizedBox(
               height: SizeConfig.safeBlockVertical * 0.5,
             ),
-            Text(
+            SelectableText(
               text,
               maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+              //overflow: TextOverflow.ellipsis,
               style: GoogleFonts.poppins(
                 color: Palette.textSecondaryColor,
                 fontWeight: FontWeight.w600,

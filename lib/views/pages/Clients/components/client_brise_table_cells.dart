@@ -21,10 +21,10 @@ DataRow ClientBriseDataRow(
       }
     },
     cells: [
-      DataCell(Text(
+      DataCell(SelectableText(
         vol.date!,
         maxLines: 1,
-        overflow: TextOverflow.ellipsis,
+        //overflow: TextOverflow.ellipsis,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           color: secondaryColor,

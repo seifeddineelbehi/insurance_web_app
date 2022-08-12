@@ -25,8 +25,8 @@ class ConstatHeaderInfoCard extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: ListTile(
-          title: Text(title.toString()),
-          subtitle: Text(subTitle.toString()),
+          title: SelectableText(title.toString()),
+          subtitle: SelectableText(subTitle.toString()),
           leading: Icon(icon),
         ));
   }

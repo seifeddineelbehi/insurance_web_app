@@ -70,7 +70,7 @@ class CustomDetailWidget extends StatelessWidget {
                         SizedBox(
                           height: SizeConfig.safeBlockVertical * 0.5,
                         ),
-                        Text(
+                        SelectableText(
                           text,
                           style: GoogleFonts.poppins(
                             color: Palette.textSecondaryColor,

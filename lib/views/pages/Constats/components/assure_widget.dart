@@ -44,7 +44,7 @@ class Assure extends StatelessWidget {
               SizedBox(
                 height: SizeConfig.safeBlockVertical * 0.5,
               ),
-              Text(
+              SelectableText(
                 'Nom : ' + vehicule.nomAssure.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -52,7 +52,7 @@ class Assure extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'Prenom : ' + vehicule.prenomAssure.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -60,7 +60,7 @@ class Assure extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'Adresse ' + vehicule.addresseAssure.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -68,7 +68,7 @@ class Assure extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'tel :' + vehicule.telAssure.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,

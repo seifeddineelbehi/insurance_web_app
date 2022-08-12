@@ -26,10 +26,10 @@ DataRow listConstatClientDataRow(ConstatModel constat, BuildContext context) {
     },
     cells: [
       DataCell(
-        Text(
+        SelectableText(
           '$Nomclient1' + ' ' + '$Prenomclient1',
           maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+          //overflow: TextOverflow.ellipsis,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: secondaryColor,
@@ -37,20 +37,20 @@ DataRow listConstatClientDataRow(ConstatModel constat, BuildContext context) {
         ),
       ),
       DataCell(
-        Text(
+        SelectableText(
           '$Nomclient2' + ' ' + '$Prenomclient2',
           maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+          //overflow: TextOverflow.ellipsis,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: secondaryColor,
           ),
         ),
       ),
-      DataCell(Text(
+      DataCell(SelectableText(
         constat.dateAccident!,
         maxLines: 1,
-        overflow: TextOverflow.ellipsis,
+        //overflow: TextOverflow.ellipsis,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           color: secondaryColor,

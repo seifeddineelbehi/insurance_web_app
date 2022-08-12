@@ -223,20 +223,20 @@ DataRow listConstatDataRow(
       }
     },
     cells: [
-      DataCell(Text(
+      DataCell(SelectableText(
         constat.dateAccident!,
         maxLines: 1,
-        overflow: TextOverflow.ellipsis,
+        showCursor: true,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           color: secondaryColor,
         ),
       )),
       DataCell(
-        Text(
+        SelectableText(
           '$Nomclient1' + ' ' + '$Prenomclient1',
           maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+          showCursor: true,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: secondaryColor,
@@ -244,10 +244,10 @@ DataRow listConstatDataRow(
         ),
       ),
       DataCell(
-        Text(
+        SelectableText(
           '$Nomclient2' + ' ' + '$Prenomclient2',
           maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+          showCursor: true,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: secondaryColor,

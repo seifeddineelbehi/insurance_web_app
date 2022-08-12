@@ -96,7 +96,7 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
 }
 
 Widget itemTemoin(TemoinModel temoin) {
-  return Text(
+  return SelectableText(
     temoin.nom.toString() +
         " " +
         temoin.adress.toString() +

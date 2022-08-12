@@ -43,7 +43,7 @@ class CustomDegat extends StatelessWidget {
               SizedBox(
                 height: SizeConfig.safeBlockVertical * 0.5,
               ),
-              Text(
+              SelectableText(
                 vehicule.degatApparent.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,

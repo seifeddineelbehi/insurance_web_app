@@ -135,10 +135,10 @@ DataRow recentFileDataRow(ClientModel client, BuildContext context) {
     },
     cells: [
       DataCell(
-        Text(
+        SelectableText(
           client.codeClient!,
           maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+          //overflow: TextOverflow.ellipsis,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: secondaryColor,
@@ -146,10 +146,10 @@ DataRow recentFileDataRow(ClientModel client, BuildContext context) {
         ),
       ),
       DataCell(
-        Text(
+        SelectableText(
           client.refAssurance!,
           maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+          //overflow: TextOverflow.ellipsis,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: secondaryColor,
@@ -157,10 +157,10 @@ DataRow recentFileDataRow(ClientModel client, BuildContext context) {
         ),
       ),
       DataCell(
-        Text(
+        SelectableText(
           client.username!,
           maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+          //overflow: TextOverflow.ellipsis,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: secondaryColor,

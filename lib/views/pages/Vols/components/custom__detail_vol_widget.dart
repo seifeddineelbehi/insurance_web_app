@@ -38,10 +38,10 @@ class CustomDetailVolWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            SelectableText(
               title,
               maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+              showCursor: true,
               style: GoogleFonts.poppins(
                 color: Palette.textColor,
                 fontWeight: FontWeight.w700,
@@ -51,10 +51,10 @@ class CustomDetailVolWidget extends StatelessWidget {
             SizedBox(
               height: SizeConfig.safeBlockVertical * 0.5,
             ),
-            Text(
+            SelectableText(
               text,
               maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+              showCursor: true,
               style: GoogleFonts.poppins(
                 color: Palette.textSecondaryColor,
                 fontWeight: FontWeight.w600,

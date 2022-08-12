@@ -43,7 +43,7 @@ class SocieteAssurance extends StatelessWidget {
               SizedBox(
                 height: SizeConfig.safeBlockVertical * 0.5,
               ),
-              Text(
+              SelectableText(
                 'Vehicule Assuré par : ' + vehicule.assurePar.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -51,7 +51,7 @@ class SocieteAssurance extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'Contrat N° : ' + vehicule.numContratAssurance.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -59,7 +59,7 @@ class SocieteAssurance extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'Agence : ' + vehicule.agence.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -67,7 +67,7 @@ class SocieteAssurance extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'Attestation valable' + vehicule.numContratAssurance.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -75,7 +75,7 @@ class SocieteAssurance extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'du : ' + vehicule.debutValid.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -83,7 +83,7 @@ class SocieteAssurance extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'au : ' + vehicule.finValid.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,

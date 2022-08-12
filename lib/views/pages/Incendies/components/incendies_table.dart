@@ -191,21 +191,21 @@ DataRow listIncendiesDataRow(
       }
     },
     cells: [
-      DataCell(Text(
+      DataCell(SelectableText(
         vol.date!,
         maxLines: 1,
-        overflow: TextOverflow.ellipsis,
+        showCursor: true,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           color: secondaryColor,
         ),
       )),
       DataCell(
-        Text(
+        SelectableText(
           'Nouvelle declaration d\'incendie de la part du client ' +
               vol.codeClient!,
           maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+          showCursor: true,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: secondaryColor,

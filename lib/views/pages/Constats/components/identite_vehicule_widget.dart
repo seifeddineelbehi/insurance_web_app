@@ -43,7 +43,7 @@ class IdentiteVehicule extends StatelessWidget {
               SizedBox(
                 height: SizeConfig.safeBlockVertical * 0.5,
               ),
-              Text(
+              SelectableText(
                 'Marque, type : ' + vehicule.marqueTypeVoiture.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -51,7 +51,7 @@ class IdentiteVehicule extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'N° d\'immatriculation: ' + vehicule.immatriculation.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -59,7 +59,7 @@ class IdentiteVehicule extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'Sens Suivi : ' + vehicule.sensSuivi.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -67,7 +67,7 @@ class IdentiteVehicule extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'Venant de ' + vehicule.venantDe.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,
@@ -75,7 +75,7 @@ class IdentiteVehicule extends StatelessWidget {
                   fontSize: SizeConfig.kDefaultSize * 2,
                 ),
               ),
-              Text(
+              SelectableText(
                 'Allant à : ' + vehicule.allantA.toString(),
                 style: GoogleFonts.poppins(
                   color: Palette.textSecondaryColor,

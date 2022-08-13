@@ -140,7 +140,7 @@ class _DetailsBriseGlaceState extends State<DetailsBriseGlace> {
                                           height: 50,
                                           child: Center(
                                               child: Text(
-                                            "Marqué comme terminé",
+                                            "Marquer comme terminé",
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                             style: kMediumTitleWhiteBold,
@@ -149,7 +149,7 @@ class _DetailsBriseGlaceState extends State<DetailsBriseGlace> {
                                         if (await confirm(
                                           context,
                                           title: const Text(
-                                              'Marqué constat comme terminé'),
+                                              'Marquer constat comme terminé'),
                                           content: const Text(
                                               'Vous êtes sur de valider ce constat?'),
                                           textOK: const Text('Oui'),
@@ -210,7 +210,7 @@ class _DetailsBriseGlaceState extends State<DetailsBriseGlace> {
                                           height: 50,
                                           child: Center(
                                               child: Text(
-                                            "Rejeté",
+                                            "Rejeter",
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                             style: kMediumTitleWhiteBold,

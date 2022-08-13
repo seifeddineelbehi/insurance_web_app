@@ -113,7 +113,8 @@ class _DetailVolState extends State<DetailVol> {
                             CustomDetailVolWidget(
                                 title: "Date : ", text: widget.vol.date!),
                           CustomDetailVolWidget(
-                              title: "Observation : ", text: widget.vol.observation!),
+                              title: "Observation : ",
+                              text: widget.vol.observation!),
                           if (widget.vol.status! == "En cours de traitement")
                             const SizedBox(height: defaultPadding),
                           if (widget.vol.status! == "En cours de traitement")
@@ -138,7 +139,7 @@ class _DetailVolState extends State<DetailVol> {
                                           height: 50,
                                           child: Center(
                                               child: Text(
-                                            "Marqué comme terminé",
+                                            "Marquer comme terminé",
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                             style: kMediumTitleWhiteBold,
@@ -147,7 +148,7 @@ class _DetailVolState extends State<DetailVol> {
                                         if (await confirm(
                                           context,
                                           title: const Text(
-                                              'Marqué constat comme terminé'),
+                                              'Marquer constat comme terminé'),
                                           content: const Text(
                                               'Vous êtes sur de valider ce constat?'),
                                           textOK: const Text('Oui'),
@@ -208,7 +209,7 @@ class _DetailVolState extends State<DetailVol> {
                                           height: 50,
                                           child: Center(
                                               child: Text(
-                                            "Rejeté",
+                                            "Rejeter",
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                             style: kMediumTitleWhiteBold,

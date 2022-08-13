@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_template/model/incendies_model.dart';
 import 'package:flutter_template/viewModel/incendie_view_model.dart';
 import 'package:flutter_template/views/pages/Incendies/components/custom__detail_incendie_widget.dart';
+import 'package:flutter_template/views/pages/Incendies/components/image_incendie_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../../../model/client_model.dart';
@@ -116,6 +117,7 @@ class _DetailIncendieState extends State<DetailIncendie> {
                           CustomDetailIncendieWidget(
                               title: "Observation : ",
                               text: widget.incendie.observation!),
+                          CustomIncendieImage(image: widget.incendie.image!),
                           if (widget.incendie.status! ==
                               "En cours de traitement")
                             const SizedBox(height: defaultPadding),
@@ -142,7 +144,7 @@ class _DetailIncendieState extends State<DetailIncendie> {
                                           height: 50,
                                           child: Center(
                                               child: Text(
-                                            "Marqué comme terminé",
+                                            "Marquer comme terminé",
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                             style: kMediumTitleWhiteBold,
@@ -151,7 +153,7 @@ class _DetailIncendieState extends State<DetailIncendie> {
                                         if (await confirm(
                                           context,
                                           title: const Text(
-                                              'Marqué constat comme terminé'),
+                                              'Marquer constat comme terminé'),
                                           content: const Text(
                                               'Vous êtes sur de valider ce constat?'),
                                           textOK: const Text('Oui'),
@@ -212,7 +214,7 @@ class _DetailIncendieState extends State<DetailIncendie> {
                                           height: 50,
                                           child: Center(
                                               child: Text(
-                                            "Rejeté",
+                                            "Rejeter",
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                             style: kMediumTitleWhiteBold,

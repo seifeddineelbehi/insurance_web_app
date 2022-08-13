@@ -74,7 +74,7 @@ class _DetailsConstatState extends State<DetailsConstat> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                  "Marqué comme terminé",
+                                  "Marquer comme terminé",
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: kMediumTitleWhiteBold,
@@ -83,7 +83,7 @@ class _DetailsConstatState extends State<DetailsConstat> {
                               if (await confirm(
                                 context,
                                 title:
-                                    const Text('Marqué constat comme terminé'),
+                                    const Text('Marquer constat comme terminé'),
                                 content: const Text(
                                     'Vous êtes sur de valider ce constat?'),
                                 textOK: const Text('Oui'),
@@ -141,7 +141,7 @@ class _DetailsConstatState extends State<DetailsConstat> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                  "Rejeté",
+                                  "Rejeter",
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: kMediumTitleWhiteBold,
@@ -278,7 +278,7 @@ class _DetailsConstatState extends State<DetailsConstat> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                  "Marqué comme terminé",
+                                  "Marquer comme terminé",
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: kMediumTitleWhiteBold,
@@ -287,7 +287,7 @@ class _DetailsConstatState extends State<DetailsConstat> {
                               if (await confirm(
                                 context,
                                 title:
-                                    const Text('Marqué constat comme terminé'),
+                                    const Text('Marquer constat comme terminé'),
                                 content: const Text(
                                     'Vous êtes sur de valider ce constat?'),
                                 textOK: const Text('Oui'),
@@ -345,7 +345,7 @@ class _DetailsConstatState extends State<DetailsConstat> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                  "Rejeté",
+                                  "Rejeter",
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: kMediumTitleWhiteBold,

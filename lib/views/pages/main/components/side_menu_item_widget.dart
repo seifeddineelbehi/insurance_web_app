@@ -9,11 +9,12 @@ class DrawerListTile extends StatelessWidget {
     Key? key,
     // For selecting those three line once press "Command+D"
     required this.title,
-    required this.svgSrc,
+    required this.icon,
     required this.press,
   }) : super(key: key);
 
-  final String title, svgSrc;
+  final String title;
+  final IconData icon;
   final VoidCallback press;
 
   @override
@@ -22,11 +23,7 @@ class DrawerListTile extends StatelessWidget {
       onTap: press,
       selected: true,
       horizontalTitleGap: 0.0,
-      leading: SvgPicture.asset(
-        svgSrc,
-        color: Colors.blueGrey,
-        height: 16,
-      ),
+      leading: Icon(icon, color: Colors.blueGrey, size: 16),
       title: Text(
         title,
         style: const TextStyle(color: secondaryColor),

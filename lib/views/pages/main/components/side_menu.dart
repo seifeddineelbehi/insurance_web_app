@@ -40,69 +40,88 @@ class _SideMenuState extends State<SideMenu> {
           DrawerHeader(
             child: Image.asset("assets/images/logoGat.png"),
           ),
-          DrawerListTile(
-            title: "Constat non traité",
-            svgSrc: "assets/icons/menu_dashbord.svg",
-            press: () => {Beamer.of(context).beamToNamed(MainScreen.path)},
-          ),
-          DrawerListTile(
-            title: "Vols non traité",
-            svgSrc: "assets/icons/menu_tran.svg",
-            press: () =>
-                Beamer.of(context).beamToNamed(VolNonTraiteScreen.path),
-          ),
-          DrawerListTile(
-            title: "Incendies non traité",
-            svgSrc: "assets/icons/menu_doc.svg",
-            press: () {
-              Beamer.of(context).beamToNamed(IncendiesNonTraiteScreen.path);
-            },
-          ),
-          DrawerListTile(
-            title: "Brises glaces non traité",
-            svgSrc: "assets/icons/menu_tran.svg",
-            press: () =>
-                Beamer.of(context).beamToNamed(BriseGlaceNonTraiteScreen.path),
+          ExpansionTile(
+            leading:
+                const Icon(Icons.history, color: Colors.blueGrey, size: 16),
+            title: const Text(
+              'Récent',
+              style: TextStyle(color: secondaryColor),
+            ),
+            children: [
+              DrawerListTile(
+                title: "Constat non traité",
+                icon: Icons.apps,
+                press: () => {Beamer.of(context).beamToNamed(MainScreen.path)},
+              ),
+              DrawerListTile(
+                title: "Vols non traité",
+                icon: Icons.apps,
+                press: () =>
+                    Beamer.of(context).beamToNamed(VolNonTraiteScreen.path),
+              ),
+              DrawerListTile(
+                title: "Incendies non traité",
+                icon: Icons.apps,
+                press: () {
+                  Beamer.of(context).beamToNamed(IncendiesNonTraiteScreen.path);
+                },
+              ),
+              DrawerListTile(
+                title: "Brises glaces non traité",
+                icon: Icons.apps,
+                press: () => Beamer.of(context)
+                    .beamToNamed(BriseGlaceNonTraiteScreen.path),
+              ),
+            ],
           ),
           DrawerListTile(
             title: "Clients",
-            svgSrc: "assets/icons/menu_task.svg",
+            icon: Icons.person,
             press: () {
               Beamer.of(context).beamToNamed(ClientDashboard.path);
             },
           ),
-          DrawerListTile(
-            title: "Archive Constat Traité",
-            svgSrc: "assets/icons/menu_doc.svg",
-            press: () {
-              Beamer.of(context).beamToNamed(ConstatTraite.path);
-            },
-          ),
-          DrawerListTile(
-            title: "Archive Vols Traité",
-            svgSrc: "assets/icons/menu_doc.svg",
-            press: () {
-              Beamer.of(context).beamToNamed(VolTraite.path);
-            },
-          ),
-          DrawerListTile(
-            title: "Archive Incendies Traité",
-            svgSrc: "assets/icons/menu_doc.svg",
-            press: () {
-              Beamer.of(context).beamToNamed(IncendiesTraite.path);
-            },
-          ),
-          DrawerListTile(
-            title: "Archive Brise glace Traité",
-            svgSrc: "assets/icons/menu_doc.svg",
-            press: () {
-              Beamer.of(context).beamToNamed(BriseTraite.path);
-            },
+          ExpansionTile(
+            leading: const Icon(Icons.event, color: Colors.blueGrey, size: 16),
+            title: const Text(
+              'Archive',
+              style: TextStyle(color: secondaryColor),
+            ),
+            children: [
+              DrawerListTile(
+                title: "Archive Constat Traité",
+                icon: Icons.access_time,
+                press: () {
+                  Beamer.of(context).beamToNamed(ConstatTraite.path);
+                },
+              ),
+              DrawerListTile(
+                title: "Archive Vols Traité",
+                icon: Icons.access_time,
+                press: () {
+                  Beamer.of(context).beamToNamed(VolTraite.path);
+                },
+              ),
+              DrawerListTile(
+                title: "Archive Incendies Traité",
+                icon: Icons.access_time,
+                press: () {
+                  Beamer.of(context).beamToNamed(IncendiesTraite.path);
+                },
+              ),
+              DrawerListTile(
+                title: "Archive Brise glace Traité",
+                icon: Icons.access_time,
+                press: () {
+                  Beamer.of(context).beamToNamed(BriseTraite.path);
+                },
+              ),
+            ],
           ),
           if (widget.role.toLowerCase() == "Super Admin".toLowerCase())
             DrawerListTile(
               title: "Administrateurs",
-              svgSrc: "assets/icons/menu_profile.svg",
+              icon: Icons.admin_panel_settings,
               press: () {
                 Beamer.of(context).beamToNamed(AdminsDashboard.path);
               },
@@ -125,7 +144,7 @@ class _SideMenuState extends State<SideMenu> {
           ),
           DrawerListTile(
             title: "Log out",
-            svgSrc: "assets/icons/menu_setting.svg",
+            icon: Icons.logout,
             press: () async {
               if (await confirm(context,
                   title: const Text('Se deconnecté'),

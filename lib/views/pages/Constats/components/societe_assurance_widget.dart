@@ -33,7 +33,7 @@ class SocieteAssurance extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Société d\'assurance',
+                'Société d\'assurance ',
                 style: GoogleFonts.poppins(
                   color: Palette.textColor,
                   fontWeight: FontWeight.w700,

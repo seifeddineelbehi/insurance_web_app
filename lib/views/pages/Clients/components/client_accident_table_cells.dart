@@ -12,14 +12,14 @@ import '../../../../viewModel/home_view_model.dart';
 import '../../Constats/details_constat_screen.dart';
 
 DataRow listConstatClientDataRow(ConstatModel constat, BuildContext context) {
-  final Nomclient1 = constat.vehiculeA?.nomAssure.toString();
-  final Prenomclient1 = constat.vehiculeA?.prenomAssure.toString();
-  final Nomclient2 = constat.vehiculeB?.nomAssure.toString();
-  final Prenomclient2 = constat.vehiculeB?.prenomAssure.toString();
+  final Nomclient1 = constat.vehiculeA?.nomAssure!;
+  final Prenomclient1 = constat.vehiculeA?.prenomAssure!;
+  final Nomclient2 = constat.vehiculeB?.nomAssure!;
+  final Prenomclient2 = constat.vehiculeB?.prenomAssure!;
   return DataRow(
     onSelectChanged: (selected) {
       if (selected!) {
-        log('row-selected: ${constat.temoins!.isEmpty.toString()}');
+        log('row-selected: ${constat.temoins!.isEmpty}');
         context.beamToNamed(DetailsConstat.path + "/" + constat.id!,
             data: constat);
       }
@@ -118,7 +118,7 @@ DataRow listConstatClientDataRow(ConstatModel constat, BuildContext context) {
                             var res = await context
                                 .read<HomeViewModel>()
                                 .updateConstat(constat.id!, "Traité");
-                            log("res : " + res.toString());
+                            //log("res : " + res.toString());
                             if (res == true) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
@@ -159,7 +159,7 @@ DataRow listConstatClientDataRow(ConstatModel constat, BuildContext context) {
                             var res = await context
                                 .read<HomeViewModel>()
                                 .updateConstat(constat.id!, "Rejeté");
-                            log("res : " + res.toString());
+                            //log("res : " + res.toString());
                             if (res == true) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(

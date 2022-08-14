@@ -103,7 +103,7 @@ DataRow ClientVolDataRow(
                                 .read<VolViewModel>()
                                 .updateVol(vol.id!, "Traité");
                             list.removeAt(list.indexOf(vol));
-                            log("res : " + res.toString());
+                            //log("res : " + res.toString());
                             if (res == true) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
@@ -145,7 +145,7 @@ DataRow ClientVolDataRow(
                                 .read<VolViewModel>()
                                 .updateVol(vol.id!, "Rejeté");
                             list.removeAt(list.indexOf(vol));
-                            log("res : " + res.toString());
+                            //log("res : " + res.toString());
                             if (res == true) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(

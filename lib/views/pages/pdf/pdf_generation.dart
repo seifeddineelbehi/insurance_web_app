@@ -79,12 +79,12 @@ Future<void> PDFGeneration(ConstatModel constat) async {
                           PDFCustomObservation(vehicule: constat.vehiculeA!)
                         ]),
                   ),
-                  Column(
+                  /*Column(
                     children: [
                       PDFCustomCirconstances(constat: constat),
                       //PDFCustomCroquis(image: imageCroquis),
                     ],
-                  ),
+                  ),*/
                   Container(
                     decoration: BoxDecoration(
                       color: const PdfColor.fromInt(0xFF52CE6E),
@@ -127,7 +127,7 @@ Future<void> PDFGeneration(ConstatModel constat) async {
               ),
               //const SizedBox(height: defaultPadding),
             ]),
-        pageFormat: PdfPageFormat.undefined),
+        pageFormat: PdfPageFormat.a4),
   );
   AnchorElement(
       href:

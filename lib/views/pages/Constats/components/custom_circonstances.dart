@@ -19,9 +19,11 @@ class CustomCirconstance extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.all(defaultPadding),
-      decoration: const BoxDecoration(
-        color: kPageColor,
-        borderRadius: BorderRadius.all(Radius.circular(10)),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        border: Border.all(
+            width: cardDetailConstatBorderThikness, color: Colors.grey),
       ),
       child: Expanded(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

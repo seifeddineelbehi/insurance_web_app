@@ -23,24 +23,23 @@ class CustomCirconstance extends StatelessWidget {
         color: kPageColor,
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Center(
-          child: Text(
-            'Circonstances',
-            style: kMediumTitleBlackBold.copyWith(
-              color: Colors.blueGrey,
+      child: Expanded(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Center(
+            child: Text(
+              'Circonstances',
+              style: kMediumTitleBlackBold.copyWith(
+                color: Colors.blueGrey,
+              ),
             ),
           ),
-        ),
-        const SizedBox(
-          height: defaultPadding,
-        ),
-        const Divider(
-          thickness: 10,
-        ),
-        SizedBox(
-          width: double.infinity,
-          child: ListView(
+          const SizedBox(
+            height: defaultPadding,
+          ),
+          const Divider(
+            thickness: 10,
+          ),
+          ListView(
             shrinkWrap: true,
             physics: const BouncingScrollPhysics(),
             children: [
@@ -90,9 +89,9 @@ class CustomCirconstance extends StatelessWidget {
                   ),
                 )
             ],
-          ),
-        )
-      ]),
+          )
+        ]),
+      ),
     );
   }
 }

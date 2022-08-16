@@ -48,6 +48,7 @@ import 'package:url_strategy/url_strategy.dart';
 import 'controllers/MenuController.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
   await di.init();
   await GetStorage.init();

@@ -8,10 +8,12 @@ import 'package:flutter_template/views/pages/Constats/components/constat_header.
 import 'package:flutter_template/views/pages/Constats/components/croquis_widget.dart';
 import 'package:flutter_template/views/pages/Constats/components/custom-vehicule_detail.dart';
 import 'package:flutter_template/views/pages/Constats/components/custom_circonstances.dart';
+import 'package:flutter_template/views/pages/pdf/pdf_generation.dart';
 import 'package:provider/provider.dart';
 
 import '../../../utils/constants.dart';
 import '../../../utils/responsive.dart';
+import '../../../utils/size_config.dart';
 import '../../../viewModel/home_view_model.dart';
 
 class DetailsConstat extends StatefulWidget {
@@ -80,6 +82,7 @@ class _DetailsConstatState extends State<DetailsConstat> {
                                   style: kMediumTitleWhiteBold,
                                 ))),
                             onPressed: () async {
+                              PDFGeneration(widget.constat);
                               if (await confirm(
                                 context,
                                 title:
@@ -190,8 +193,7 @@ class _DetailsConstatState extends State<DetailsConstat> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      flex: 2,
+                    Flexible(
                       child: Column(
                         children: [
                           //const MyFiles(),
@@ -228,8 +230,7 @@ class _DetailsConstatState extends State<DetailsConstat> {
                       const SizedBox(width: defaultPadding),
                     // On Mobile means if the screen is less than 850 we dont want to show it
                     if (Responsive.isDesktop(context))
-                      Expanded(
-                        flex: 2,
+                      Flexible(
                         child: Column(
                           children: [
                             CustomCirconstance(
@@ -244,8 +245,7 @@ class _DetailsConstatState extends State<DetailsConstat> {
                       const SizedBox(width: defaultPadding),
                     // On Mobile means if the screen is less than 850 we dont want to show it
                     if (Responsive.isDesktop(context))
-                      Expanded(
-                        flex: 2,
+                      Flexible(
                         child: CustumVehiculedetails(
                           vehicule: widget.constat.vehiculeB!,
                           nomVehicule: 'Vehicule B',
@@ -394,4 +394,47 @@ class _DetailsConstatState extends State<DetailsConstat> {
       ),
     );
   }
+}
+
+Widget body(ConstatModel constat) {
+  return Column(children: [
+    ConstatInfoCardGridView(
+      childAspectRatio: SizeConfig.screenWidth < 1400 ? 1.1 : 1.4,
+      constat: constat,
+    ),
+    //const SizedBox(height: defaultPadding),
+    Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          flex: 2,
+          child: CustumVehiculedetails(
+            vehicule: constat.vehiculeA!,
+            nomVehicule: 'Vehicule A',
+            color: kVehiculeAColor,
+          ),
+        ),
+        // On Mobile means if the screen is less than 850 we dont want to show it
+        Expanded(
+          flex: 2,
+          child: Column(
+            children: [
+              CustomCirconstance(
+                  vehiculeA: constat.vehiculeA!, vehiculeB: constat.vehiculeB!),
+              CustomCroquis(croquis: constat.croquis.toString()),
+            ],
+          ),
+        ),
+        // On Mobile means if the screen is less than 850 we dont want to show it
+        Expanded(
+          flex: 2,
+          child: CustumVehiculedetails(
+            vehicule: constat.vehiculeB!,
+            nomVehicule: 'Vehicule B',
+            color: kVehiculeBColor,
+          ),
+        ),
+      ],
+    ),
+  ]);
 }

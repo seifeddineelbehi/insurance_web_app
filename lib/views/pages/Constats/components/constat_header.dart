@@ -73,18 +73,19 @@ class ConstatInfoCardGridView extends StatelessWidget {
                   subTitle: constat.blesse.toString(),
                   icon: Icons.question_mark),*/
               Expanded(
-                flex: 2,
                 child: CustomConstatHeaderDetailWidget(
                     title: 'Date de l\'accident',
                     text: constat.dateAccident.toString()),
               ),
               Expanded(
-                flex: 2,
                 child: CustomConstatHeaderDetailWidget(
                     title: 'Heure', text: constat.heureAccident.toString()),
               ),
               Expanded(
-                flex: 2,
+                child: CustomConstatHeaderDetailWidget(
+                    title: 'Lieu', text: constat.lieuAccident.toString()),
+              ),
+              Expanded(
                 child: CustomConstatHeaderDetailWidget(
                     title: 'Blessés même leger',
                     text: constat.blesse.toString()),

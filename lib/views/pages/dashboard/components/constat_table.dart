@@ -48,7 +48,16 @@ class _ConstatTableState extends State<ConstatTable> {
   }
 
   @override
+  void initState() {
+    setState(() {
+      constatFiltered = AllConstats;
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    constatFiltered = constatFiltered;
     //final homeViewModel = Provider.of<HomeViewModel>(context);
     //final List<ConstatModel> allConstatNonTraite = homeViewModel.getAllConstatNonTraite() as List<ConstatModel>;
     return Container(
@@ -102,17 +111,6 @@ class _ConstatTableState extends State<ConstatTable> {
                     log('searche value :' + value);
                     _searchResult = value;
                     constatFiltered = AllConstats.where((constat) =>
-                        constat.id!.contains(_searchResult) ||
-                        constat.vehiculeA!.nomAssure!.contains(_searchResult) ||
-                        constat.vehiculeA!.prenomAssure!
-                            .contains(_searchResult) ||
-                        constat.vehiculeA!.numContratAssurance!
-                            .contains(_searchResult) ||
-                        constat.vehiculeB!.nomAssure!.contains(_searchResult) ||
-                        constat.vehiculeB!.prenomAssure!
-                            .contains(_searchResult) ||
-                        constat.vehiculeB!.numContratAssurance!
-                            .contains(_searchResult) ||
                         constat.dateAccident!.contains(_searchResult)).toList();
                     log('constatFiltered length : ' +
                         constatFiltered.length.toString());
@@ -140,7 +138,15 @@ class _ConstatTableState extends State<ConstatTable> {
                   if (snapshot.data!.isNotEmpty) {
                     AllConstats = snapshot.data!;
                     constatFiltered = snapshot.data!;
+
                     return DataTable2(
+                      empty: Expanded(
+                          child: Text(
+                        "Aucun constat pour le moment",
+                        style: kMediumTitleWhiteBold.copyWith(
+                          color: kPrimaryColor,
+                        ),
+                      )),
                       showCheckboxColumn: false,
                       columnSpacing: defaultPadding,
                       minWidth: 600,

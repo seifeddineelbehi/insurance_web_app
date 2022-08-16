@@ -82,7 +82,7 @@ class _DetailsConstatState extends State<DetailsConstat> {
                                   style: kMediumTitleWhiteBold,
                                 ))),
                             onPressed: () async {
-                              PDFGeneration(widget.constat);
+                              //PDFGeneration(widget.constat);
                               if (await confirm(
                                 context,
                                 title:

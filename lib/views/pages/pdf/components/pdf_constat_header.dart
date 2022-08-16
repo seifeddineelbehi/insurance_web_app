@@ -5,6 +5,7 @@ import 'package:flutter_template/model/constat_model.dart';
 import 'package:flutter_template/utils/size_config.dart';
 import 'package:flutter_template/views/pages/Constats/components/custom_constat_header_detail_widget.dart';
 import 'package:flutter_template/views/pages/Constats/components/temoin_info_card.dart';
+import 'package:printing/printing.dart';
 import '../../../../model/MyFiles.dart';
 import '../../../../model/temoin_model.dart';
 import '../../../../utils/constants.dart';
@@ -13,7 +14,7 @@ import '../../../../utils/responsive.dart';
 
 Widget PDFHeader(ConstatModel constat) {
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 16),
+    padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 6),
     child: Column(
       children: [
         Row(
@@ -52,10 +53,6 @@ Widget PDFHeader(ConstatModel constat) {
                   title: 'Dégats materiels',
                   text: constat.degatMateriel.toString()),
             ),
-            /*ConstatHeaderInfoCard(
-                  title: 'Dégats materiels',
-                  subTitle: constat.degatMateriel.toString(),
-                  icon: Icons.car_rental),*/
             Expanded(
               flex: 4,
               child: PDFCustomTemoinsHeaderDetailWidget(
@@ -79,7 +76,7 @@ Widget PDFCustomHeaderDetailWidget(
       ),
     ),
     child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
+      padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 3),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -88,20 +85,17 @@ Widget PDFCustomHeaderDetailWidget(
             title,
             maxLines: 1,
             style: TextStyle(
-              color: const PdfColor.fromInt(0xFF333333),
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(
-            height: SizeConfig.safeBlockVertical * 0.5,
+                color: const PdfColor.fromInt(0xFF333333),
+                fontWeight: FontWeight.bold,
+                fontSize: 14),
           ),
           Text(
             text,
             maxLines: 1,
             style: TextStyle(
-              color: const PdfColor.fromInt(0xFFC1C1C1),
-              fontWeight: FontWeight.bold,
-            ),
+                color: const PdfColor.fromInt(0xFFC1C1C1),
+                fontWeight: FontWeight.bold,
+                fontSize: 11),
           ),
         ],
       ),
@@ -120,7 +114,7 @@ Widget PDFCustomTemoinsHeaderDetailWidget(
       ),
     ),
     child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
+        padding: const EdgeInsets.symmetric(horizontal: 3.0, vertical: 3.0),
         child: Row(
           children: [
             Column(
@@ -135,12 +129,9 @@ Widget PDFCustomTemoinsHeaderDetailWidget(
                       Text(
                         title,
                         style: TextStyle(
-                          color: const PdfColor.fromInt(0xFF333333),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: SizeConfig.safeBlockVertical * 0.5,
+                            color: const PdfColor.fromInt(0xFF333333),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14),
                       ),
                       if (temoins.isEmpty)
                         Text(
@@ -148,9 +139,9 @@ Widget PDFCustomTemoinsHeaderDetailWidget(
                           maxLines: 1,
                           overflow: TextOverflow.clip,
                           style: TextStyle(
-                            color: const PdfColor.fromInt(0xFF333333),
-                            fontWeight: FontWeight.bold,
-                          ),
+                              color: const PdfColor.fromInt(0xFF333333),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 11),
                         )
                       else
                         for (var item in temoins) itemTemoin(item),

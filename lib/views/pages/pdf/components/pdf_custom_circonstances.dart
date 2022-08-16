@@ -12,8 +12,8 @@ Widget PDFCustomCirconstances({required ConstatModel constat}) {
     padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 3),
     child: Container(
       //width: SizeConfig.safeBlockHorizontal,
-      decoration: BoxDecoration(
-        color: const PdfColor.fromInt(0xFFFFFFFF),
+      decoration: const BoxDecoration(
+        color: PdfColor.fromInt(0xFFFFFFFF),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -22,12 +22,9 @@ Widget PDFCustomCirconstances({required ConstatModel constat}) {
           Text(
             'Observation',
             style: TextStyle(
-              color: const PdfColor.fromInt(0xFF333333),
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(
-            height: SizeConfig.safeBlockVertical * 0.5,
+                color: const PdfColor.fromInt(0xFF333333),
+                fontWeight: FontWeight.bold,
+                fontSize: 14),
           ),
           ListView(
             children: [
@@ -41,10 +38,9 @@ Widget PDFCustomCirconstances({required ConstatModel constat}) {
                         children: [
                           if (constat.vehiculeA!.circonstances!
                               .contains(item.toString()))
-                            Icon(
-                              IconData(mt.Icons.check_box.codePoint),
-                              color: const PdfColor.fromInt(0xFFFFFF54),
-                            ),
+                            Icon(IconData(mt.Icons.check_box.codePoint),
+                                color: const PdfColor.fromInt(0xFFFFFF54),
+                                font: Font.helvetica()),
                           Expanded(
                             child: Center(
                               child: Text(
@@ -52,18 +48,17 @@ Widget PDFCustomCirconstances({required ConstatModel constat}) {
                                     "-" +
                                     item.toString(),
                                 style: TextStyle(
-                                  color: const PdfColor.fromInt(0xFF333333),
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                    color: const PdfColor.fromInt(0xFF333333),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12),
                               ),
                             ),
                           ),
                           if (constat.vehiculeB!.circonstances!
                               .contains(item.toString()))
-                            Icon(
-                              IconData(mt.Icons.check_box.codePoint),
-                              color: const PdfColor.fromInt(0xFF52CE6E),
-                            ),
+                            Icon(IconData(mt.Icons.check_box.codePoint),
+                                color: const PdfColor.fromInt(0xFF52CE6E),
+                                font: Font.helvetica()),
                         ],
                       ),
                       Divider(

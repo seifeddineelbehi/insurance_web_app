@@ -206,14 +206,26 @@ class _DetailsConstatState extends State<DetailsConstat> {
                           if (!Responsive.isDesktop(context))
                             const SizedBox(height: defaultPadding),
                           if (Responsive.isMobile(context))
-                            Column(
-                              children: [
-                                CustomCirconstance(
-                                    vehiculeA: widget.constat.vehiculeA!,
-                                    vehiculeB: widget.constat.vehiculeB!),
-                                CustomCroquis(
-                                    croquis: widget.constat.croquis.toString()),
-                              ],
+                            Container(
+                              padding: const EdgeInsets.all(defaultPadding),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                                border: Border.all(
+                                    width: cardDetailConstatBorderThikness,
+                                    color: Colors.grey),
+                              ),
+                              child: Column(
+                                children: [
+                                  CustomCirconstance(
+                                      vehiculeA: widget.constat.vehiculeA!,
+                                      vehiculeB: widget.constat.vehiculeB!),
+                                  CustomCroquis(
+                                      croquis:
+                                          widget.constat.croquis.toString()),
+                                ],
+                              ),
                             ),
                           if (!Responsive.isDesktop(context))
                             const SizedBox(height: defaultPadding),
@@ -231,14 +243,25 @@ class _DetailsConstatState extends State<DetailsConstat> {
                     // On Mobile means if the screen is less than 850 we dont want to show it
                     if (Responsive.isDesktop(context))
                       Flexible(
-                        child: Column(
-                          children: [
-                            CustomCirconstance(
-                                vehiculeA: widget.constat.vehiculeA!,
-                                vehiculeB: widget.constat.vehiculeB!),
-                            CustomCroquis(
-                                croquis: widget.constat.croquis.toString()),
-                          ],
+                        child: Container(
+                          padding: const EdgeInsets.all(defaultPadding),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            border: Border.all(
+                                width: cardDetailConstatBorderThikness,
+                                color: Colors.grey),
+                          ),
+                          child: Column(
+                            children: [
+                              CustomCirconstance(
+                                  vehiculeA: widget.constat.vehiculeA!,
+                                  vehiculeB: widget.constat.vehiculeB!),
+                              CustomCroquis(
+                                  croquis: widget.constat.croquis.toString()),
+                            ],
+                          ),
                         ),
                       ),
                     if (Responsive.isDesktop(context))

@@ -14,7 +14,7 @@ Widget PDFAssure({required VehiculeModel vehicule}) {
         color: PdfColor.fromInt(0xFFFFFFFF),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 22.0, vertical: 18.0),
+        padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 4.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,37 +22,37 @@ Widget PDFAssure({required VehiculeModel vehicule}) {
             Text(
               'Assuré',
               style: TextStyle(
-                color: const PdfColor.fromInt(0xFF333333),
-                fontWeight: FontWeight.bold,
-              ),
+                  color: const PdfColor.fromInt(0xFF333333),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14),
             ),
             Text(
               'Nom : ' + vehicule.nomAssure.toString(),
               style: TextStyle(
-                color: const PdfColor.fromInt(0xFFC1C1C1),
-                fontWeight: FontWeight.bold,
-              ),
+                  color: const PdfColor.fromInt(0xFFC1C1C1),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12),
             ),
             Text(
               'Prenom : ' + vehicule.prenomAssure.toString(),
               style: TextStyle(
-                color: const PdfColor.fromInt(0xFFC1C1C1),
-                fontWeight: FontWeight.bold,
-              ),
+                  color: const PdfColor.fromInt(0xFFC1C1C1),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12),
             ),
             Text(
               'Adresse ' + vehicule.addresseAssure.toString(),
               style: TextStyle(
-                color: const PdfColor.fromInt(0xFFC1C1C1),
-                fontWeight: FontWeight.bold,
-              ),
+                  color: const PdfColor.fromInt(0xFFC1C1C1),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12),
             ),
             Text(
               'tel :' + vehicule.telAssure.toString(),
               style: TextStyle(
-                color: const PdfColor.fromInt(0xFFC1C1C1),
-                fontWeight: FontWeight.bold,
-              ),
+                  color: const PdfColor.fromInt(0xFFC1C1C1),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12),
             ),
           ],
         ),

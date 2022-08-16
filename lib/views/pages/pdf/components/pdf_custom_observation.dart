@@ -15,7 +15,7 @@ Widget PDFCustomObservation({required VehiculeModel vehicule}) {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 22.0, vertical: 18.0),
+        padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,16 +23,16 @@ Widget PDFCustomObservation({required VehiculeModel vehicule}) {
             Text(
               'Observation',
               style: TextStyle(
-                color: const PdfColor.fromInt(0xFF333333),
-                fontWeight: FontWeight.bold,
-              ),
+                  color: const PdfColor.fromInt(0xFF333333),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14),
             ),
             Text(
               vehicule.observation.toString(),
               style: TextStyle(
-                color: const PdfColor.fromInt(0xFFC1C1C1),
-                fontWeight: FontWeight.bold,
-              ),
+                  color: const PdfColor.fromInt(0xFFC1C1C1),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12),
             ),
           ],
         ),

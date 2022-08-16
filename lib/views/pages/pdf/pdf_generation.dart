@@ -38,8 +38,8 @@ Future<void> PDFGeneration(ConstatModel constat) async {
   pdf.addPage(
     Page(
         theme: ThemeData.withFont(
-          base: await PdfGoogleFonts.varelaRoundRegular(),
-          bold: await PdfGoogleFonts.varelaRoundRegular(),
+          base: await PdfGoogleFonts.abhayaLibreRegular(),
+          bold: await PdfGoogleFonts.abhayaLibreRegular(),
           icons: await PdfGoogleFonts.materialIcons(),
         ),
         build: (Context context) => Column(children: [
@@ -62,9 +62,9 @@ Future<void> PDFGeneration(ConstatModel constat) async {
                             child: Text(
                               'Vehicule A',
                               style: TextStyle(
-                                color: const PdfColor.fromInt(0xFF607D8B),
-                                fontWeight: FontWeight.bold,
-                              ),
+                                  color: const PdfColor.fromInt(0xFF607D8B),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16),
                             ),
                           ),
                           Divider(
@@ -127,7 +127,7 @@ Future<void> PDFGeneration(ConstatModel constat) async {
               ),
               //const SizedBox(height: defaultPadding),
             ]),
-        pageFormat: PdfPageFormat.a4),
+        pageFormat: PdfPageFormat.undefined),
   );
   AnchorElement(
       href:

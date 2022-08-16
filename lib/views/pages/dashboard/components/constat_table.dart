@@ -212,179 +212,187 @@ class _ConstatTableState extends State<ConstatTable> {
       ),
     );
   }
-}
 
-DataRow listConstatDataRow(
-    ConstatModel constat, BuildContext context, List<ConstatModel> list) {
-  final Nomclient1 = constat.vehiculeA?.nomAssure.toString();
-  final Prenomclient1 = constat.vehiculeA?.prenomAssure.toString();
-  final Nomclient2 = constat.vehiculeB?.nomAssure.toString();
-  final Prenomclient2 = constat.vehiculeB?.prenomAssure.toString();
-  return DataRow(
-    onSelectChanged: (selected) {
-      if (selected!) {
-        log('row-selected: ${constat.temoins!.isEmpty.toString()}');
-        context.beamToNamed(DetailsConstat.path + "/" + constat.id!,
-            data: constat);
-      }
-    },
-    cells: [
-      DataCell(SelectableText(
-        constat.dateAccident!,
-        maxLines: 1,
-        showCursor: true,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          color: secondaryColor,
-        ),
-      )),
-      DataCell(
-        SelectableText(
-          '$Nomclient1' + ' ' + '$Prenomclient1',
+  DataRow listConstatDataRow(
+      ConstatModel constat, BuildContext context, List<ConstatModel> list) {
+    final Nomclient1 = constat.vehiculeA?.nomAssure.toString();
+    final Prenomclient1 = constat.vehiculeA?.prenomAssure.toString();
+    final Nomclient2 = constat.vehiculeB?.nomAssure.toString();
+    final Prenomclient2 = constat.vehiculeB?.prenomAssure.toString();
+    return DataRow(
+      onSelectChanged: (selected) {
+        if (selected!) {
+          log('row-selected: ${constat.temoins!.isEmpty.toString()}');
+          context.beamToNamed(DetailsConstat.path + "/" + constat.id!,
+              data: constat);
+        }
+      },
+      cells: [
+        DataCell(SelectableText(
+          constat.dateAccident!,
           maxLines: 1,
           showCursor: true,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: secondaryColor,
           ),
-        ),
-      ),
-      DataCell(
-        SelectableText(
-          '$Nomclient2' + ' ' + '$Prenomclient2',
-          maxLines: 1,
-          showCursor: true,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            color: secondaryColor,
+        )),
+        DataCell(
+          SelectableText(
+            '$Nomclient1' + ' ' + '$Prenomclient1',
+            maxLines: 1,
+            showCursor: true,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: secondaryColor,
+            ),
           ),
         ),
-      ),
-      DataCell(
-        Container(
-          padding: const EdgeInsets.all(defaultPadding * 0.7),
-          child: Row(
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    context.beamToNamed(DetailsConstat.path + "/" + constat.id!,
-                        data: constat);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.only(
-                        left: defaultPadding * 0.4,
-                        right: defaultPadding * 0.4),
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: defaultPadding / 2),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFFFA113),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: const Icon(
-                      Icons.remove_red_eye,
-                      size: defaultPadding * 1.3,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: InkWell(
-                  onTap: () async {
-                    if (await confirm(
-                      context,
-                      title: const Text('Marqué constat comme terminé'),
-                      content:
-                          const Text('Vous êtes sur de valider ce constat?'),
-                      textOK: const Text('Oui'),
-                      textCancel: const Text('Annuler'),
-                    )) {
-                      var res = await context
-                          .read<HomeViewModel>()
-                          .updateConstat(constat.id!, "Traité");
-                      list.removeAt(list.indexOf(constat));
-                      log("res : " + res.toString());
-                      if (res == true) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content: Text('Constat modifier avec succés ! ')),
-                        );
-                        context.beamToReplacementNamed(MainScreen.path);
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content:
-                                  Text('Erreur de validation de constat ! ')),
-                        );
-                      }
-                    }
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.only(
-                        left: defaultPadding * 0.4,
-                        right: defaultPadding * 0.4),
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: defaultPadding / 2),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFF66F601),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: const Icon(
-                      Icons.check,
-                      size: defaultPadding * 1.3,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: InkWell(
-                  onTap: () async {
-                    if (await confirm(
-                      context,
-                      title: const Text('Rejet du constat'),
-                      content:
-                          const Text('Vous êtes sur de rejeter ce constat?'),
-                      textOK: const Text('Oui'),
-                      textCancel: const Text('Annuler'),
-                    )) {
-                      var res = await context
-                          .read<HomeViewModel>()
-                          .updateConstat(constat.id!, "Rejeté");
-                      list.removeAt(list.indexOf(constat));
-                      log("res : " + res.toString());
-                      if (res == true) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content: Text('Constat modifier avec succés ! ')),
-                        );
-                        context.beamToReplacementNamed(MainScreen.path);
-                      }
-                    }
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.only(
-                        left: defaultPadding * 0.4,
-                        right: defaultPadding * 0.4),
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: defaultPadding / 2),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFEF040C),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: const Icon(
-                      Icons.cancel_outlined,
-                      size: defaultPadding * 1.3,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+        DataCell(
+          SelectableText(
+            '$Nomclient2' + ' ' + '$Prenomclient2',
+            maxLines: 1,
+            showCursor: true,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: secondaryColor,
+            ),
           ),
         ),
-      ),
-    ],
-  );
+        DataCell(
+          Container(
+            padding: const EdgeInsets.all(defaultPadding * 0.7),
+            child: Row(
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      context.beamToNamed(
+                          DetailsConstat.path + "/" + constat.id!,
+                          data: constat);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.only(
+                          left: defaultPadding * 0.4,
+                          right: defaultPadding * 0.4),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: defaultPadding / 2),
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFFFA113),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: const Icon(
+                        Icons.remove_red_eye,
+                        size: defaultPadding * 1.3,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () async {
+                      if (await confirm(
+                        context,
+                        title: const Text('Marqué constat comme terminé'),
+                        content:
+                            const Text('Vous êtes sur de valider ce constat?'),
+                        textOK: const Text('Oui'),
+                        textCancel: const Text('Annuler'),
+                      )) {
+                        var res = await context
+                            .read<HomeViewModel>()
+                            .updateConstat(constat.id!, "Traité");
+
+                        log("res : " + res.toString());
+                        if (res == true) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content:
+                                    Text('Constat modifier avec succés ! ')),
+                          );
+                          setState(() {
+                            constatFiltered.removeAt(list.indexOf(constat));
+                          });
+                          //context.beamToReplacementNamed(MainScreen.path);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content:
+                                    Text('Erreur de validation de constat ! ')),
+                          );
+                        }
+                      }
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.only(
+                          left: defaultPadding * 0.4,
+                          right: defaultPadding * 0.4),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: defaultPadding / 2),
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF66F601),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: const Icon(
+                        Icons.check,
+                        size: defaultPadding * 1.3,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () async {
+                      if (await confirm(
+                        context,
+                        title: const Text('Rejet du constat'),
+                        content:
+                            const Text('Vous êtes sur de rejeter ce constat?'),
+                        textOK: const Text('Oui'),
+                        textCancel: const Text('Annuler'),
+                      )) {
+                        var res = await context
+                            .read<HomeViewModel>()
+                            .updateConstat(constat.id!, "Rejeté");
+
+                        log("res : " + res.toString());
+                        if (res == true) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content:
+                                    Text('Constat modifier avec succés ! ')),
+                          );
+                          setState(() {
+                            constatFiltered.removeAt(list.indexOf(constat));
+                          });
+                        }
+                      }
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.only(
+                          left: defaultPadding * 0.4,
+                          right: defaultPadding * 0.4),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: defaultPadding / 2),
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFEF040C),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: const Icon(
+                        Icons.cancel_outlined,
+                        size: defaultPadding * 1.3,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }

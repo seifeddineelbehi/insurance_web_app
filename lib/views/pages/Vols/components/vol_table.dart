@@ -121,6 +121,13 @@ class _VolTableState extends State<VolTable> {
                     AllConstats = snapshot.data!;
                     constatFiltered = snapshot.data!;
                     return DataTable2(
+                      empty: Expanded(
+                          child: Text(
+                        "Aucune declaration de vols pour le moment",
+                        style: kMediumTitleWhiteBold.copyWith(
+                          color: kPrimaryColor,
+                        ),
+                      )),
                       showCheckboxColumn: false,
                       columnSpacing: defaultPadding,
                       minWidth: 600,
@@ -178,169 +185,174 @@ class _VolTableState extends State<VolTable> {
       ),
     );
   }
-}
 
-DataRow listConstatDataRow(
-    VolModel vol, BuildContext context, List<VolModel> list) {
-  return DataRow(
-    onSelectChanged: (selected) {
-      if (selected!) {
-        context.beamToNamed(DetailVol.path + "/" + vol.id!, data: vol);
-      }
-    },
-    cells: [
-      DataCell(SelectableText(
-        vol.date!,
-        maxLines: 1,
-        showCursor: true,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          color: secondaryColor,
-        ),
-      )),
-      DataCell(
-        SelectableText(
-          'Nouvelle declaration de vol de la part du client ' + vol.codeClient!,
+  DataRow listConstatDataRow(
+      VolModel vol, BuildContext context, List<VolModel> list) {
+    return DataRow(
+      onSelectChanged: (selected) {
+        if (selected!) {
+          context.beamToNamed(DetailVol.path + "/" + vol.id!, data: vol);
+        }
+      },
+      cells: [
+        DataCell(SelectableText(
+          vol.date!,
           maxLines: 1,
           showCursor: true,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: secondaryColor,
           ),
-        ),
-      ),
-      DataCell(
-        Container(
-          padding: const EdgeInsets.all(defaultPadding * 0.7),
-          child: Row(
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    context.beamToNamed(DetailVol.path + "/" + vol.id!,
-                        data: vol);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.only(
-                        left: defaultPadding * 0.4,
-                        right: defaultPadding * 0.4),
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: defaultPadding / 2),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFFFA113),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: const Icon(
-                      Icons.remove_red_eye,
-                      size: defaultPadding * 1.3,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: InkWell(
-                  onTap: () async {
-                    if (await confirm(
-                      context,
-                      title: const Text('Marqué constat comme terminé'),
-                      content:
-                          const Text('Vous êtes sur de valider ce constat?'),
-                      textOK: const Text('Oui'),
-                      textCancel: const Text('Annuler'),
-                    )) {
-                      var res = await context
-                          .read<VolViewModel>()
-                          .updateVol(vol.id!, "Traité");
-                      list.removeAt(list.indexOf(vol));
-                      log("res : " + res.toString());
-                      if (res == true) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content: Text(
-                                  'Declaration de vol modifier avec succés ! ')),
-                        );
-                        context.beamToReplacementNamed(VolNonTraiteScreen.path);
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content:
-                                  Text('Erreur de validation de constat ! ')),
-                        );
-                      }
-                    }
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.only(
-                        left: defaultPadding * 0.4,
-                        right: defaultPadding * 0.4),
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: defaultPadding / 2),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFF66F601),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: const Icon(
-                      Icons.check,
-                      size: defaultPadding * 1.3,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: InkWell(
-                  onTap: () async {
-                    if (await confirm(
-                      context,
-                      title: const Text('Rejet du constat'),
-                      content:
-                          const Text('Vous êtes sur de rejeter ce constat?'),
-                      textOK: const Text('Oui'),
-                      textCancel: const Text('Annuler'),
-                    )) {
-                      var res = await context
-                          .read<VolViewModel>()
-                          .updateVol(vol.id!, "Rejeté");
-                      list.removeAt(list.indexOf(vol));
-                      log("res : " + res.toString());
-                      if (res == true) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content: Text('Vol modifier avec succés ! ')),
-                        );
-                        context.beamToReplacementNamed(VolNonTraiteScreen.path);
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content:
-                                  Text('Erreur de validation de constat ! ')),
-                        );
-                      }
-                    }
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.only(
-                        left: defaultPadding * 0.4,
-                        right: defaultPadding * 0.4),
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: defaultPadding / 2),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFEF040C),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    child: const Icon(
-                      Icons.cancel_outlined,
-                      size: defaultPadding * 1.3,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+        )),
+        DataCell(
+          SelectableText(
+            'Nouvelle declaration de vol de la part du client ' +
+                vol.codeClient!,
+            maxLines: 1,
+            showCursor: true,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: secondaryColor,
+            ),
           ),
         ),
-      ),
-    ],
-  );
+        DataCell(
+          Container(
+            padding: const EdgeInsets.all(defaultPadding * 0.7),
+            child: Row(
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      context.beamToNamed(DetailVol.path + "/" + vol.id!,
+                          data: vol);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.only(
+                          left: defaultPadding * 0.4,
+                          right: defaultPadding * 0.4),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: defaultPadding / 2),
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFFFA113),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: const Icon(
+                        Icons.remove_red_eye,
+                        size: defaultPadding * 1.3,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () async {
+                      if (await confirm(
+                        context,
+                        title: const Text('Marqué constat comme terminé'),
+                        content:
+                            const Text('Vous êtes sur de valider ce constat?'),
+                        textOK: const Text('Oui'),
+                        textCancel: const Text('Annuler'),
+                      )) {
+                        var res = await context
+                            .read<VolViewModel>()
+                            .updateVol(vol.id!, "Traité");
+
+                        log("res : " + res.toString());
+                        if (res == true) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text(
+                                    'Declaration de vol modifier avec succés ! ')),
+                          );
+                          setState(() {
+                            constatFiltered.removeAt(list.indexOf(vol));
+                          });
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content:
+                                    Text('Erreur de validation de constat ! ')),
+                          );
+                        }
+                      }
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.only(
+                          left: defaultPadding * 0.4,
+                          right: defaultPadding * 0.4),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: defaultPadding / 2),
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF66F601),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: const Icon(
+                        Icons.check,
+                        size: defaultPadding * 1.3,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () async {
+                      if (await confirm(
+                        context,
+                        title: const Text('Rejet du constat'),
+                        content:
+                            const Text('Vous êtes sur de rejeter ce constat?'),
+                        textOK: const Text('Oui'),
+                        textCancel: const Text('Annuler'),
+                      )) {
+                        var res = await context
+                            .read<VolViewModel>()
+                            .updateVol(vol.id!, "Rejeté");
+                        list.removeAt(list.indexOf(vol));
+                        log("res : " + res.toString());
+                        if (res == true) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Vol modifier avec succés ! ')),
+                          );
+                          setState(() {
+                            constatFiltered.removeAt(list.indexOf(vol));
+                          });
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content:
+                                    Text('Erreur de validation de constat ! ')),
+                          );
+                        }
+                      }
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.only(
+                          left: defaultPadding * 0.4,
+                          right: defaultPadding * 0.4),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: defaultPadding / 2),
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFEF040C),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: const Icon(
+                        Icons.cancel_outlined,
+                        size: defaultPadding * 1.3,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }

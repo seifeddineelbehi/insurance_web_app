@@ -5,10 +5,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_template/views/pages/BriseGlace/brise_glace_screen.dart';
 import 'package:flutter_template/views/pages/Incendies/incendie_screen.dart';
 import 'package:flutter_template/views/pages/Vols/vols_screen.dart';
+import 'package:flutter_template/views/pages/archive/BriseTraite/brise_rejete.dart';
 import 'package:flutter_template/views/pages/archive/BriseTraite/brise_traite.dart';
 import 'package:flutter_template/views/pages/archive/ConstatRejeter/constat_rejete_screen.dart';
 import 'package:flutter_template/views/pages/archive/ConstatTraite/constat_traite_screen.dart';
+import 'package:flutter_template/views/pages/archive/Incendies/incendies_rejete.dart';
 import 'package:flutter_template/views/pages/archive/Incendies/incendies_traite.dart';
+import 'package:flutter_template/views/pages/archive/VolTraite/vols_rejete.dart';
 import 'package:flutter_template/views/pages/main/components/side_menu_item_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -84,7 +87,7 @@ class _SideMenuState extends State<SideMenu> {
           ExpansionTile(
             leading: const Icon(Icons.event, color: Colors.blueGrey, size: 16),
             title: const Text(
-              'Archive',
+              'Archive Traité',
               style: TextStyle(color: secondaryColor),
             ),
             children: [
@@ -114,6 +117,43 @@ class _SideMenuState extends State<SideMenu> {
                 icon: Icons.access_time,
                 press: () {
                   Beamer.of(context).beamToNamed(BriseTraite.path);
+                },
+              ),
+            ],
+          ),
+          ExpansionTile(
+            leading: const Icon(Icons.event, color: Colors.blueGrey, size: 16),
+            title: const Text(
+              'Archive Rejeté',
+              style: TextStyle(color: secondaryColor),
+            ),
+            children: [
+              DrawerListTile(
+                title: "Archive Constat Rejeté",
+                icon: Icons.access_time,
+                press: () {
+                  Beamer.of(context).beamToNamed(ConstatRejete.path);
+                },
+              ),
+              DrawerListTile(
+                title: "Archive Vols Rejeté",
+                icon: Icons.access_time,
+                press: () {
+                  Beamer.of(context).beamToNamed(VolRejete.path);
+                },
+              ),
+              DrawerListTile(
+                title: "Archive Incendies Rejeté",
+                icon: Icons.access_time,
+                press: () {
+                  Beamer.of(context).beamToNamed(IncendiesRejete.path);
+                },
+              ),
+              DrawerListTile(
+                title: "Archive Brise glace Rejeté",
+                icon: Icons.access_time,
+                press: () {
+                  Beamer.of(context).beamToNamed(BriseRejete.path);
                 },
               ),
             ],

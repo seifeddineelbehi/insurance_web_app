@@ -31,10 +31,13 @@ import 'package:flutter_template/views/pages/Incendies/incendie_detail_screen.da
 import 'package:flutter_template/views/pages/Incendies/incendie_screen.dart';
 import 'package:flutter_template/views/pages/Vols/vol_details_screen.dart';
 import 'package:flutter_template/views/pages/Vols/vols_screen.dart';
+import 'package:flutter_template/views/pages/archive/BriseTraite/brise_rejete.dart';
 import 'package:flutter_template/views/pages/archive/BriseTraite/brise_traite.dart';
 import 'package:flutter_template/views/pages/archive/ConstatRejeter/constat_rejete_screen.dart';
 import 'package:flutter_template/views/pages/archive/ConstatTraite/constat_traite_screen.dart';
+import 'package:flutter_template/views/pages/archive/Incendies/incendies_rejete.dart';
 import 'package:flutter_template/views/pages/archive/Incendies/incendies_traite.dart';
+import 'package:flutter_template/views/pages/archive/VolTraite/vols_rejete.dart';
 import 'package:flutter_template/views/pages/archive/VolTraite/vols_traite.dart';
 import 'package:flutter_template/views/pages/dashboard/constat_non_traite_screen.dart';
 import 'package:flutter_template/views/pages/login/login_screen.dart';
@@ -95,8 +98,11 @@ class _MyAppState extends State<MyApp> {
         BriseGlaceNonTraiteScreen.path: (context, state, data) =>
             const BriseGlaceNonTraiteScreen(),
         VolTraite.path: (context, state, data) => const VolTraite(),
+        VolRejete.path: (context, state, data) => const VolRejete(),
         BriseTraite.path: (context, state, data) => const BriseTraite(),
+        BriseRejete.path: (context, state, data) => const BriseRejete(),
         IncendiesTraite.path: (context, state, data) => const IncendiesTraite(),
+        IncendiesRejete.path: (context, state, data) => const IncendiesRejete(),
         StatScreen.path: (context, state, data) => const StatScreen(),
         AdminsDashboard.path: (context, state, data) => const AdminsDashboard(),
         AddAdmin.path: (context, state, data) => const AddAdmin(),

@@ -44,8 +44,8 @@ class CustomConstatHeaderDetailWidget extends StatelessWidget {
               showCursor: true,
               style: GoogleFonts.poppins(
                 color: Palette.textColor,
-                fontWeight: FontWeight.w700,
-                fontSize: SizeConfig.kDefaultSize * 3,
+                fontWeight: FontWeight.w500,
+                fontSize: SizeConfig.kDefaultSize * 2,
               ),
             ),
             SizedBox(
@@ -58,7 +58,7 @@ class CustomConstatHeaderDetailWidget extends StatelessWidget {
               style: GoogleFonts.poppins(
                 color: Palette.textSecondaryColor,
                 fontWeight: FontWeight.w600,
-                fontSize: SizeConfig.kDefaultSize * 2,
+                fontSize: SizeConfig.kDefaultSize * 1.5,
               ),
             ),
           ],

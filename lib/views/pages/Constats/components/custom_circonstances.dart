@@ -765,6 +765,51 @@ class CustomCirconstance extends StatelessWidget {
                   ],
                 ),
               ),
+              Expanded(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      //crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        if (vehiculeA.circonstances!
+                            .contains(Circonstances[16].toString()))
+                          const Icon(
+                            Icons.check_box,
+                            color: kVehiculeAColor,
+                          ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        Expanded(
+                          child: Center(
+                            child: SelectableText(
+                              (Circonstances.indexOf(Circonstances[16]) + 1)
+                                      .toString() +
+                                  "-" +
+                                  Circonstances[16].toString(),
+                              style: GoogleFonts.poppins(
+                                color: Palette.textColor,
+                                fontWeight: FontWeight.w700,
+                                fontSize: SizeConfig.kDefaultSize * 2,
+                              ),
+                            ),
+                          ),
+                        ),
+                        if (vehiculeB.circonstances!
+                            .contains(Circonstances[16].toString()))
+                          const Icon(
+                            Icons.check_box,
+                            color: kVehiculeBColor,
+                          ),
+                      ],
+                    ),
+                    const Divider(
+                      thickness: 5,
+                    ),
+                  ],
+                ),
+              ),
             ],
           )
         ]),

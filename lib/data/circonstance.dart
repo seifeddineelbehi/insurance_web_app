@@ -14,5 +14,6 @@ List<String> Circonstances = [
   'Virait à gauche',
   'Reculait',
   'Empiétait sur la partie de chaussé réservee à la circulation en sens inverse',
-  'Venait de droite (dans un carrefour)'
+  'Venait de droite (dans un carrefour)',
+  'N\'avait pas observé le signal du priorité'
 ];

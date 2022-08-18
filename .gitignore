@@ -24,18 +24,18 @@
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
+#.flutter-plugins
+#.flutter-plugins-dependencies
 .packages
 .pub-cache/
 .pub/
 
 
 # Web related
-lib/generated_plugin_registrant.dart
+#lib/generated_plugin_registrant.dart
 
 # Symbolication related
-app.*.symbols
+#app.*.symbols
 
 # Obfuscation related
 app.*.map.json

@@ -60,18 +60,6 @@ class ConstatInfoCardGridView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              /*ConstatHeaderInfoCard(
-                  title: 'Date de l\'accident',
-                  subTitle: constat.dateAccident.toString(),
-                  icon: Icons.date_range),
-              ConstatHeaderInfoCard(
-                  title: 'Heure',
-                  subTitle: constat.heureAccident.toString(),
-                  icon: Icons.lock_clock),
-              ConstatHeaderInfoCard(
-                  title: 'Blessés même leger',
-                  subTitle: constat.blesse.toString(),
-                  icon: Icons.question_mark),*/
               Expanded(
                 child: CustomConstatHeaderDetailWidget(
                     title: 'Date de l\'accident',

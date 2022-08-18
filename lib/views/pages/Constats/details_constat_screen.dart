@@ -44,8 +44,8 @@ class _DetailsConstatState extends State<DetailsConstat> {
           padding: Responsive.isMobile(context)
               ? const EdgeInsets.fromLTRB(defaultPadding * 2, defaultPadding,
                   defaultPadding * 2, defaultPadding)
-              : const EdgeInsets.fromLTRB(defaultPadding * 12,
-                  defaultPadding * 7, defaultPadding * 12, defaultPadding * 7),
+              : const EdgeInsets.fromLTRB(defaultPadding * 10,
+                  defaultPadding * 7, defaultPadding * 10, defaultPadding * 7),
           child: Container(
             padding: const EdgeInsets.all(defaultPadding * 6),
             decoration: const BoxDecoration(
@@ -189,7 +189,6 @@ class _DetailsConstatState extends State<DetailsConstat> {
                 if (widget.constat.status! == "En cours de traitement")
                   const SizedBox(height: defaultPadding),
                 constatHeader(constat: widget.constat),
-                //const SizedBox(height: defaultPadding),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -197,7 +196,6 @@ class _DetailsConstatState extends State<DetailsConstat> {
                       child: Column(
                         children: [
                           //const MyFiles(),
-                          const SizedBox(height: defaultPadding),
                           CustumVehiculedetails(
                             vehicule: widget.constat.vehiculeA!,
                             nomVehicule: 'Vehicule A',
@@ -238,9 +236,8 @@ class _DetailsConstatState extends State<DetailsConstat> {
                         ],
                       ),
                     ),
-                    if (Responsive.isDesktop(context))
-                      const SizedBox(width: defaultPadding),
-                    // On Mobile means if the screen is less than 850 we dont want to show it
+                    /* if (Responsive.isDesktop(context))
+                      const SizedBox(width: defaultPadding),*/
                     if (Responsive.isDesktop(context))
                       Flexible(
                         child: Column(
@@ -253,9 +250,8 @@ class _DetailsConstatState extends State<DetailsConstat> {
                           ],
                         ),
                       ),
-                    if (Responsive.isDesktop(context))
-                      const SizedBox(width: defaultPadding),
-                    // On Mobile means if the screen is less than 850 we dont want to show it
+                    /*if (Responsive.isDesktop(context))
+                      const SizedBox(width: defaultPadding),*/
                     if (Responsive.isDesktop(context))
                       Flexible(
                         child: CustumVehiculedetails(

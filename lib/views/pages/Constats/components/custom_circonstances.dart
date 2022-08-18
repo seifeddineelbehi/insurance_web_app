@@ -45,770 +45,668 @@ class CustomCirconstance extends StatelessWidget {
             shrinkWrap: true,
             physics: const BouncingScrollPhysics(),
             children: [
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[0].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[0]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[0].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[0].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[0].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
                     ),
-                    const Divider(
-                      thickness: 5,
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[0]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[0].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[0].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[1].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[1]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[1].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[1].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
-                    ),
-                    const Divider(
-                      thickness: 5,
-                    ),
-                  ],
-                ),
+              const Divider(
+                thickness: 5,
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[2].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[2]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[2].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[2].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[1].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
                     ),
-                    const Divider(
-                      thickness: 5,
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[1]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[1].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[1].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[3].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[3]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[3].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[3].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
-                    ),
-                    const Divider(
-                      thickness: 5,
-                    ),
-                  ],
-                ),
+              const Divider(
+                thickness: 5,
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[4].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[4]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[4].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[4].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[2].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
                     ),
-                    const Divider(
-                      thickness: 5,
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[2]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[2].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[2].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[5].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[5]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[5].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[5].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
-                    ),
-                    const Divider(
-                      thickness: 5,
-                    ),
-                  ],
-                ),
+              const Divider(
+                thickness: 5,
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[6].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[6]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[6].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[6].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[3].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
                     ),
-                    const Divider(
-                      thickness: 5,
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[3]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[3].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[3].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[7].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[7]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[7].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[7].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
-                    ),
-                    const Divider(
-                      thickness: 5,
-                    ),
-                  ],
-                ),
+              const Divider(
+                thickness: 5,
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[8].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[8]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[8].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[8].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[4].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
                     ),
-                    const Divider(
-                      thickness: 5,
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[4]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[4].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[4].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[9].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[9]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[9].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[9].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
-                    ),
-                    const Divider(
-                      thickness: 5,
-                    ),
-                  ],
-                ),
+              const Divider(
+                thickness: 5,
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[10].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[10]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[10].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[10].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[5].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
                     ),
-                    const Divider(
-                      thickness: 5,
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[5]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[5].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[5].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[11].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[11]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[11].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[11].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
-                    ),
-                    const Divider(
-                      thickness: 5,
-                    ),
-                  ],
-                ),
+              const Divider(
+                thickness: 5,
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[12].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[12]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[12].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[12].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[6].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
                     ),
-                    const Divider(
-                      thickness: 5,
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[6]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[6].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[6].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[13].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[13]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[13].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[13].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
-                    ),
-                    const Divider(
-                      thickness: 5,
-                    ),
-                  ],
-                ),
+              const Divider(
+                thickness: 5,
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[14].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[14]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[14].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[14].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[7].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
                     ),
-                    const Divider(
-                      thickness: 5,
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[7]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[7].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[7].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[15].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[15]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[15].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[15].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
-                    ),
-                    const Divider(
-                      thickness: 5,
-                    ),
-                  ],
-                ),
+              const Divider(
+                thickness: 5,
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (vehiculeA.circonstances!
-                            .contains(Circonstances[16].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeAColor,
-                          ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: SelectableText(
-                              (Circonstances.indexOf(Circonstances[16]) + 1)
-                                      .toString() +
-                                  "-" +
-                                  Circonstances[16].toString(),
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (vehiculeB.circonstances!
-                            .contains(Circonstances[16].toString()))
-                          const Icon(
-                            Icons.check_box,
-                            color: kVehiculeBColor,
-                          ),
-                      ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[8].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
                     ),
-                    const Divider(
-                      thickness: 5,
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[8]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[8].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[8].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
+              ),
+              const Divider(
+                thickness: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[9].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
+                    ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[9]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[9].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
+                    ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[9].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
+              ),
+              const Divider(
+                thickness: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[10].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
+                    ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[10]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[10].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
+                    ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[10].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
+              ),
+              const Divider(
+                thickness: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[11].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
+                    ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[11]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[11].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
+                    ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[11].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
+              ),
+              const Divider(
+                thickness: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[12].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
+                    ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[12]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[12].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
+                    ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[12].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
+              ),
+              const Divider(
+                thickness: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[13].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
+                    ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[13]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[13].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
+                    ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[13].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
+              ),
+              const Divider(
+                thickness: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[14].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
+                    ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[14]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[14].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
+                    ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[14].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
+              ),
+              const Divider(
+                thickness: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[15].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
+                    ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[15]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[15].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
+                    ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[15].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
+              ),
+              const Divider(
+                thickness: 5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (vehiculeA.circonstances!
+                      .contains(Circonstances[16].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeAColor,
+                    ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SelectableText(
+                        (Circonstances.indexOf(Circonstances[16]) + 1)
+                                .toString() +
+                            "-" +
+                            Circonstances[16].toString(),
+                        style: GoogleFonts.poppins(
+                          color: Palette.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                        ),
+                      ),
+                    ),
+                  ),
+                  if (vehiculeB.circonstances!
+                      .contains(Circonstances[16].toString()))
+                    const Icon(
+                      Icons.check_box,
+                      color: kVehiculeBColor,
+                    ),
+                ],
+              ),
+              const Divider(
+                thickness: 5,
               ),
             ],
           )

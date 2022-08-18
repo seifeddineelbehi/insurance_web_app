@@ -55,8 +55,8 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
                             title,
                             style: GoogleFonts.poppins(
                               color: Palette.textColor,
-                              fontWeight: FontWeight.w700,
-                              fontSize: SizeConfig.kDefaultSize * 3,
+                              fontWeight: FontWeight.w600,
+                              fontSize: SizeConfig.kDefaultSize * 2,
                             ),
                           ),
                           SizedBox(
@@ -70,7 +70,7 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
                               style: GoogleFonts.poppins(
                                 color: Palette.textColor,
                                 fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 2,
+                                fontSize: SizeConfig.kDefaultSize * 1.75,
                               ),
                             )
                           else
@@ -107,7 +107,7 @@ Widget itemTemoin(TemoinModel temoin) {
     style: GoogleFonts.poppins(
       color: Palette.textSecondaryColor,
       fontWeight: FontWeight.w600,
-      fontSize: SizeConfig.kDefaultSize * 2,
+      fontSize: SizeConfig.kDefaultSize * 1.75,
     ),
   );
 }

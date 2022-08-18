@@ -43,7 +43,7 @@ class _CustomSignatureState extends State<CustomSignature> {
                 style: GoogleFonts.poppins(
                   color: Palette.textColor,
                   fontWeight: FontWeight.w700,
-                  fontSize: SizeConfig.kDefaultSize * 3,
+                  fontSize: SizeConfig.kDefaultSize * 2.3,
                 ),
               ),
               SizedBox(

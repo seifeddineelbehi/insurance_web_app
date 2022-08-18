@@ -22289,7 +22289,7 @@ return A.n(new A.by().cd("token").aj(0,new A.a98(f),t.P),$async$NB)
 case 3:m=A.a([],t.pl)
 h=t.N
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/IncendiesNonTraite/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/IncendiesNonTraite/",0,null)
 p=5
 s=8
 return A.n(A.eI(k,l),$async$NB)
@@ -22330,7 +22330,7 @@ return A.n(new A.by().cd("token").aj(0,new A.a9c(f),t.P),$async$ND)
 case 3:m=A.a([],t.pl)
 h=t.N
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/IncendiesTraite/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/IncendiesTraite/",0,null)
 p=5
 A.P("dkhaaal : ")
 s=8
@@ -22372,7 +22372,7 @@ return A.n(new A.by().cd("token").aj(0,new A.a9a(f),t.P),$async$NC)
 case 3:m=A.a([],t.pl)
 h=t.N
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/IncendiesRejete/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/IncendiesRejete/",0,null)
 p=5
 s=8
 return A.n(A.eI(k,l),$async$NC)
@@ -22413,7 +22413,7 @@ return A.n(new A.by().cd("token").aj(0,new A.a9e(f),t.P),$async$NE)
 case 3:h=t.N
 m=A.H(h,t.z)
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/IncendiesLengthDetails/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/IncendiesLengthDetails/",0,null)
 p=5
 s=8
 return A.n(A.eI(k,l),$async$NE)
@@ -22456,7 +22456,7 @@ s=3
 return A.n(new A.by().cd("token").aj(0,new A.a9f(e),t.P),$async$NF)
 case 3:g=t.N
 m=A.ao(["content-type"," application/json","Authorization",e.a],g,g)
-l=A.bP("https://assurance-backend.herokuapp.com/admin/updateIncendie/",0,null)
+l=A.bP("https://assurance-backend.softago.tech/admin/updateIncendie/",0,null)
 k=A.ao(["idIncendie",a,"response",b],g,g)
 p=5
 s=8
@@ -22506,7 +22506,7 @@ z0(a,b){var s=0,r=A.z(t.X),q,p=2,o,n=[],m,l,k,j,i,h,g,f
 var $async$z0=A.A(function(c,d){if(c===1){o=d
 s=p}while(true)switch(s){case 0:j=t.N
 i=A.ao(["content-type"," application/json"],j,j)
-h=A.bP("https://assurance-backend.herokuapp.com/admin/login/",0,null)
+h=A.bP("https://assurance-backend.softago.tech/admin/login/",0,null)
 g=A.ao(["username",a,"password",b],j,j)
 p=4
 A.P("dhaaaal1")
@@ -22560,7 +22560,7 @@ s=3
 return A.n(new A.by().cd("token").aj(0,new A.a10(f),t.P),$async$z_)
 case 3:h=t.N
 m=A.ao(["content-type","application/json","Authorization",f.a],h,h)
-l=A.bP("https://assurance-backend.herokuapp.com/admin/protected/",0,null)
+l=A.bP("https://assurance-backend.softago.tech/admin/protected/",0,null)
 p=5
 s=8
 return A.n(A.eI(l,m),$async$z_)
@@ -22652,7 +22652,7 @@ A.P("admin token update admin :"+e)
 g=t.N
 m=A.ao(["content-type"," application/json","Authorization",e],g,g)
 l=A.ao(["id",a.a,"username",a.b,"password",a.c,"status",a.e,"role",a.d],g,t.ob)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/updateAdmin",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/updateAdmin",0,null)
 A.P("update admin uri:"+J.Q(k))
 p=5
 s=8
@@ -22696,7 +22696,7 @@ return A.n(new A.by().cd("token").aj(0,new A.a0Z(f),t.P),$async$JV)
 case 3:m=A.a([],t.p_)
 h=t.N
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/allAdmin/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/allAdmin/",0,null)
 p=5
 s=8
 return A.n(A.eI(k,l),$async$JV)
@@ -22743,7 +22743,7 @@ return A.n(new A.by().cd("token").aj(0,new A.a23(f),t.P),$async$Kq)
 case 3:m=A.a([],t.E_)
 h=t.N
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/BrisesNonTraite/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/BrisesNonTraite/",0,null)
 p=5
 s=8
 return A.n(A.eI(k,l),$async$Kq)
@@ -22784,7 +22784,7 @@ return A.n(new A.by().cd("token").aj(0,new A.a27(f),t.P),$async$Ks)
 case 3:m=A.a([],t.E_)
 h=t.N
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/BrisesTraite/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/BrisesTraite/",0,null)
 p=5
 A.P("dkhaaal : ")
 s=8
@@ -22826,7 +22826,7 @@ return A.n(new A.by().cd("token").aj(0,new A.a25(f),t.P),$async$Kr)
 case 3:m=A.a([],t.E_)
 h=t.N
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/BrisesRejete/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/BrisesRejete/",0,null)
 p=5
 s=8
 return A.n(A.eI(k,l),$async$Kr)
@@ -22867,7 +22867,7 @@ return A.n(new A.by().cd("token").aj(0,new A.a29(f),t.P),$async$Kt)
 case 3:h=t.N
 m=A.H(h,t.z)
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/BrisesLengthDetails/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/BrisesLengthDetails/",0,null)
 p=5
 s=8
 return A.n(A.eI(k,l),$async$Kt)
@@ -22910,7 +22910,7 @@ s=3
 return A.n(new A.by().cd("token").aj(0,new A.a2a(e),t.P),$async$Ku)
 case 3:g=t.N
 m=A.ao(["content-type"," application/json","Authorization",e.a],g,g)
-l=A.bP("https://assurance-backend.herokuapp.com/admin/updateBrise/",0,null)
+l=A.bP("https://assurance-backend.softago.tech/admin/updateBrise/",0,null)
 k=A.ao(["idBriseGlace",a,"response",b],g,g)
 p=5
 s=8
@@ -22966,7 +22966,7 @@ return A.n(new A.by().cd("token").aj(0,new A.a3f(f),t.P),$async$Lm)
 case 3:m=A.a([],t.Ss)
 h=t.N
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/allClients",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/allClients",0,null)
 p=5
 s=8
 return A.n(A.eI(k,l),$async$Lm)
@@ -23104,7 +23104,7 @@ s=3
 return A.n(new A.by().cd("token").aj(0,new A.a3i(f),t.P),$async$Ln)
 case 3:h=t.N
 m=A.ao(["content-type","application/json","Authorization",f.a],h,h)
-l=A.bP("https://assurance-backend.herokuapp.com/admin/clientDetailByCodeClient/"+a,0,null)
+l=A.bP("https://assurance-backend.softago.tech/admin/clientDetailByCodeClient/"+a,0,null)
 A.P("Uri "+J.Q(l))
 p=5
 s=8
@@ -23149,7 +23149,7 @@ return A.n(new A.by().cd("token").aj(0,new A.a3L(f),t.P),$async$LD)
 case 3:m=A.a([],t.wT)
 h=t.N
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/AccidentNonTraite/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/AccidentNonTraite/",0,null)
 p=5
 s=8
 return A.n(A.eI(k,l),$async$LD)
@@ -23190,7 +23190,7 @@ return A.n(new A.by().cd("token").aj(0,new A.a3P(f),t.P),$async$LF)
 case 3:m=A.a([],t.wT)
 h=t.N
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/AccidentTraite/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/AccidentTraite/",0,null)
 p=5
 A.P("dkhaaal : ")
 s=8
@@ -23232,7 +23232,7 @@ return A.n(new A.by().cd("token").aj(0,new A.a3N(f),t.P),$async$LE)
 case 3:m=A.a([],t.wT)
 h=t.N
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/AccidentRejete/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/AccidentRejete/",0,null)
 p=5
 s=8
 return A.n(A.eI(k,l),$async$LE)
@@ -23273,7 +23273,7 @@ return A.n(new A.by().cd("token").aj(0,new A.a3R(f),t.P),$async$LG)
 case 3:h=t.N
 m=A.H(h,t.z)
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/ConstatLengthDetails/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/ConstatLengthDetails/",0,null)
 p=5
 s=8
 return A.n(A.eI(k,l),$async$LG)
@@ -23316,7 +23316,7 @@ s=3
 return A.n(new A.by().cd("token").aj(0,new A.a3S(f),t.P),$async$LH)
 case 3:h=t.N
 m=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-l=A.bP("https://assurance-backend.herokuapp.com/admin/updateAccident/",0,null)
+l=A.bP("https://assurance-backend.softago.tech/admin/updateAccident/",0,null)
 k=A.ao(["idAccident",a,"response",b],h,h)
 p=5
 s=8
@@ -23367,7 +23367,7 @@ return A.n(new A.by().cd("token").aj(0,new A.akk(f),t.P),$async$S4)
 case 3:m=A.a([],t.i0)
 h=t.N
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/VolNonTraite/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/VolNonTraite/",0,null)
 p=5
 s=8
 return A.n(A.eI(k,l),$async$S4)
@@ -23408,7 +23408,7 @@ return A.n(new A.by().cd("token").aj(0,new A.ako(f),t.P),$async$S6)
 case 3:m=A.a([],t.i0)
 h=t.N
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/VolsTraite/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/VolsTraite/",0,null)
 p=5
 A.P("dkhaaal : ")
 s=8
@@ -23450,7 +23450,7 @@ return A.n(new A.by().cd("token").aj(0,new A.akm(f),t.P),$async$S5)
 case 3:m=A.a([],t.i0)
 h=t.N
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/VolRejete/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/VolRejete/",0,null)
 p=5
 s=8
 return A.n(A.eI(k,l),$async$S5)
@@ -23491,7 +23491,7 @@ return A.n(new A.by().cd("token").aj(0,new A.akq(f),t.P),$async$S7)
 case 3:h=t.N
 m=A.H(h,t.z)
 l=A.ao(["content-type"," application/json","Authorization",f.a],h,h)
-k=A.bP("https://assurance-backend.herokuapp.com/admin/VolsLengthDetails/",0,null)
+k=A.bP("https://assurance-backend.softago.tech/admin/VolsLengthDetails/",0,null)
 p=5
 s=8
 return A.n(A.eI(k,l),$async$S7)
@@ -23534,7 +23534,7 @@ s=3
 return A.n(new A.by().cd("token").aj(0,new A.akr(e),t.P),$async$S8)
 case 3:g=t.N
 m=A.ao(["content-type"," application/json","Authorization",e.a],g,g)
-l=A.bP("https://assurance-backend.herokuapp.com/admin/updateVol/",0,null)
+l=A.bP("https://assurance-backend.softago.tech/admin/updateVol/",0,null)
 k=A.ao(["idVol",a,"response",b],g,g)
 p=5
 s=8
@@ -79245,7 +79245,7 @@ Zf(a){var s=0,r=A.z(t.z),q,p
 var $async$uU=A.A(function(b,c){if(b===1)return A.w(c,r)
 while(true)switch(s){case 0:A.P("dkhal add admin")
 s=3
-return A.n(A.JT("https://assurance-backend.herokuapp.com",a),$async$uU)
+return A.n(A.JT("https://assurance-backend.softago.tech",a),$async$uU)
 case 3:p=c
 A.P(B.b.M("response add admin",J.Q(p)))
 q=p
@@ -79340,7 +79340,7 @@ Zg(a){var s=0,r=A.z(t.z),q,p
 var $async$uV=A.A(function(b,c){if(b===1)return A.w(c,r)
 while(true)switch(s){case 0:A.P("dkhal add admin")
 s=3
-return A.n(A.Ll("https://assurance-backend.herokuapp.com",a),$async$uV)
+return A.n(A.Ll("https://assurance-backend.softago.tech",a),$async$uV)
 case 3:p=c
 A.P(B.b.M("response add client",J.Q(p)))
 q=p

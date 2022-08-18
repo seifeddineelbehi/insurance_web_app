@@ -55,9 +55,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -94,9 +91,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -133,9 +127,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -172,9 +163,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -211,9 +199,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -250,9 +235,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -289,9 +271,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -328,9 +307,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -367,9 +343,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -406,9 +379,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -445,9 +415,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -484,9 +451,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -523,9 +487,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -562,9 +523,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -601,9 +559,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -640,9 +595,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(
@@ -679,9 +631,6 @@ class CustomCirconstance extends StatelessWidget {
                       Icons.check_box,
                       color: kVehiculeAColor,
                     ),
-                  const SizedBox(
-                    width: 20,
-                  ),
                   Expanded(
                     child: Center(
                       child: SelectableText(

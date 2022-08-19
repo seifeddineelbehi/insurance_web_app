@@ -240,6 +240,18 @@ class _DetailsConstatState extends State<DetailsConstat> {
                     ),
                     /* if (Responsive.isDesktop(context))
                       const SizedBox(width: defaultPadding),*/
+
+                    /*if (Responsive.isDesktop(context))
+                      const SizedBox(width: defaultPadding),*/
+                    if (Responsive.isDesktop(context))
+                      Flexible(
+                        fit: FlexFit.tight,
+                        child: CustumVehiculedetails(
+                          vehicule: widget.constat.vehiculeB!,
+                          nomVehicule: 'Vehicule B',
+                          color: kVehiculeBColor,
+                        ),
+                      ),
                     if (Responsive.isDesktop(context))
                       Flexible(
                         fit: FlexFit.tight,
@@ -251,17 +263,6 @@ class _DetailsConstatState extends State<DetailsConstat> {
                             CustomCroquis(
                                 croquis: widget.constat.croquis.toString()),
                           ],
-                        ),
-                      ),
-                    /*if (Responsive.isDesktop(context))
-                      const SizedBox(width: defaultPadding),*/
-                    if (Responsive.isDesktop(context))
-                      Flexible(
-                        fit: FlexFit.tight,
-                        child: CustumVehiculedetails(
-                          vehicule: widget.constat.vehiculeB!,
-                          nomVehicule: 'Vehicule B',
-                          color: kVehiculeBColor,
                         ),
                       ),
                   ],

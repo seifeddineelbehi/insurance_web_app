@@ -19,7 +19,7 @@ class CustomCirconstance extends StatelessWidget {
     List<String> circonstances = Circonstances;
     SizeConfig().init(context);
     return Container(
-      //padding: const EdgeInsets.all(defaultPadding),
+      padding: const EdgeInsets.all(defaultPadding),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: const BorderRadius.all(Radius.circular(10)),

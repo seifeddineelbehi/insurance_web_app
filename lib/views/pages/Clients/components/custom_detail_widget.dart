@@ -44,28 +44,13 @@ class CustomDetailWidget extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              title,
-                              style: GoogleFonts.poppins(
-                                color: Palette.textColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: SizeConfig.kDefaultSize * 3,
-                              ),
-                            ),
-                            subTitle != ""
-                                ? Text(
-                                    subTitle,
-                                    style: GoogleFonts.poppins(
-                                      color: Palette.textColor,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: SizeConfig.kDefaultSize * 2,
-                                    ),
-                                  )
-                                : const SizedBox.shrink(),
-                          ],
+                        Text(
+                          title,
+                          style: GoogleFonts.poppins(
+                            color: Palette.textColor,
+                            fontWeight: FontWeight.w700,
+                            fontSize: SizeConfig.kDefaultSize * 2.75,
+                          ),
                         ),
                         SizedBox(
                           height: SizeConfig.safeBlockVertical * 0.5,
@@ -75,7 +60,7 @@ class CustomDetailWidget extends StatelessWidget {
                           style: GoogleFonts.poppins(
                             color: Palette.textSecondaryColor,
                             fontWeight: FontWeight.w600,
-                            fontSize: SizeConfig.kDefaultSize * 2,
+                            fontSize: SizeConfig.kDefaultSize * 1.75,
                           ),
                         ),
                       ],

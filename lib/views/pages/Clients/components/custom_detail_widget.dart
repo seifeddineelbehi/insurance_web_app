@@ -40,7 +40,7 @@ class CustomDetailWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: SizeConfig.safeBlockHorizontal * 75,
+                    //width: SizeConfig.safeBlockHorizontal * 75,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -52,9 +52,9 @@ class CustomDetailWidget extends StatelessWidget {
                             fontSize: SizeConfig.kDefaultSize * 2.75,
                           ),
                         ),
-                        SizedBox(
+                        /*SizedBox(
                           height: SizeConfig.safeBlockVertical * 0.5,
-                        ),
+                        ),*/
                         SelectableText(
                           text,
                           style: GoogleFonts.poppins(

@@ -121,13 +121,12 @@ class _VolTableState extends State<VolTable> {
                     AllConstats = snapshot.data!;
                     constatFiltered = snapshot.data!;
                     return DataTable2(
-                      empty: Expanded(
-                          child: Text(
+                      empty: Text(
                         "Aucune declaration de vols pour le moment",
                         style: kMediumTitleWhiteBold.copyWith(
                           color: kPrimaryColor,
                         ),
-                      )),
+                      ),
                       showCheckboxColumn: false,
                       columnSpacing: defaultPadding,
                       minWidth: 600,
@@ -164,13 +163,12 @@ class _VolTableState extends State<VolTable> {
                       ),
                     );
                   } else {
-                    return Expanded(
-                        child: Text(
+                    return Text(
                       "Aucune declaration de vols pour le moment",
                       style: kMediumTitleWhiteBold.copyWith(
                         color: kPrimaryColor,
                       ),
-                    ));
+                    );
                   }
                   log("length data : " + snapshot.data!.length.toString());
                 } else {

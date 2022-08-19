@@ -150,13 +150,12 @@ class _BrisesRejeteTableState extends State<BrisesRejeteTable> {
                       ),
                     );
                   } else {
-                    return Expanded(
-                        child: Text(
+                    return Text(
                       "Aucune déclaration de brise glace pour le moment",
                       style: kMediumTitleWhiteBold.copyWith(
                         color: kPrimaryColor,
                       ),
-                    ));
+                    );
                   }
                   log("length data : " + snapshot.data!.length.toString());
                 } else {

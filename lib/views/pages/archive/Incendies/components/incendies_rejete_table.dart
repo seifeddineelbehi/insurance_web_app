@@ -155,13 +155,12 @@ class _IncendiesRejeteTableState extends State<IncendiesRejeteTable> {
                       ),
                     );
                   } else {
-                    return Expanded(
-                        child: Text(
+                    return Text(
                       "Aucun declaration d\'incendies pour le moment",
                       style: kMediumTitleWhiteBold.copyWith(
                         color: kPrimaryColor,
                       ),
-                    ));
+                    );
                   }
                   log("length data : " + snapshot.data!.length.toString());
                 } else {

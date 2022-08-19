@@ -148,13 +148,12 @@ class _VolsTraiteTableState extends State<VolsTraiteTable> {
                       ),
                     );
                   } else {
-                    return Expanded(
-                        child: Text(
+                    return Text(
                       "Aucune déclaration de vol pour le moment",
                       style: kMediumTitleWhiteBold.copyWith(
                         color: kPrimaryColor,
                       ),
-                    ));
+                    );
                   }
                   log("length data : " + snapshot.data!.length.toString());
                 } else {

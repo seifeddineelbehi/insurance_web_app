@@ -140,13 +140,12 @@ class _ConstatTableState extends State<ConstatTable> {
                     constatFiltered = snapshot.data!;
 
                     return DataTable2(
-                      empty: Expanded(
-                          child: Text(
+                      empty: Text(
                         "Aucun constat pour le moment",
                         style: kMediumTitleWhiteBold.copyWith(
                           color: kPrimaryColor,
                         ),
-                      )),
+                      ),
                       showCheckboxColumn: false,
                       columnSpacing: defaultPadding,
                       minWidth: 600,
@@ -191,13 +190,12 @@ class _ConstatTableState extends State<ConstatTable> {
                       ),
                     );
                   } else {
-                    return Expanded(
-                        child: Text(
+                    return Text(
                       "Aucun constat pour le moment",
                       style: kMediumTitleWhiteBold.copyWith(
                         color: kPrimaryColor,
                       ),
-                    ));
+                    );
                   }
                   log("length data : " + snapshot.data!.length.toString());
                 } else {

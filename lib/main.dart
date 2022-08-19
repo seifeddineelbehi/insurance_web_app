@@ -55,21 +55,9 @@ void main() async {
   setPathUrlStrategy();
   await di.init();
   await GetStorage.init();
-  WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  runApp(
-    EasyLocalization(
-      child: DefaultSizeInit(builder: () => const MyApp()),
-      supportedLocales: const [
-        Locale('en'),
-        Locale('ar'),
-        Locale('fr'),
-      ],
-      fallbackLocale: const Locale('en'),
-      path: 'assets/translations',
-      assetLoader: const CodegenLoader(),
-    ),
-  );
+  await Future.delayed(const Duration(milliseconds: 300));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {

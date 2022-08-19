@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
 
 class DefaultSize {
   static const Size defaultSize = Size(360, 690);
@@ -38,7 +37,7 @@ class DefaultSize {
           ? max(constraints.maxHeight, 700)
           : constraints.maxHeight;
 
-    var window = WidgetsBinding.instance?.window ?? ui.window;
+    var window = WidgetsBinding.instance.window;
     _instance._pixelRatio = window.devicePixelRatio;
     _instance._statusBarHeight = window.padding.top;
     _instance._bottomBarHeight = window.padding.bottom;

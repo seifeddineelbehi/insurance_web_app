@@ -13,10 +13,11 @@ class CustomCirconstance extends StatelessWidget {
       : super(key: key);
   final VehiculeModel vehiculeA;
   final VehiculeModel vehiculeB;
+
   @override
   Widget build(BuildContext context) {
     List<String> circonstances = Circonstances;
-
+    SizeConfig().init(context);
     return Container(
       padding: const EdgeInsets.all(defaultPadding),
       decoration: BoxDecoration(

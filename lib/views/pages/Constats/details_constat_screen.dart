@@ -44,10 +44,11 @@ class _DetailsConstatState extends State<DetailsConstat> {
           padding: Responsive.isMobile(context)
               ? const EdgeInsets.fromLTRB(defaultPadding * 2, defaultPadding,
                   defaultPadding * 2, defaultPadding)
-              : const EdgeInsets.fromLTRB(defaultPadding * 10,
-                  defaultPadding * 7, defaultPadding * 10, defaultPadding * 7),
+              : const EdgeInsets.fromLTRB(defaultPadding * 7,
+                  defaultPadding * 7, defaultPadding * 7, defaultPadding * 7),
           child: Container(
-            padding: const EdgeInsets.all(defaultPadding * 6),
+            padding: const EdgeInsets.fromLTRB(defaultPadding * 2,
+                defaultPadding * 6, defaultPadding * 2, defaultPadding * 6),
             decoration: const BoxDecoration(
               color: kPageColor,
               borderRadius: BorderRadius.all(Radius.circular(10)),

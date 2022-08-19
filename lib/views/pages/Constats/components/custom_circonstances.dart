@@ -66,7 +66,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -102,7 +102,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -138,7 +138,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -174,7 +174,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -210,7 +210,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -246,7 +246,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -282,7 +282,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -318,7 +318,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -354,7 +354,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -390,7 +390,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -426,7 +426,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -462,7 +462,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -498,7 +498,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -534,7 +534,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -570,7 +570,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -606,7 +606,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -642,7 +642,7 @@ class CustomCirconstance extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           color: Palette.textColor,
                           fontWeight: FontWeight.w700,
-                          fontSize: SizeConfig.kDefaultSize * 1.75,
+                          fontSize: 12,
                         ),
                       ),
                     ),

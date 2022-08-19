@@ -87,7 +87,6 @@ class _StatScreenState extends State<StatScreen> {
                               child: Column(
                                 children: [
                                   //const MyFiles(),
-                                  const SizedBox(height: defaultPadding),
                                   const ConstatsStat(),
                                   if (Responsive.isMobile(context))
                                     const SizedBox(height: defaultPadding),
@@ -105,13 +104,13 @@ class _StatScreenState extends State<StatScreen> {
                               ),
                           ],
                         ),
+                        const SizedBox(height: defaultPadding),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Expanded(
                               child: Column(
                                 children: [
-                                  const SizedBox(height: defaultPadding),
                                   const IncendiesStat(),
                                   if (Responsive.isMobile(context))
                                     const SizedBox(height: defaultPadding),

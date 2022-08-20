@@ -53,66 +53,116 @@ class _DetailClientState extends State<DetailClient> {
               const Divider(
                 thickness: 10,
               ),
-              Expanded(
-                child: FutureBuilder<ClientDataModel?>(
-                  future: context
-                      .read<ClientsViewModel>()
-                      .getClientData(widget.client.refAssurance!),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData && snapshot.data != null) {
-                      return ListView(
-                        shrinkWrap: true,
-                        physics: const BouncingScrollPhysics(),
-                        children: [
-                          CustomDetailWidget(
-                            title: "Nom",
-                            text: snapshot.data!.nomClient!,
-                          ),
-                          CustomDetailWidget(
-                            title: "Prénom",
-                            text: snapshot.data!.prenomClient!,
-                          ),
-                          CustomDetailWidget(
-                            title: "Adresse",
-                            text: snapshot.data!.addresseClient!,
-                          ),
-                          CustomDetailWidget(
-                            title: "Assureur",
-                            text: snapshot.data!.assureur!,
-                          ),
-                          CustomDetailWidget(
-                            title: "Agence",
-                            text: snapshot.data!.agence!,
-                          ),
-                          CustomDetailWidget(
-                            title: "Numéro Contrat",
-                            text: snapshot.data!.numContrat!,
-                          ),
-                          CustomDetailWidget(
-                            title: "Date Début Contrat",
-                            text: snapshot.data!.DBContrat!,
-                          ),
-                          CustomDetailWidget(
-                            title: "Date Fin Contrat",
-                            text: snapshot.data!.DFContrat!,
-                          ),
-                          CustomDetailWidget(
-                            title: "Voiture ",
-                            text: snapshot.data!.voiture!,
-                          ),
-                          CustomDetailWidget(
-                            title: "Immatriculation",
-                            text: snapshot.data!.immatriculation!,
-                          ),
-                        ],
-                      );
-                    } else {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                  },
-                ),
+              FutureBuilder<ClientDataModel?>(
+                future: context
+                    .read<ClientsViewModel>()
+                    .getClientData(widget.client.refAssurance!),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData && snapshot.data != null) {
+                    return Column(
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: CustomDetailWidget(
+                                title: "Nom",
+                                text: snapshot.data!.nomClient!,
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: CustomDetailWidget(
+                                title: "Prénom",
+                                text: snapshot.data!.prenomClient!,
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: CustomDetailWidget(
+                                title: "Adresse",
+                                text: snapshot.data!.addresseClient!,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Expanded(
+                              flex: 3,
+                              child: CustomDetailWidget(
+                                title: "Assureur",
+                                text: snapshot.data!.assureur!,
+                              ),
+                            ),
+                            Expanded(
+                              flex: 3,
+                              child: CustomDetailWidget(
+                                title: "Agence",
+                                text: snapshot.data!.agence!,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: CustomDetailWidget(
+                                title: "Numéro Contrat",
+                                text: snapshot.data!.numContrat!,
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: CustomDetailWidget(
+                                title: "Date Début Contrat",
+                                text: snapshot.data!.DBContrat!,
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: CustomDetailWidget(
+                                title: "Date Fin Contrat",
+                                text: snapshot.data!.DFContrat!,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Expanded(
+                              flex: 3,
+                              child: CustomDetailWidget(
+                                title: "Voiture ",
+                                text: snapshot.data!.voiture!,
+                              ),
+                            ),
+                            Expanded(
+                              flex: 3,
+                              child: CustomDetailWidget(
+                                title: "Immatriculation",
+                                text: snapshot.data!.immatriculation!,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    );
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
               ),
               if (widget.client.constatsAccidents!.isNotEmpty)
                 const Divider(

@@ -16,56 +16,58 @@ Widget PDFCustomCirconstances({required ConstatModel constat}) {
         color: PdfColor.fromInt(0xFFFFFFFF),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Observation',
-            style: TextStyle(
-                color: const PdfColor.fromInt(0xFF333333),
-                fontWeight: FontWeight.bold,
-                fontSize: 14),
+          Center(
+            child: Text(
+              'Circonstances',
+              style: TextStyle(
+                  color: const PdfColor.fromInt(0xFF333333),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14),
+            ),
+          ),
+          Divider(
+            thickness: 3,
           ),
           ListView(
             children: [
               for (var item in Circonstances)
-                Expanded(
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        //crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          if (constat.vehiculeA!.circonstances!
-                              .contains(item.toString()))
-                            Icon(IconData(mt.Icons.check_box.codePoint),
-                                color: const PdfColor.fromInt(0xFFFFFF54),
-                                font: Font.helvetica()),
-                          Expanded(
-                            child: Center(
-                              child: Text(
-                                (Circonstances.indexOf(item) + 1).toString() +
-                                    "-" +
-                                    item.toString(),
-                                style: TextStyle(
-                                    color: const PdfColor.fromInt(0xFF333333),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12),
-                              ),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      //crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        /* if (constat.vehiculeA!.circonstances!
+                            .contains(item.toString()))
+                          Icon(IconData(mt.Icons.check_box.codePoint),
+                              color: const PdfColor.fromInt(0xFFFFFF54),
+                              font: Font.helvetica()),*/
+                        Expanded(
+                          child: Center(
+                            child: Text(
+                              (Circonstances.indexOf(item) + 1).toString() +
+                                  "-" +
+                                  item.toString(),
+                              style: TextStyle(
+                                  color: const PdfColor.fromInt(0xFF333333),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12),
                             ),
                           ),
-                          if (constat.vehiculeB!.circonstances!
-                              .contains(item.toString()))
-                            Icon(IconData(mt.Icons.check_box.codePoint),
-                                color: const PdfColor.fromInt(0xFF52CE6E),
-                                font: Font.helvetica()),
-                        ],
-                      ),
-                      Divider(
-                        thickness: 2,
-                      ),
-                    ],
-                  ),
+                        ),
+                        /*if (constat.vehiculeB!.circonstances!
+                            .contains(item.toString()))
+                          Icon(IconData(mt.Icons.check_box.codePoint),
+                              color: const PdfColor.fromInt(0xFF52CE6E),
+                              font: Font.helvetica()),*/
+                      ],
+                    ),
+                    Divider(
+                      thickness: 2,
+                    ),
+                  ],
                 )
             ],
           ),

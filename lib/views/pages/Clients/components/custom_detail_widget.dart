@@ -32,43 +32,24 @@ class CustomDetailWidget extends StatelessWidget {
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 22.0, vertical: 18.0),
-          child: Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    //width: SizeConfig.safeBlockHorizontal * 75,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          title,
-                          style: GoogleFonts.poppins(
-                            color: Palette.textColor,
-                            fontWeight: FontWeight.w700,
-                            fontSize: SizeConfig.kDefaultSize * 2.75,
-                          ),
-                        ),
-                        /*SizedBox(
-                          height: SizeConfig.safeBlockVertical * 0.5,
-                        ),*/
-                        SelectableText(
-                          text,
-                          style: GoogleFonts.poppins(
-                            color: Palette.textSecondaryColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: SizeConfig.kDefaultSize * 1.75,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+          child: ListTile(
+            title: Text(
+              title,
+              style: GoogleFonts.poppins(
+                color: Palette.textColor,
+                fontWeight: FontWeight.w700,
+                fontSize: SizeConfig.kDefaultSize * 2.5,
               ),
-            ],
+            ),
+            subtitle: SelectableText(
+              text,
+              style: GoogleFonts.poppins(
+                color: Palette.textSecondaryColor,
+                fontWeight: FontWeight.w600,
+                fontSize: SizeConfig.kDefaultSize * 1.75,
+              ),
+            ),
           ),
         ),
       ),

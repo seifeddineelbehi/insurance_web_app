@@ -107,7 +107,15 @@ class _ConstatTableState extends State<ConstatTable> {
                                       BorderRadius.all(Radius.circular(10)),
                                 ),
                                 suffixIcon: InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    constatFiltered = constatFiltered
+                                        .where((constat) => constat
+                                            .dateAccident!
+                                            .contains(_searchResult))
+                                        .toList();
+                                    log('constatFiltered length : ' +
+                                        constatFiltered.length.toString());
+                                  },
                                   child: Container(
                                     padding: const EdgeInsets.all(
                                         defaultPadding * 0.75),
@@ -127,12 +135,6 @@ class _ConstatTableState extends State<ConstatTable> {
                                 setState(() {
                                   log('searche value :' + value);
                                   _searchResult = value;
-                                  constatFiltered = constatFiltered
-                                      .where((constat) => constat.dateAccident!
-                                          .contains(_searchResult))
-                                      .toList();
-                                  log('constatFiltered length : ' +
-                                      constatFiltered.length.toString());
                                 });
                               }),
                           trailing: IconButton(

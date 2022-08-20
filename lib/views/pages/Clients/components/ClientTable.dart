@@ -28,13 +28,14 @@ class _ClientsTableState extends State<ClientsTable> {
   @override
   void initState() {
     //fetchedClients = context.read<ClientsViewModel>().getAllClients();
+    setState(() {
+      clientFiltered = Allclients;
+    });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final adminsViewModel =
-        Provider.of<ClientsViewModel>(context, listen: false);
     return Container(
       padding: const EdgeInsets.all(defaultPadding),
       decoration: const BoxDecoration(
@@ -102,8 +103,8 @@ class _ClientsTableState extends State<ClientsTable> {
                                   log('searche value :' + value);
                                   _searchResult = value;
                                   clientFiltered = clientFiltered
-                                      .where((client) => client.numContrat!
-                                          .contains(_searchResult))
+                                      .where((client) =>
+                                          client.email!.contains(_searchResult))
                                       .toList();
                                   log('constatFiltered length : ' +
                                       clientFiltered.length.toString());

@@ -29,7 +29,7 @@ class ConstatTable extends StatefulWidget {
 
 class _ConstatTableState extends State<ConstatTable> {
   TextEditingController controller = TextEditingController();
-  String _searchResult = '';
+  String _searchResult = "";
   List<ConstatModel> constatFiltered = [];
   List<ConstatModel> AllConstats = [];
 
@@ -81,56 +81,9 @@ class _ConstatTableState extends State<ConstatTable> {
           const Divider(
             thickness: 10,
           ),
-          ListTile(
-            title: TextField(
-                controller: controller,
-                decoration: InputDecoration(
-                  hintText: "Search",
-                  fillColor: kPageColor,
-                  filled: true,
-                  border: const OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  suffixIcon: InkWell(
-                    onTap: () {},
-                    child: Container(
-                      padding: const EdgeInsets.all(defaultPadding * 0.75),
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: defaultPadding / 2),
-                      decoration: const BoxDecoration(
-                        color: const Color(0xFFFFA113),
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: SvgPicture.asset("assets/icons/Search.svg"),
-                    ),
-                  ),
-                ),
-                onChanged: (value) {
-                  setState(() {
-                    log('searche value :' + value);
-                    _searchResult = value;
-                    constatFiltered = AllConstats.where((constat) =>
-                        constat.dateAccident!.contains(_searchResult)).toList();
-                    log('constatFiltered length : ' +
-                        constatFiltered.length.toString());
-                  });
-                }),
-            trailing: IconButton(
-              icon: const Icon(Icons.cancel),
-              onPressed: () {
-                setState(() {
-                  controller.clear();
-                  _searchResult = '';
-                  constatFiltered = AllConstats;
-                });
-              },
-            ),
-          ),
           SizedBox(
             width: double.infinity,
             child: FutureBuilder<List<ConstatModel>>(
-              initialData: constatFiltered,
               future: context.read<HomeViewModel>().getAllConstatNonTraite(),
               builder: (context, snapshot) {
                 if (snapshot.hasData &&
@@ -139,55 +92,120 @@ class _ConstatTableState extends State<ConstatTable> {
                     AllConstats = snapshot.data!;
                     constatFiltered = snapshot.data!;
 
-                    return DataTable2(
-                      empty: Text(
-                        "Aucun constat pour le moment",
-                        style: kMediumTitleWhiteBold.copyWith(
-                          color: kPrimaryColor,
-                        ),
-                      ),
-                      showCheckboxColumn: false,
-                      columnSpacing: defaultPadding,
-                      minWidth: 600,
-                      columns: [
-                        DataColumn(
-                          label: Text(
-                            "Date",
-                            style: kMediumTableColumnWhiteBold.copyWith(
-                              color: bgColor,
-                            ),
+                    return Column(
+                      children: [
+                        ListTile(
+                          title: TextField(
+                              controller: controller,
+                              decoration: InputDecoration(
+                                hintText: "Search",
+                                fillColor: kPageColor,
+                                filled: true,
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                ),
+                                suffixIcon: InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    padding: const EdgeInsets.all(
+                                        defaultPadding * 0.75),
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: defaultPadding / 2),
+                                    decoration: const BoxDecoration(
+                                      color: const Color(0xFFFFA113),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                    ),
+                                    child: SvgPicture.asset(
+                                        "assets/icons/Search.svg"),
+                                  ),
+                                ),
+                              ),
+                              onChanged: (value) {
+                                setState(() {
+                                  log('searche value :' + value);
+                                  _searchResult = value;
+                                  constatFiltered = constatFiltered
+                                      .where((constat) => constat.dateAccident!
+                                          .contains(_searchResult))
+                                      .toList();
+                                  log('constatFiltered length : ' +
+                                      constatFiltered.length.toString());
+                                });
+                              }),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.cancel),
+                            onPressed: () {
+                              setState(() {
+                                controller.clear();
+                                _searchResult = '';
+                                constatFiltered = AllConstats;
+                              });
+                            },
                           ),
                         ),
-                        DataColumn(
-                          label: Text(
-                            "Client 1",
-                            style: kMediumTableColumnWhiteBold.copyWith(
-                              color: bgColor,
+                        DataTable2(
+                          empty: Text(
+                            "Aucun constat pour le moment",
+                            style: kMediumTitleWhiteBold.copyWith(
+                              color: kPrimaryColor,
                             ),
                           ),
-                        ),
-                        DataColumn(
-                          label: Text(
-                            "Client 2",
-                            style: kMediumTableColumnWhiteBold.copyWith(
-                              color: bgColor,
+                          showCheckboxColumn: false,
+                          columnSpacing: defaultPadding,
+                          minWidth: 600,
+                          columns: [
+                            DataColumn(
+                              label: Text(
+                                "Date",
+                                style: kMediumTableColumnWhiteBold.copyWith(
+                                  color: bgColor,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        DataColumn(
-                          label: Text(
-                            "Actions",
-                            style: kMediumTableColumnWhiteBold.copyWith(
-                              color: bgColor,
+                            DataColumn(
+                              label: Text(
+                                "Client 1",
+                                style: kMediumTableColumnWhiteBold.copyWith(
+                                  color: bgColor,
+                                ),
+                              ),
                             ),
-                          ),
+                            DataColumn(
+                              label: Text(
+                                "Client 2",
+                                style: kMediumTableColumnWhiteBold.copyWith(
+                                  color: bgColor,
+                                ),
+                              ),
+                            ),
+                            DataColumn(
+                              label: Text(
+                                "Actions",
+                                style: kMediumTableColumnWhiteBold.copyWith(
+                                  color: bgColor,
+                                ),
+                              ),
+                            ),
+                          ],
+                          rows: List.generate(
+                              constatFiltered
+                                  .where((element) => element.dateAccident!
+                                      .contains(_searchResult))
+                                  .toList()
+                                  .length, (index) {
+                            return listConstatDataRow(
+                                constatFiltered
+                                    .where((element) => element.dateAccident!
+                                        .contains(_searchResult))
+                                    .toList()[index],
+                                context,
+                                constatFiltered);
+                          }),
                         ),
                       ],
-                      rows: List.generate(
-                        constatFiltered.length,
-                        (index) => listConstatDataRow(
-                            constatFiltered[index], context, constatFiltered),
-                      ),
                     );
                   } else {
                     return Text(

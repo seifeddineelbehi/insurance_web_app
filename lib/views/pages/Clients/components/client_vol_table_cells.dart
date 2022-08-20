@@ -43,28 +43,26 @@ DataRow ClientVolDataRow(
       ),
       vol.status! != "En cours de traitement"
           ? DataCell(
-              Expanded(
-                child: Container(
-                  child: Text(
-                    vol.status!,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: kPageColor,
-                    ),
+              Container(
+                child: Text(
+                  vol.status!,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: kPageColor,
                   ),
-                  height: 30,
-                  //width: SizeConfig.screenWidth,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: vol.status! == "En cours de traitement"
-                        ? Colors.blue
-                        : vol.status! == "Traité"
-                            ? Colors.green
-                            : Colors.red,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
+                ),
+                height: 30,
+                width: SizeConfig.screenWidth,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: vol.status! == "En cours de traitement"
+                      ? Colors.blue
+                      : vol.status! == "Traité"
+                          ? Colors.green
+                          : Colors.red,
+                  borderRadius: BorderRadius.circular(8),
                 ),
               ),
             )

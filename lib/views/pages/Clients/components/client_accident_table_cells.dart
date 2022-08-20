@@ -58,28 +58,26 @@ DataRow listConstatClientDataRow(ConstatModel constat, BuildContext context) {
       ),
       constat.status! != "En cours de traitement"
           ? DataCell(
-              Expanded(
-                child: Container(
-                  child: Text(
-                    constat.status!,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: kPageColor,
-                    ),
+              Container(
+                child: Text(
+                  constat.status!,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: kPageColor,
                   ),
-                  height: 30,
-                  //width: SizeConfig.screenWidth,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: constat.status! == "En cours de traitement"
-                        ? Colors.blue
-                        : constat.status! == "Traité"
-                            ? Colors.green
-                            : Colors.red,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
+                ),
+                height: 30,
+                width: SizeConfig.screenWidth,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: constat.status! == "En cours de traitement"
+                      ? Colors.blue
+                      : constat.status! == "Traité"
+                          ? Colors.green
+                          : Colors.red,
+                  borderRadius: BorderRadius.circular(8),
                 ),
               ),
             )

@@ -48,63 +48,6 @@ class _ConstatTraiteTableState extends State<ConstatTraiteTable> {
           const Divider(
             thickness: 10,
           ),
-          ListTile(
-            title: TextField(
-                controller: controller,
-                decoration: InputDecoration(
-                  hintText: "Search",
-                  fillColor: kPageColor,
-                  filled: true,
-                  border: const OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  suffixIcon: InkWell(
-                    onTap: () {},
-                    child: Container(
-                      padding: const EdgeInsets.all(defaultPadding * 0.75),
-                      margin: const EdgeInsets.symmetric(
-                          horizontal: defaultPadding / 2),
-                      decoration: const BoxDecoration(
-                        color: const Color(0xFFFFA113),
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: SvgPicture.asset("assets/icons/Search.svg"),
-                    ),
-                  ),
-                ),
-                onChanged: (value) {
-                  setState(() {
-                    log('searche value :' + value);
-                    _searchResult = value;
-                    constatFiltered = AllConstats.where((constat) =>
-                        constat.id!.contains(_searchResult) ||
-                        constat.vehiculeA!.nomAssure!.contains(_searchResult) ||
-                        constat.vehiculeA!.prenomAssure!
-                            .contains(_searchResult) ||
-                        constat.vehiculeA!.numContratAssurance!
-                            .contains(_searchResult) ||
-                        constat.vehiculeB!.nomAssure!.contains(_searchResult) ||
-                        constat.vehiculeB!.prenomAssure!
-                            .contains(_searchResult) ||
-                        constat.vehiculeB!.numContratAssurance!
-                            .contains(_searchResult) ||
-                        constat.dateAccident!.contains(_searchResult)).toList();
-                    log('constatFiltered length : ' +
-                        constatFiltered.length.toString());
-                  });
-                }),
-            trailing: IconButton(
-              icon: const Icon(Icons.cancel),
-              onPressed: () {
-                setState(() {
-                  controller.clear();
-                  _searchResult = '';
-                  constatFiltered = AllConstats;
-                });
-              },
-            ),
-          ),
           SizedBox(
             width: double.infinity,
             child: FutureBuilder<List<ConstatModel>>(
@@ -116,49 +59,113 @@ class _ConstatTraiteTableState extends State<ConstatTraiteTable> {
                   if (snapshot.data!.isNotEmpty) {
                     AllConstats = snapshot.data!;
                     constatFiltered = snapshot.data!;
-                    return DataTable2(
-                      showCheckboxColumn: false,
-                      columnSpacing: defaultPadding,
-                      minWidth: 600,
-                      columns: [
-                        DataColumn(
-                          label: Text(
-                            "Client 1",
-                            style: kMediumTitleWhiteBold.copyWith(
-                              color: bgColor,
-                            ),
+                    return Column(
+                      children: [
+                        ListTile(
+                          title: TextField(
+                              controller: controller,
+                              decoration: InputDecoration(
+                                hintText: "Search",
+                                fillColor: kPageColor,
+                                filled: true,
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                ),
+                                suffixIcon: InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    padding: const EdgeInsets.all(
+                                        defaultPadding * 0.75),
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: defaultPadding / 2),
+                                    decoration: const BoxDecoration(
+                                      color: const Color(0xFFFFA113),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                    ),
+                                    child: SvgPicture.asset(
+                                        "assets/icons/Search.svg"),
+                                  ),
+                                ),
+                              ),
+                              onChanged: (value) {
+                                setState(() {
+                                  log('searche value :' + value);
+                                  _searchResult = value;
+                                  constatFiltered = constatFiltered
+                                      .where((constat) => constat.dateAccident!
+                                          .contains(_searchResult))
+                                      .toList();
+                                  log('constatFiltered length : ' +
+                                      constatFiltered.length.toString());
+                                });
+                              }),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.cancel),
+                            onPressed: () {
+                              setState(() {
+                                controller.clear();
+                                _searchResult = '';
+                                constatFiltered = AllConstats;
+                              });
+                            },
                           ),
                         ),
-                        DataColumn(
-                          label: Text(
-                            "Client 2",
-                            style: kMediumTitleWhiteBold.copyWith(
-                              color: bgColor,
+                        DataTable2(
+                          showCheckboxColumn: false,
+                          columnSpacing: defaultPadding,
+                          minWidth: 600,
+                          columns: [
+                            DataColumn(
+                              label: Text(
+                                "Client 1",
+                                style: kMediumTitleWhiteBold.copyWith(
+                                  color: bgColor,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        DataColumn(
-                          label: Text(
-                            "Date",
-                            style: kMediumTitleWhiteBold.copyWith(
-                              color: bgColor,
+                            DataColumn(
+                              label: Text(
+                                "Client 2",
+                                style: kMediumTitleWhiteBold.copyWith(
+                                  color: bgColor,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        DataColumn(
-                          label: Text(
-                            "Etat",
-                            style: kMediumTitleWhiteBold.copyWith(
-                              color: bgColor,
+                            DataColumn(
+                              label: Text(
+                                "Date",
+                                style: kMediumTitleWhiteBold.copyWith(
+                                  color: bgColor,
+                                ),
+                              ),
                             ),
+                            DataColumn(
+                              label: Text(
+                                "Etat",
+                                style: kMediumTitleWhiteBold.copyWith(
+                                  color: bgColor,
+                                ),
+                              ),
+                            ),
+                          ],
+                          rows: List.generate(
+                            constatFiltered
+                                .where((element) => element.dateAccident!
+                                    .contains(_searchResult))
+                                .toList()
+                                .length,
+                            (index) => listConstatTraiteDataRow(
+                                constatFiltered
+                                    .where((element) => element.dateAccident!
+                                        .contains(_searchResult))
+                                    .toList()[index],
+                                context),
                           ),
                         ),
                       ],
-                      rows: List.generate(
-                        constatFiltered.length,
-                        (index) => listConstatTraiteDataRow(
-                            constatFiltered[index], context),
-                      ),
                     );
                   } else {
                     return Text(

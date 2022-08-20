@@ -191,8 +191,16 @@ class _DetailClientState extends State<DetailClient> {
                   columns: [
                     DataColumn(
                       label: Text(
+                        "Date",
+                        style: kMediumTableColumnWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
                         "Client 1",
-                        style: kMediumTitleWhiteBold.copyWith(
+                        style: kMediumTableColumnWhiteBold.copyWith(
                           color: bgColor,
                         ),
                       ),
@@ -200,23 +208,15 @@ class _DetailClientState extends State<DetailClient> {
                     DataColumn(
                       label: Text(
                         "Client 2",
-                        style: kMediumTitleWhiteBold.copyWith(
+                        style: kMediumTableColumnWhiteBold.copyWith(
                           color: bgColor,
                         ),
                       ),
                     ),
                     DataColumn(
                       label: Text(
-                        "Date",
-                        style: kMediumTitleWhiteBold.copyWith(
-                          color: bgColor,
-                        ),
-                      ),
-                    ),
-                    DataColumn(
-                      label: Text(
-                        "Etat",
-                        style: kMediumTitleWhiteBold.copyWith(
+                        "Actions",
+                        style: kMediumTableColumnWhiteBold.copyWith(
                           color: bgColor,
                         ),
                       ),
@@ -249,6 +249,12 @@ class _DetailClientState extends State<DetailClient> {
                 ),
               if (widget.client.vols!.isNotEmpty)
                 DataTable2(
+                  empty: Text(
+                    "Aucune declaration de vols pour le moment",
+                    style: kMediumTitleWhiteBold.copyWith(
+                      color: kPrimaryColor,
+                    ),
+                  ),
                   showCheckboxColumn: false,
                   columnSpacing: defaultPadding,
                   minWidth: 600,
@@ -271,7 +277,7 @@ class _DetailClientState extends State<DetailClient> {
                     ),
                     DataColumn(
                       label: Text(
-                        "Etat",
+                        "Actions",
                         style: kMediumTableColumnWhiteBold.copyWith(
                           color: bgColor,
                         ),
@@ -395,9 +401,7 @@ class _DetailClientState extends State<DetailClient> {
                   rows: List.generate(
                     widget.client.briseGlace!.length,
                     (index) => ClientBriseDataRow(
-                        widget.client.briseGlace![index],
-                        context,
-                        widget.client.briseGlace!),
+                        widget.client.briseGlace![index], context),
                   ),
                 ),
             ],

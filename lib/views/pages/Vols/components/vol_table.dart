@@ -309,7 +309,6 @@ class _VolTableState extends State<VolTable> {
                         var res = await context
                             .read<VolViewModel>()
                             .updateVol(vol.id!, "Rejeté");
-                        list.removeAt(list.indexOf(vol));
                         log("res : " + res.toString());
                         if (res == true) {
                           ScaffoldMessenger.of(context).showSnackBar(

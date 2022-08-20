@@ -25,18 +25,18 @@ DataRow ClientIncendiesDataRow(
       DataCell(SelectableText(
         vol.date!,
         maxLines: 1,
-        //overflow: TextOverflow.ellipsis,
+        showCursor: true,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           color: secondaryColor,
         ),
       )),
       DataCell(
-        Text(
+        SelectableText(
           'Nouvelle declaration d\'incendie de la part du client ' +
               vol.codeClient!,
           maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+          showCursor: true,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: secondaryColor,
@@ -101,12 +101,18 @@ DataRow ClientIncendiesDataRow(
                     Expanded(
                       child: InkWell(
                         onTap: () async {
-                          if (await confirm(context)) {
+                          if (await confirm(
+                            context,
+                            title: const Text('Marqué constat comme terminé'),
+                            content: const Text(
+                                'Vous êtes sur de valider ce constat?'),
+                            textOK: const Text('Oui'),
+                            textCancel: const Text('Annuler'),
+                          )) {
                             var res = await context
                                 .read<IncendiesViewModel>()
                                 .update(vol.id!, "Traité");
-                            list.removeAt(list.indexOf(vol));
-                            //log("res : " + res.toString());
+                            log("res : " + res.toString());
                             if (res == true) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
@@ -117,7 +123,7 @@ DataRow ClientIncendiesDataRow(
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                     content: Text(
-                                        'Erreur de validation de l\'incendie  ! ')),
+                                        'Erreur de validation de l\'incendie ! ')),
                               );
                             }
                           }
@@ -143,23 +149,29 @@ DataRow ClientIncendiesDataRow(
                     Expanded(
                       child: InkWell(
                         onTap: () async {
-                          if (await confirm(context)) {
+                          if (await confirm(
+                            context,
+                            title: const Text('Rejet du constat'),
+                            content: const Text(
+                                'Vous êtes sur de rejeter ce constat?'),
+                            textOK: const Text('Oui'),
+                            textCancel: const Text('Annuler'),
+                          )) {
                             var res = await context
                                 .read<IncendiesViewModel>()
                                 .update(vol.id!, "Rejeté");
-                            list.removeAt(list.indexOf(vol));
-                            //log("res : " + res.toString());
+                            log("res : " + res.toString());
                             if (res == true) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                     content: Text(
-                                        'Incendie  modifier avec succés ! ')),
+                                        'Incendie modifier avec succés ! ')),
                               );
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                     content: Text(
-                                        'Erreur de validation de l\'incendie  ! ')),
+                                        'Erreur de validation de l\'incendie ! ')),
                               );
                             }
                           }

@@ -24,17 +24,17 @@ DataRow ClientVolDataRow(
       DataCell(SelectableText(
         vol.date!,
         maxLines: 1,
-        //overflow: TextOverflow.ellipsis,
+        showCursor: true,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           color: secondaryColor,
         ),
       )),
       DataCell(
-        Text(
+        SelectableText(
           'Nouvelle declaration de vol de la part du client ' + vol.codeClient!,
           maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+          showCursor: true,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: secondaryColor,
@@ -43,26 +43,28 @@ DataRow ClientVolDataRow(
       ),
       vol.status! != "En cours de traitement"
           ? DataCell(
-              Container(
-                child: Text(
-                  vol.status!,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: kPageColor,
+              Expanded(
+                child: Container(
+                  child: Text(
+                    vol.status!,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: kPageColor,
+                    ),
                   ),
-                ),
-                height: 30,
-                width: SizeConfig.screenWidth,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: vol.status! == "En cours de traitement"
-                      ? Colors.blue
-                      : vol.status! == "Traité"
-                          ? Colors.green
-                          : Colors.red,
-                  borderRadius: BorderRadius.circular(8),
+                  height: 30,
+                  //width: SizeConfig.screenWidth,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: vol.status! == "En cours de traitement"
+                        ? Colors.blue
+                        : vol.status! == "Traité"
+                            ? Colors.green
+                            : Colors.red,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
               ),
             )
@@ -98,12 +100,19 @@ DataRow ClientVolDataRow(
                     Expanded(
                       child: InkWell(
                         onTap: () async {
-                          if (await confirm(context)) {
+                          if (await confirm(
+                            context,
+                            title: const Text('Marqué constat comme terminé'),
+                            content: const Text(
+                                'Vous êtes sur de valider ce constat?'),
+                            textOK: const Text('Oui'),
+                            textCancel: const Text('Annuler'),
+                          )) {
                             var res = await context
                                 .read<VolViewModel>()
                                 .updateVol(vol.id!, "Traité");
-                            list.removeAt(list.indexOf(vol));
-                            //log("res : " + res.toString());
+
+                            log("res : " + res.toString());
                             if (res == true) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
@@ -113,8 +122,8 @@ DataRow ClientVolDataRow(
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                    content:
-                                        Text('Erreur de validation de Vol ! ')),
+                                    content: Text(
+                                        'Erreur de validation de constat ! ')),
                               );
                             }
                           }
@@ -140,12 +149,18 @@ DataRow ClientVolDataRow(
                     Expanded(
                       child: InkWell(
                         onTap: () async {
-                          if (await confirm(context)) {
+                          if (await confirm(
+                            context,
+                            title: const Text('Rejet du constat'),
+                            content: const Text(
+                                'Vous êtes sur de rejeter ce constat?'),
+                            textOK: const Text('Oui'),
+                            textCancel: const Text('Annuler'),
+                          )) {
                             var res = await context
                                 .read<VolViewModel>()
                                 .updateVol(vol.id!, "Rejeté");
-                            list.removeAt(list.indexOf(vol));
-                            //log("res : " + res.toString());
+                            log("res : " + res.toString());
                             if (res == true) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
@@ -155,8 +170,8 @@ DataRow ClientVolDataRow(
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                    content:
-                                        Text('Erreur de validation de Vol ! ')),
+                                    content: Text(
+                                        'Erreur de validation de constat ! ')),
                               );
                             }
                           }

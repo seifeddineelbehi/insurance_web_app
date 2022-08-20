@@ -12,24 +12,33 @@ import '../../../../viewModel/home_view_model.dart';
 import '../../Constats/details_constat_screen.dart';
 
 DataRow listConstatClientDataRow(ConstatModel constat, BuildContext context) {
-  final Nomclient1 = constat.vehiculeA?.nomAssure!;
-  final Prenomclient1 = constat.vehiculeA?.prenomAssure!;
-  final Nomclient2 = constat.vehiculeB?.nomAssure!;
-  final Prenomclient2 = constat.vehiculeB?.prenomAssure!;
+  final Nomclient1 = constat.vehiculeA?.nomAssure.toString();
+  final Prenomclient1 = constat.vehiculeA?.prenomAssure.toString();
+  final Nomclient2 = constat.vehiculeB?.nomAssure.toString();
+  final Prenomclient2 = constat.vehiculeB?.prenomAssure.toString();
   return DataRow(
     onSelectChanged: (selected) {
       if (selected!) {
-        log('row-selected: ${constat.temoins!.isEmpty}');
+        log('row-selected: ${constat.temoins!.isEmpty.toString()}');
         context.beamToNamed(DetailsConstat.path + "/" + constat.id!,
             data: constat);
       }
     },
     cells: [
+      DataCell(SelectableText(
+        constat.dateAccident!,
+        maxLines: 1,
+        showCursor: true,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          color: secondaryColor,
+        ),
+      )),
       DataCell(
         SelectableText(
           '$Nomclient1' + ' ' + '$Prenomclient1',
           maxLines: 1,
-          //overflow: TextOverflow.ellipsis,
+          showCursor: true,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: secondaryColor,
@@ -40,44 +49,37 @@ DataRow listConstatClientDataRow(ConstatModel constat, BuildContext context) {
         SelectableText(
           '$Nomclient2' + ' ' + '$Prenomclient2',
           maxLines: 1,
-          //overflow: TextOverflow.ellipsis,
+          showCursor: true,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: secondaryColor,
           ),
         ),
       ),
-      DataCell(SelectableText(
-        constat.dateAccident!,
-        maxLines: 1,
-        //overflow: TextOverflow.ellipsis,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          color: secondaryColor,
-        ),
-      )),
       constat.status! != "En cours de traitement"
           ? DataCell(
-              Container(
-                child: Text(
-                  constat.status!,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: kPageColor,
+              Expanded(
+                child: Container(
+                  child: Text(
+                    constat.status!,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: kPageColor,
+                    ),
                   ),
-                ),
-                height: 30,
-                width: SizeConfig.screenWidth,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: constat.status! == "En cours de traitement"
-                      ? Colors.blue
-                      : constat.status! == "Traité"
-                          ? Colors.green
-                          : Colors.red,
-                  borderRadius: BorderRadius.circular(8),
+                  height: 30,
+                  //width: SizeConfig.screenWidth,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: constat.status! == "En cours de traitement"
+                        ? Colors.blue
+                        : constat.status! == "Traité"
+                            ? Colors.green
+                            : Colors.red,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
               ),
             )
@@ -114,17 +116,27 @@ DataRow listConstatClientDataRow(ConstatModel constat, BuildContext context) {
                     Expanded(
                       child: InkWell(
                         onTap: () async {
-                          if (await confirm(context)) {
+                          if (await confirm(
+                            context,
+                            title: const Text('Marqué constat comme terminé'),
+                            content: const Text(
+                                'Vous êtes sur de valider ce constat?'),
+                            textOK: const Text('Oui'),
+                            textCancel: const Text('Annuler'),
+                          )) {
                             var res = await context
                                 .read<HomeViewModel>()
                                 .updateConstat(constat.id!, "Traité");
-                            //log("res : " + res.toString());
+
+                            log("res : " + res.toString());
                             if (res == true) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                     content: Text(
                                         'Constat modifier avec succés ! ')),
                               );
+
+                              //context.beamToReplacementNamed(MainScreen.path);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
@@ -155,22 +167,24 @@ DataRow listConstatClientDataRow(ConstatModel constat, BuildContext context) {
                     Expanded(
                       child: InkWell(
                         onTap: () async {
-                          if (await confirm(context)) {
+                          if (await confirm(
+                            context,
+                            title: const Text('Rejet du constat'),
+                            content: const Text(
+                                'Vous êtes sur de rejeter ce constat?'),
+                            textOK: const Text('Oui'),
+                            textCancel: const Text('Annuler'),
+                          )) {
                             var res = await context
                                 .read<HomeViewModel>()
                                 .updateConstat(constat.id!, "Rejeté");
-                            //log("res : " + res.toString());
+
+                            log("res : " + res.toString());
                             if (res == true) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                     content: Text(
                                         'Constat modifier avec succés ! ')),
-                              );
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text(
-                                        'Erreur de validation de constat ! ')),
                               );
                             }
                           }

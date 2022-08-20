@@ -12,8 +12,7 @@ import '../../../../utils/size_config.dart';
 import '../../../../viewModel/brise_view_model.dart';
 import '../../Constats/details_constat_screen.dart';
 
-DataRow ClientBriseDataRow(
-    BriseGlaceModel vol, BuildContext context, List<BriseGlaceModel> list) {
+DataRow ClientBriseDataRow(BriseGlaceModel vol, BuildContext context) {
   return DataRow(
     onSelectChanged: (selected) {
       if (selected!) {
@@ -32,7 +31,7 @@ DataRow ClientBriseDataRow(
       )),
       DataCell(
         Text(
-          'Declaration de Brise glace archivé de la part du client ' +
+          'Nouvelle declaration de Brise glace de la part du client ' +
               vol.codeClient!,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -100,13 +99,20 @@ DataRow ClientBriseDataRow(
                     Expanded(
                       child: InkWell(
                         onTap: () async {
-                          if (await confirm(context)) {
+                          if (await confirm(
+                            context,
+                            title: const Text('Marqué constat comme terminé'),
+                            content: const Text(
+                                'Vous êtes sur de valider ce constat?'),
+                            textOK: const Text('Oui'),
+                            textCancel: const Text('Annuler'),
+                          )) {
                             var res = await context
                                 .read<BriseViewModel>()
                                 .updateBrise(vol.id!, "Traité");
-                            list.removeAt(list.indexOf(vol));
-                            //log("res : " + res.toString());
-                            if (res == true) {
+
+                            if (res.toString() == 'true') {
+                              log('dkhal houni');
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                     content: Text(
@@ -116,7 +122,7 @@ DataRow ClientBriseDataRow(
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                     content: Text(
-                                        'Erreur de validation de Brise glace  ! ')),
+                                        'Erreur de validation de brise glace ! ')),
                               );
                             }
                           }
@@ -142,23 +148,24 @@ DataRow ClientBriseDataRow(
                     Expanded(
                       child: InkWell(
                         onTap: () async {
-                          if (await confirm(context)) {
+                          if (await confirm(
+                            context,
+                            title: const Text('Rejet du constat'),
+                            content: const Text(
+                                'Vous êtes sur de rejeter ce constat?'),
+                            textOK: const Text('Oui'),
+                            textCancel: const Text('Annuler'),
+                          )) {
                             var res = await context
                                 .read<BriseViewModel>()
                                 .updateBrise(vol.id!, "Rejeté");
-                            list.removeAt(list.indexOf(vol));
-                            //log("res : " + res.toString());
-                            if (res == true) {
+
+                            log("res : " + res.toString());
+                            if (res.toString() == 'true') {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                     content: Text(
-                                        'Brise glace modifier avec succés ! ')),
-                              );
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text(
-                                        'Erreur de validation de Brise glace  ! ')),
+                                        'Constat modifier avec succés ! ')),
                               );
                             }
                           }

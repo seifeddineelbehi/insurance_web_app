@@ -184,50 +184,48 @@ class _DetailClientState extends State<DetailClient> {
                   thickness: 10,
                 ),
               if (widget.client.constatsAccidents!.isNotEmpty)
-                Expanded(
-                  child: DataTable2(
-                    showCheckboxColumn: false,
-                    columnSpacing: defaultPadding,
-                    minWidth: 600,
-                    columns: [
-                      DataColumn(
-                        label: Text(
-                          "Client 1",
-                          style: kMediumTitleWhiteBold.copyWith(
-                            color: bgColor,
-                          ),
+                DataTable2(
+                  showCheckboxColumn: false,
+                  columnSpacing: defaultPadding,
+                  minWidth: 600,
+                  columns: [
+                    DataColumn(
+                      label: Text(
+                        "Client 1",
+                        style: kMediumTitleWhiteBold.copyWith(
+                          color: bgColor,
                         ),
                       ),
-                      DataColumn(
-                        label: Text(
-                          "Client 2",
-                          style: kMediumTitleWhiteBold.copyWith(
-                            color: bgColor,
-                          ),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          "Date",
-                          style: kMediumTitleWhiteBold.copyWith(
-                            color: bgColor,
-                          ),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          "Etat",
-                          style: kMediumTitleWhiteBold.copyWith(
-                            color: bgColor,
-                          ),
-                        ),
-                      ),
-                    ],
-                    rows: List.generate(
-                      widget.client.constatsAccidents!.length,
-                      (index) => listConstatClientDataRow(
-                          widget.client.constatsAccidents![index], context),
                     ),
+                    DataColumn(
+                      label: Text(
+                        "Client 2",
+                        style: kMediumTitleWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        "Date",
+                        style: kMediumTitleWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        "Etat",
+                        style: kMediumTitleWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                  rows: List.generate(
+                    widget.client.constatsAccidents!.length,
+                    (index) => listConstatClientDataRow(
+                        widget.client.constatsAccidents![index], context),
                   ),
                 ),
               if (widget.client.vols!.isNotEmpty)
@@ -250,42 +248,40 @@ class _DetailClientState extends State<DetailClient> {
                   thickness: 10,
                 ),
               if (widget.client.vols!.isNotEmpty)
-                Expanded(
-                  child: DataTable2(
-                    showCheckboxColumn: false,
-                    columnSpacing: defaultPadding,
-                    minWidth: 600,
-                    columns: [
-                      DataColumn(
-                        label: Text(
-                          "Date",
-                          style: kMediumTableColumnWhiteBold.copyWith(
-                            color: bgColor,
-                          ),
+                DataTable2(
+                  showCheckboxColumn: false,
+                  columnSpacing: defaultPadding,
+                  minWidth: 600,
+                  columns: [
+                    DataColumn(
+                      label: Text(
+                        "Date",
+                        style: kMediumTableColumnWhiteBold.copyWith(
+                          color: bgColor,
                         ),
                       ),
-                      DataColumn(
-                        label: Text(
-                          "Description",
-                          style: kMediumTableColumnWhiteBold.copyWith(
-                            color: bgColor,
-                          ),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          "Etat",
-                          style: kMediumTableColumnWhiteBold.copyWith(
-                            color: bgColor,
-                          ),
-                        ),
-                      ),
-                    ],
-                    rows: List.generate(
-                      widget.client.vols!.length,
-                      (index) => ClientVolDataRow(widget.client.vols![index],
-                          context, widget.client.vols!),
                     ),
+                    DataColumn(
+                      label: Text(
+                        "Description",
+                        style: kMediumTableColumnWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        "Etat",
+                        style: kMediumTableColumnWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                  rows: List.generate(
+                    widget.client.vols!.length,
+                    (index) => ClientVolDataRow(widget.client.vols![index],
+                        context, widget.client.vols!),
                   ),
                 ),
               if (widget.client.incendies!.isNotEmpty)
@@ -308,44 +304,42 @@ class _DetailClientState extends State<DetailClient> {
                   thickness: 10,
                 ),
               if (widget.client.incendies!.isNotEmpty)
-                Expanded(
-                  child: DataTable2(
-                    showCheckboxColumn: false,
-                    columnSpacing: defaultPadding,
-                    minWidth: 600,
-                    columns: [
-                      DataColumn(
-                        label: Text(
-                          "Date",
-                          style: kMediumTableColumnWhiteBold.copyWith(
-                            color: bgColor,
-                          ),
+                DataTable2(
+                  showCheckboxColumn: false,
+                  columnSpacing: defaultPadding,
+                  minWidth: 600,
+                  columns: [
+                    DataColumn(
+                      label: Text(
+                        "Date",
+                        style: kMediumTableColumnWhiteBold.copyWith(
+                          color: bgColor,
                         ),
                       ),
-                      DataColumn(
-                        label: Text(
-                          "Description",
-                          style: kMediumTableColumnWhiteBold.copyWith(
-                            color: bgColor,
-                          ),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          "Actions",
-                          style: kMediumTableColumnWhiteBold.copyWith(
-                            color: bgColor,
-                          ),
-                        ),
-                      ),
-                    ],
-                    rows: List.generate(
-                      widget.client.incendies!.length,
-                      (index) => ClientIncendiesDataRow(
-                          widget.client.incendies![index],
-                          context,
-                          widget.client.incendies!),
                     ),
+                    DataColumn(
+                      label: Text(
+                        "Description",
+                        style: kMediumTableColumnWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text(
+                        "Actions",
+                        style: kMediumTableColumnWhiteBold.copyWith(
+                          color: bgColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                  rows: List.generate(
+                    widget.client.incendies!.length,
+                    (index) => ClientIncendiesDataRow(
+                        widget.client.incendies![index],
+                        context,
+                        widget.client.incendies!),
                   ),
                 ),
               if (widget.client.briseGlace!.isNotEmpty)
@@ -368,8 +362,7 @@ class _DetailClientState extends State<DetailClient> {
                   thickness: 10,
                 ),
               if (widget.client.briseGlace!.isNotEmpty)
-                Expanded(
-                    child: DataTable2(
+                DataTable2(
                   showCheckboxColumn: false,
                   columnSpacing: defaultPadding,
                   minWidth: 600,
@@ -406,7 +399,7 @@ class _DetailClientState extends State<DetailClient> {
                         context,
                         widget.client.briseGlace!),
                   ),
-                )),
+                ),
             ],
           ),
         ),

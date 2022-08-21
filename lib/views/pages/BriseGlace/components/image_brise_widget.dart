@@ -1,5 +1,9 @@
+import 'dart:html';
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:printing/printing.dart';
 
 import '../../../../model/vehicule_model.dart';
 import '../../../../utils/apis.dart';
@@ -53,8 +57,11 @@ class _CustomBriseImageState extends State<CustomBriseImage> {
               SizedBox(
                 height: SizeConfig.safeBlockVertical * 0.5,
               ),
-              Image.network(
-                widget.image,
+              //ImageElement(src: widget.image),
+              Image(
+                image: NetworkImage(
+                  widget.image,
+                ),
               ),
             ],
           ),

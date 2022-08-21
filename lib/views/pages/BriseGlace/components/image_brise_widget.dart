@@ -1,7 +1,6 @@
 import 'dart:html';
-import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:printing/printing.dart';
 
@@ -57,12 +56,14 @@ class _CustomBriseImageState extends State<CustomBriseImage> {
               SizedBox(
                 height: SizeConfig.safeBlockVertical * 0.5,
               ),
-              //ImageElement(src: widget.image),
               Image(
                 image: NetworkImage(
                   widget.image,
                 ),
               ),
+              /*Image.network(
+                widget.image,
+              ),*/
             ],
           ),
         ),

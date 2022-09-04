@@ -1,7 +1,9 @@
+import 'dart:developer';
+
 import 'package:beamer/beamer.dart';
 import 'package:confirm_dialog/confirm_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_template/views/pages/BriseGlace/brise_glace_screen.dart';
 import 'package:flutter_template/views/pages/Incendies/incendie_screen.dart';
 import 'package:flutter_template/views/pages/Vols/vols_screen.dart';
@@ -14,6 +16,7 @@ import 'package:flutter_template/views/pages/archive/Incendies/incendies_traite.
 import 'package:flutter_template/views/pages/archive/VolTraite/vols_rejete.dart';
 import 'package:flutter_template/views/pages/main/components/side_menu_item_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:pusher_channels_flutter/pusher_channels_flutter.dart';
 
 import '../../../../Services/shared_preferences_service.dart';
 import '../../../../utils/constants.dart';
@@ -36,6 +39,13 @@ class _SideMenuState extends State<SideMenu> {
   final PrefService _prefService = PrefService();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initPusher();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
@@ -47,30 +57,30 @@ class _SideMenuState extends State<SideMenu> {
             leading:
                 const Icon(Icons.history, color: Colors.blueGrey, size: 16),
             title: const Text(
-              'Récent',
+              'Sinistre récent',
               style: TextStyle(color: secondaryColor),
             ),
             children: [
               DrawerListTile(
-                title: "Constat non traité",
+                title: "Matériels",
                 icon: Icons.apps,
                 press: () => {Beamer.of(context).beamToNamed(MainScreen.path)},
               ),
               DrawerListTile(
-                title: "Vols non traité",
+                title: "Vols ",
                 icon: Icons.apps,
                 press: () =>
                     Beamer.of(context).beamToNamed(VolNonTraiteScreen.path),
               ),
               DrawerListTile(
-                title: "Incendies non traité",
+                title: "Incendies ",
                 icon: Icons.apps,
                 press: () {
                   Beamer.of(context).beamToNamed(IncendiesNonTraiteScreen.path);
                 },
               ),
               DrawerListTile(
-                title: "Brises glaces non traité",
+                title: "Bris de glaces ",
                 icon: Icons.apps,
                 press: () => Beamer.of(context)
                     .beamToNamed(BriseGlaceNonTraiteScreen.path),
@@ -87,33 +97,33 @@ class _SideMenuState extends State<SideMenu> {
           ExpansionTile(
             leading: const Icon(Icons.event, color: Colors.blueGrey, size: 16),
             title: const Text(
-              'Archive Traité',
+              'Sinistre traité',
               style: TextStyle(color: secondaryColor),
             ),
             children: [
               DrawerListTile(
-                title: "Archive Constat Traité",
+                title: "Matériels",
                 icon: Icons.access_time,
                 press: () {
                   Beamer.of(context).beamToNamed(ConstatTraite.path);
                 },
               ),
               DrawerListTile(
-                title: "Archive Vols Traité",
+                title: " Vols ",
                 icon: Icons.access_time,
                 press: () {
                   Beamer.of(context).beamToNamed(VolTraite.path);
                 },
               ),
               DrawerListTile(
-                title: "Archive Incendies Traité",
+                title: " Incendies ",
                 icon: Icons.access_time,
                 press: () {
                   Beamer.of(context).beamToNamed(IncendiesTraite.path);
                 },
               ),
               DrawerListTile(
-                title: "Archive Brise glace Traité",
+                title: " Bris de glace ",
                 icon: Icons.access_time,
                 press: () {
                   Beamer.of(context).beamToNamed(BriseTraite.path);
@@ -124,33 +134,33 @@ class _SideMenuState extends State<SideMenu> {
           ExpansionTile(
             leading: const Icon(Icons.event, color: Colors.blueGrey, size: 16),
             title: const Text(
-              'Archive Rejeté',
+              'Sinistre rejeté',
               style: TextStyle(color: secondaryColor),
             ),
             children: [
               DrawerListTile(
-                title: "Archive Constat Rejeté",
+                title: " Matériels ",
                 icon: Icons.access_time,
                 press: () {
                   Beamer.of(context).beamToNamed(ConstatRejete.path);
                 },
               ),
               DrawerListTile(
-                title: "Archive Vols Rejeté",
+                title: " Vols ",
                 icon: Icons.access_time,
                 press: () {
                   Beamer.of(context).beamToNamed(VolRejete.path);
                 },
               ),
               DrawerListTile(
-                title: "Archive Incendies Rejeté",
+                title: " Incendies ",
                 icon: Icons.access_time,
                 press: () {
                   Beamer.of(context).beamToNamed(IncendiesRejete.path);
                 },
               ),
               DrawerListTile(
-                title: "Archive Brise glace Rejeté",
+                title: " Bris de glace ",
                 icon: Icons.access_time,
                 press: () {
                   Beamer.of(context).beamToNamed(BriseRejete.path);
@@ -178,17 +188,17 @@ class _SideMenuState extends State<SideMenu> {
               size: 16,
             ),
             title: const Text(
-              "Statestique",
+              "Statistique",
               style: TextStyle(color: secondaryColor),
             ),
           ),
           DrawerListTile(
-            title: "Log out",
+            title: "Se déconnecter",
             icon: Icons.logout,
             press: () async {
               if (await confirm(context,
-                  title: const Text('Se deconnecté'),
-                  content: const Text('Vous êtes sur de se deconnecter?'),
+                  title: const Text('Se déconnecter'),
+                  content: const Text('Vous êtes sur de se déconnecter?'),
                   textOK: const Text('Oui'),
                   textCancel: const Text('Annuler'))) {
                 _prefService.removeCache("token");
@@ -202,5 +212,28 @@ class _SideMenuState extends State<SideMenu> {
         ],
       ),
     );
+  }
+
+  void initPusher() async {
+    try {
+      log('teeeest 0');
+      PusherChannelsFlutter pusher = PusherChannelsFlutter.getInstance();
+      log('teeeest 1');
+
+      await pusher.init(
+          apiKey: 'e5936ef5024909d4f2d3',
+          cluster: 'eu',
+          onEvent: (event) {
+            log("Got channel event: $event");
+          });
+      log('teeeest');
+      await pusher.subscribe(
+        channelName: 'assurance',
+      );
+
+      await pusher.connect();
+    } catch (e) {
+      log("ERROR: $e");
+    }
   }
 }

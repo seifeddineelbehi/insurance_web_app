@@ -410,6 +410,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "pusher_channels_flutter",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/pusher_channels_flutter-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "qr",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/qr-3.0.1",
       "packageUri": "lib/",
@@ -590,7 +596,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2022-08-18T13:36:59.319795Z",
+  "generated": "2022-09-04T17:24:04.734939Z",
   "generator": "pub",
   "generatorVersion": "2.17.6"
 }

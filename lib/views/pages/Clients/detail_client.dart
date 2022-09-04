@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:beamer/beamer.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_template/model/client_data.dart';
@@ -15,7 +18,7 @@ import '../../../viewModel/clients_screen_view_model.dart';
 import 'components/custom_detail_widget.dart';
 
 class DetailClient extends StatefulWidget {
-  static const path = "/home/clientDetail";
+  static const path = "/Clients/clientDetail";
   final String clientId;
   final ClientModel client;
 
@@ -41,10 +44,19 @@ class _DetailClientState extends State<DetailClient> {
               const SizedBox(
                 height: defaultPadding,
               ),
-              Center(
-                child: Text(
-                  "Detail Client",
-                  style: kBigTitleBlackBold,
+              ListTile(
+                leading: IconButton(
+                  icon: const Icon(Icons.arrow_back_ios_outlined, size: 16),
+                  onPressed: () {
+                    log('+++++++++++' + context.beamingHistory.toString());
+                    context.beamBack();
+                  },
+                ),
+                title: Center(
+                  child: Text(
+                    "Detail Client",
+                    style: kBigTitleBlackBold,
+                  ),
                 ),
               ),
               const SizedBox(
@@ -404,6 +416,9 @@ class _DetailClientState extends State<DetailClient> {
                         widget.client.briseGlace![index], context),
                   ),
                 ),
+              const SizedBox(
+                height: defaultPadding * 2,
+              ),
             ],
           ),
         ),

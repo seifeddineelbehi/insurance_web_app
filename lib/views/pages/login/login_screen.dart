@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_template/utils/constants.dart';
+import 'package:flutter_template/utils/responsive.dart';
 import 'package:flutter_template/utils/size_config.dart';
 import 'package:flutter_template/viewModel/login_view_model.dart';
 import 'package:flutter_template/views/pages/main/main_screen.dart';
@@ -70,21 +71,9 @@ class Menu extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 30),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              _menuItem(title: ' '),
-              _menuItem(title: ' '),
-              _menuItem(title: ' '),
-            ],
-          ),
-          Row(
-            children: [
-              _menuItem(title: 'Se connecter', isActive: true),
-            ],
-          ),
+          _menuItem(title: 'Se connecter', isActive: true),
         ],
       ),
     );
@@ -165,65 +154,90 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
-          child: SizedBox(
-            width: SizeConfig.screenWidth * 0.35,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const Text(
-                  'Une assurance \npour chaque détail de votre vie',
-                  style: TextStyle(
-                    fontSize: 45,
-                    fontWeight: FontWeight.bold,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: SizedBox(
+                width: Responsive.isDesktop(context)
+                    ? SizeConfig.screenWidth * 0.35
+                    : SizeConfig.screenWidth,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      'Une assurance \npour chaque détail de votre vie',
+                      style: TextStyle(
+                          fontSize: Responsive.isDesktop(context) ? 45 : 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    const Text(
+                      "Se connecter au tableau de board",
+                      style: TextStyle(
+                          color: Colors.black54, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Image.asset(
+                      'assets/images/illustration-2.png',
+                      width: 300,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            if (Responsive.isDesktop(context))
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.only(left: 15, right: 20),
+                  child: Image.asset(
+                    'assets/images/logoGat.png',
+                    width: SizeConfig.screenWidth * 0.3,
                   ),
                 ),
-                const SizedBox(
-                  height: 30,
+              ),
+            if (Responsive.isDesktop(context))
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: MediaQuery.of(context).size.height / 6),
+                  child: SizedBox(
+                    width: SizeConfig.screenWidth * 0.35,
+                    child: _formLogin(context),
+                  ),
                 ),
-                const Text(
-                  "Se connecter à \nGat tableau de board",
-                  style: TextStyle(
-                      color: Colors.black54, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Image.asset(
-                  'assets/images/illustration-2.png',
-                  width: 300,
-                ),
-              ],
+              )
+          ],
+        ),
+        if (!Responsive.isDesktop(context))
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: Image.asset(
+                'assets/images/logoGat.png',
+                width: SizeConfig.screenWidth,
+              ),
             ),
           ),
-        ),
-
-        Expanded(
-          child: Image.asset(
-            'assets/images/logoGat.png',
-            width: SizeConfig.screenWidth * 0.3,
-          ),
-        ),
-        // MediaQuery.of(context).size.width >= 1300 //Responsive
-        //     ? Image.asset(
-        //         'images/illustration-1.png',
-        //         width: 300,
-        //       )
-        //     : SizedBox(),
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: MediaQuery.of(context).size.height / 6),
-            child: SizedBox(
-              width: SizeConfig.screenWidth * 0.35,
-              child: _formLogin(context),
+        if (!Responsive.isDesktop(context))
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                  vertical: MediaQuery.of(context).size.height / 6),
+              child: SizedBox(
+                width: SizeConfig.screenWidth,
+                child: _formLogin(context),
+              ),
             ),
-          ),
-        )
+          )
       ],
     );
   }

@@ -30,6 +30,8 @@ class ConstatTable extends StatefulWidget {
 class _ConstatTableState extends State<ConstatTable> {
   TextEditingController controller = TextEditingController();
   String _searchResult = "";
+  String _searchValue = "";
+  bool taped = false;
   List<ConstatModel> constatFiltered = [];
   List<ConstatModel> AllConstats = [];
 
@@ -108,13 +110,10 @@ class _ConstatTableState extends State<ConstatTable> {
                                 ),
                                 suffixIcon: InkWell(
                                   onTap: () {
-                                    constatFiltered = constatFiltered
-                                        .where((constat) => constat
-                                            .dateAccident!
-                                            .contains(_searchResult))
-                                        .toList();
-                                    log('constatFiltered length : ' +
-                                        constatFiltered.length.toString());
+                                    setState(() {
+                                      taped = true;
+                                      _searchResult = _searchValue;
+                                    });
                                   },
                                   child: Container(
                                     padding: const EdgeInsets.all(
@@ -134,7 +133,7 @@ class _ConstatTableState extends State<ConstatTable> {
                               onChanged: (value) {
                                 setState(() {
                                   log('searche value :' + value);
-                                  _searchResult = value;
+                                  _searchValue = value;
                                 });
                               }),
                           trailing: IconButton(
@@ -149,64 +148,73 @@ class _ConstatTableState extends State<ConstatTable> {
                           ),
                         ),
                         DataTable2(
-                          empty: Text(
-                            "Aucun constat pour le moment",
-                            style: kMediumTitleWhiteBold.copyWith(
-                              color: kPrimaryColor,
-                            ),
-                          ),
-                          showCheckboxColumn: false,
-                          columnSpacing: defaultPadding,
-                          minWidth: 600,
-                          columns: [
-                            DataColumn(
-                              label: Text(
-                                "Date",
-                                style: kMediumTableColumnWhiteBold.copyWith(
-                                  color: bgColor,
-                                ),
+                            empty: Text(
+                              "Aucun constat pour le moment",
+                              style: kMediumTitleWhiteBold.copyWith(
+                                color: kPrimaryColor,
                               ),
                             ),
-                            DataColumn(
-                              label: Text(
-                                "Client 1",
-                                style: kMediumTableColumnWhiteBold.copyWith(
-                                  color: bgColor,
+                            showCheckboxColumn: false,
+                            columnSpacing: defaultPadding,
+                            minWidth: 600,
+                            columns: [
+                              DataColumn(
+                                label: Text(
+                                  "Date",
+                                  style: kMediumTableColumnWhiteBold.copyWith(
+                                    color: bgColor,
+                                  ),
                                 ),
                               ),
-                            ),
-                            DataColumn(
-                              label: Text(
-                                "Client 2",
-                                style: kMediumTableColumnWhiteBold.copyWith(
-                                  color: bgColor,
+                              DataColumn(
+                                label: Text(
+                                  "Client 1",
+                                  style: kMediumTableColumnWhiteBold.copyWith(
+                                    color: bgColor,
+                                  ),
                                 ),
                               ),
-                            ),
-                            DataColumn(
-                              label: Text(
-                                "Actions",
-                                style: kMediumTableColumnWhiteBold.copyWith(
-                                  color: bgColor,
+                              DataColumn(
+                                label: Text(
+                                  "Client 2",
+                                  style: kMediumTableColumnWhiteBold.copyWith(
+                                    color: bgColor,
+                                  ),
                                 ),
                               ),
+                              DataColumn(
+                                label: Text(
+                                  "Actions",
+                                  style: kMediumTableColumnWhiteBold.copyWith(
+                                    color: bgColor,
+                                  ),
+                                ),
+                              ),
+                            ],
+                            rows:
+                                //taped ?
+                                List.generate(
+                                    constatFiltered
+                                        .where((element) => element
+                                            .dateAccident!
+                                            .contains(_searchResult))
+                                        .toList()
+                                        .length, (index) {
+                              return listConstatDataRow(
+                                  constatFiltered
+                                      .where((element) => element.dateAccident!
+                                          .contains(_searchResult))
+                                      .toList()[index],
+                                  context,
+                                  constatFiltered);
+                            })
+                            /* : List.generate(constatFiltered.length, (index) {
+                                  return listConstatDataRow(
+                                      constatFiltered[index],
+                                      context,
+                                      constatFiltered);
+                                }),*/
                             ),
-                          ],
-                          rows: List.generate(
-                              constatFiltered
-                                  .where((element) => element.dateAccident!
-                                      .contains(_searchResult))
-                                  .toList()
-                                  .length, (index) {
-                            return listConstatDataRow(
-                                constatFiltered
-                                    .where((element) => element.dateAccident!
-                                        .contains(_searchResult))
-                                    .toList()[index],
-                                context,
-                                constatFiltered);
-                          }),
-                        ),
                       ],
                     );
                   } else {

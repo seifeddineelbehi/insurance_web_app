@@ -69,7 +69,7 @@ class _VolRejeteState extends State<VolRejete> {
                       padding: const EdgeInsets.all(defaultPadding),
                       child: Column(
                         children: [
-                          const Header(headerTitle: "Archive Vols Traités"),
+                          const Header(headerTitle: "Archive Vols Rejetés"),
                           const SizedBox(height: defaultPadding),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,

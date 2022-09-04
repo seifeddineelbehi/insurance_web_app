@@ -51,7 +51,7 @@ class _VolTableState extends State<VolTable> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Liste des vols recentes",
+            "Vols récents",
             style: kMediumTitleBlackBold.copyWith(
               color: Colors.blueGrey,
             ),

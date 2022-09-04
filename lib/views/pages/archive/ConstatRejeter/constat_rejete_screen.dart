@@ -69,7 +69,8 @@ class _ConstatRejeteState extends State<ConstatRejete> {
                       padding: const EdgeInsets.all(defaultPadding),
                       child: Column(
                         children: [
-                          const Header(headerTitle: "Archive Constat Rejeté"),
+                          const Header(
+                              headerTitle: "Archive Matériels Rejetés"),
                           const SizedBox(height: defaultPadding),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,

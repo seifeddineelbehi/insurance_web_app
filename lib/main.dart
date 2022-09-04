@@ -166,6 +166,7 @@ class _MyAppState extends State<MyApp> {
         DetailClient.path + "/:id": (context, state, data) {
           final clientId = state.pathParameters['id']!;
           final info = (data as ClientModel);
+
           return BeamPage(
             key: ValueKey('client-$clientId'),
             title: 'Detail Client',

@@ -38,7 +38,7 @@ class _ConstatRejeteTableState extends State<ConstatRejeteTable> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Constat Rejeté",
+            "Matériels Rejeté",
             style: kMediumTitleBlackBold.copyWith(
               color: Colors.blueGrey,
             ),

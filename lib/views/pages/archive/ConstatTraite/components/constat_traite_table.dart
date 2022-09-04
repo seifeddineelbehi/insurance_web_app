@@ -37,7 +37,7 @@ class _ConstatTraiteTableState extends State<ConstatTraiteTable> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Constat Traité",
+            "Materiels Traités",
             style: kMediumTitleBlackBold.copyWith(
               color: Colors.blueGrey,
             ),

@@ -42,7 +42,7 @@ class _VolsTraiteTableState extends State<VolsTraiteTable> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Constat Traité",
+            "Vols traités",
             style: kMediumTitleBlackBold.copyWith(
               color: Colors.blueGrey,
             ),

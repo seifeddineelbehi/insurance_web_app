@@ -68,7 +68,8 @@ class _ConstatTraiteState extends State<ConstatTraite> {
                       padding: const EdgeInsets.all(defaultPadding),
                       child: Column(
                         children: [
-                          const Header(headerTitle: "Archive Constat Traité"),
+                          const Header(
+                              headerTitle: "Archive Materiels Traités"),
                           const SizedBox(height: defaultPadding),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,

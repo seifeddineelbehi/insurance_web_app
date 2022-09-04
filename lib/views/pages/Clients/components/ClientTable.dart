@@ -201,7 +201,11 @@ DataRow ClientDataRow(ClientModel client, BuildContext context) {
     onSelectChanged: (selected) {
       if (selected!) {
         log('row-selected: ${client.id}');
-        context.beamToNamed(DetailClient.path + "/" + client.id!, data: client);
+        context.beamToNamed(DetailClient.path + "/" + client.id!,
+            data: client,
+            beamBackOnPop: true,
+            popBeamLocationOnPop: true,
+            replaceRouteInformation: true);
       }
     },
     cells: [

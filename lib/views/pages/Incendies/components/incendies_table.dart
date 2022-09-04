@@ -53,7 +53,7 @@ class _IncendieTableState extends State<IncendieTable> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Liste des vols recentes",
+            "Incendies récents",
             style: kMediumTitleBlackBold.copyWith(
               color: Colors.blueGrey,
             ),

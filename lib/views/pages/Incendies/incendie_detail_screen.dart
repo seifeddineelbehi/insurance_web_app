@@ -86,7 +86,10 @@ class _DetailIncendieState extends State<DetailIncendie> {
                                         client.refAssurance!);
                                     context.beamToNamed(
                                         DetailClient.path + "/" + client.id!,
-                                        data: client);
+                                        data: client,
+                                        beamBackOnPop: true,
+                                        popBeamLocationOnPop: true,
+                                        replaceRouteInformation: true);
                                   },
                                   child: CustomDetailIncendieWidget(
                                       title: "Client : ",

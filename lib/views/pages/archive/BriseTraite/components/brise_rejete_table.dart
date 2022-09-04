@@ -44,7 +44,7 @@ class _BrisesRejeteTableState extends State<BrisesRejeteTable> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Brises Glaces Traité",
+            "Bris de Glaces Rejetés",
             style: kMediumTitleBlackBold.copyWith(
               color: Colors.blueGrey,
             ),

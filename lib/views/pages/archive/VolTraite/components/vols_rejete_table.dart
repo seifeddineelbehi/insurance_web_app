@@ -42,7 +42,7 @@ class _VolsRejeteTableState extends State<VolsRejeteTable> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Constat Traité",
+            "Vols rejetés",
             style: kMediumTitleBlackBold.copyWith(
               color: Colors.blueGrey,
             ),

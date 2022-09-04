@@ -55,7 +55,7 @@ class _BriseTableState extends State<BriseTable> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Liste des vols recentes",
+            "Bris de glaces récents",
             style: kMediumTitleBlackBold.copyWith(
               color: Colors.blueGrey,
             ),
@@ -182,7 +182,7 @@ class _BriseTableState extends State<BriseTable> {
                     );
                   } else {
                     return Text(
-                      "Aucun declaration de brise glace pour le moment",
+                      "Aucun declaration de bris de glace pour le moment",
                       style: kMediumTitleWhiteBold.copyWith(
                         color: kPrimaryColor,
                       ),

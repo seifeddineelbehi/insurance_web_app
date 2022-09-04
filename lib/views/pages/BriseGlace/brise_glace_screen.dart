@@ -72,7 +72,7 @@ class _BriseGlaceNonTraiteScreenState extends State<BriseGlaceNonTraiteScreen> {
                     padding: const EdgeInsets.all(defaultPadding),
                     child: Column(
                       children: [
-                        const Header(headerTitle: "Liste des brise glaces"),
+                        const Header(headerTitle: "Liste des bris de glaces"),
                         const SizedBox(height: defaultPadding),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,

@@ -69,7 +69,7 @@ class _BriseTraiteState extends State<BriseTraite> {
                       child: Column(
                         children: [
                           const Header(
-                              headerTitle: "Archive Brises glaces Traités"),
+                              headerTitle: "Archive bris de glaces traités"),
                           const SizedBox(height: defaultPadding),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,

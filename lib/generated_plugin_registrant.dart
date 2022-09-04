@@ -8,6 +8,7 @@
 
 import 'package:file_saver/file_saver_web.dart';
 import 'package:printing/printing_web.dart';
+import 'package:pusher_channels_flutter/pusher_channels_flutter_web.dart';
 import 'package:shared_preferences_web/shared_preferences_web.dart';
 
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -16,6 +17,7 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 void registerPlugins(Registrar registrar) {
   FileSaverWeb.registerWith(registrar);
   PrintingPlugin.registerWith(registrar);
+  PusherChannelsFlutterWeb.registerWith(registrar);
   SharedPreferencesPlugin.registerWith(registrar);
   registrar.registerMessageHandler();
 }

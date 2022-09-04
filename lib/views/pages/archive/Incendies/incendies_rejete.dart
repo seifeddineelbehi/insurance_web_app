@@ -71,7 +71,7 @@ class _IncendiesRejeteState extends State<IncendiesRejete> {
                       child: Column(
                         children: [
                           const Header(
-                              headerTitle: "Archive Incendies Traités"),
+                              headerTitle: "Archive Incendies Rejetés"),
                           const SizedBox(height: defaultPadding),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,

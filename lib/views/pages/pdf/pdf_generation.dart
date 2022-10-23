@@ -44,7 +44,7 @@ Future<void> PDFGeneration(ConstatModel constat) async {
         ),
         build: (Context context) => Column(
               children: [
-                //PDFHeader(constat),
+                // PDFHeader(constat),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -53,35 +53,28 @@ Future<void> PDFGeneration(ConstatModel constat) async {
                       child: Container(
                         decoration: BoxDecoration(
                           color: const PdfColor.fromInt(0xFFFFFF54),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          border: Border.all(
-                              color: const PdfColor.fromInt(0x8A000000)),
+                          borderRadius: const BorderRadius.all(Radius.circular(10)),
+                          border: Border.all(color: const PdfColor.fromInt(0x8A000000)),
                         ),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Center(
-                                child: Text(
-                                  'Vehicule A',
-                                  style: TextStyle(
-                                      color: const PdfColor.fromInt(0xFF607D8B),
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
-                                ),
-                              ),
-                              Divider(
-                                thickness: 4,
-                              ),
-                              PDFSocieteAssurance(vehicule: constat.vehiculeA!),
-                              PDFIdentiteConducteur(
-                                  vehicule: constat.vehiculeA!),
-                              PDFAssure(vehicule: constat.vehiculeA!),
-                              PDFIdentiteVehicule(vehicule: constat.vehiculeA!),
-                              //PDFCustomPointChoc(image: imagePointChocVehiculeA),
-                              PDFCustomDegat(vehicule: constat.vehiculeA!),
-                              PDFCustomObservation(vehicule: constat.vehiculeA!)
-                            ]),
+                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                          Center(
+                            child: Text(
+                              'Vehicule A',
+                              style: TextStyle(
+                                  color: const PdfColor.fromInt(0xFF607D8B), fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                          ),
+                          Divider(
+                            thickness: 4,
+                          ),
+                          PDFSocieteAssurance(vehicule: constat.vehiculeA!),
+                          PDFIdentiteConducteur(vehicule: constat.vehiculeA!),
+                          PDFAssure(vehicule: constat.vehiculeA!),
+                          PDFIdentiteVehicule(vehicule: constat.vehiculeA!),
+                          //PDFCustomPointChoc(image: imagePointChocVehiculeA),
+                          PDFCustomDegat(vehicule: constat.vehiculeA!),
+                          PDFCustomObservation(vehicule: constat.vehiculeA!)
+                        ]),
                       ),
                     ),
                     Flexible(
@@ -96,43 +89,35 @@ Future<void> PDFGeneration(ConstatModel constat) async {
                       child: Container(
                         decoration: BoxDecoration(
                           color: const PdfColor.fromInt(0xFF52CE6E),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          border: Border.all(
-                              color: const PdfColor.fromInt(0x8A000000)),
+                          borderRadius: const BorderRadius.all(Radius.circular(10)),
+                          border: Border.all(color: const PdfColor.fromInt(0x8A000000)),
                         ),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                          Center(
+                            child: Text(
+                              'Vehicule B',
+                              style: TextStyle(
+                                color: const PdfColor.fromInt(0xFF607D8B),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Divider(
+                            thickness: 4,
+                          ),
+                          ListView(
                             children: [
-                              Center(
-                                child: Text(
-                                  'Vehicule B',
-                                  style: TextStyle(
-                                    color: const PdfColor.fromInt(0xFF607D8B),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Divider(
-                                thickness: 4,
-                              ),
-                              ListView(
-                                children: [
-                                  PDFSocieteAssurance(
-                                      vehicule: constat.vehiculeB!),
-                                  PDFIdentiteConducteur(
-                                      vehicule: constat.vehiculeB!),
-                                  PDFAssure(vehicule: constat.vehiculeB!),
-                                  PDFIdentiteVehicule(
-                                      vehicule: constat.vehiculeB!),
-                                  //PDFCustomPointChoc(image: imagePointChocVehiculeB),
-                                  PDFCustomDegat(vehicule: constat.vehiculeB!),
-                                  PDFCustomObservation(
-                                      vehicule: constat.vehiculeB!),
-                                  //PDFCustomSignature( image: imageSignatureVehiculeB),
-                                ],
-                              )
-                            ]),
+                              PDFSocieteAssurance(vehicule: constat.vehiculeB!),
+                              PDFIdentiteConducteur(vehicule: constat.vehiculeB!),
+                              PDFAssure(vehicule: constat.vehiculeB!),
+                              PDFIdentiteVehicule(vehicule: constat.vehiculeB!),
+                              //PDFCustomPointChoc(image: imagePointChocVehiculeB),
+                              PDFCustomDegat(vehicule: constat.vehiculeB!),
+                              PDFCustomObservation(vehicule: constat.vehiculeB!),
+                              //PDFCustomSignature( image: imageSignatureVehiculeB),
+                            ],
+                          )
+                        ]),
                       ),
                     ),
                   ],
@@ -142,9 +127,7 @@ Future<void> PDFGeneration(ConstatModel constat) async {
             ),
         pageFormat: PdfPageFormat.a4),
   );
-  AnchorElement(
-      href:
-          "data:application/octet-stream;charset=utf-16le;base64,${base64.encode(await pdf.save())}")
+  AnchorElement(href: "data:application/octet-stream;charset=utf-16le;base64,${base64.encode(await pdf.save())}")
     ..setAttribute("download", "example.pdf")
     ..click();
 

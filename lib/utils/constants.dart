@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/utils/size_config.dart';
+import 'package:flutter_template/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 //******************** Colors *************************
@@ -7,11 +8,12 @@ import 'package:google_fonts/google_fonts.dart';
 const kPrimaryColor = Color(0xFFF44749);
 const kSecondaryColor = Color(0xFFFFEECE);
 const kPageColor = Color(0xFFFFFAFA);
-const kBackgroundColor = Color(0xFFBDBCBC);
+const kBackgroundColor = Color(0xFFF3F3F3);
 const kTextColor = Color(0xFF333333);
 const kInscriptionColor = Color(0xFFFFBA37);
 const kVehiculeAColor = Color(0xFFFFFF54);
 const kVehiculeBColor = Color(0xFF52CE6E);
+const kDrawerItemSelectedColor = Color(0xFFF44749);
 
 const kRejeteColor = Color(0xFFF44749);
 const kTraiteColor = Color(0xFF52CE6E);
@@ -22,7 +24,7 @@ const secondaryColor = Color(0xFF2A2D3E);
 const bgColor = Color(0xFF212332);
 
 const defaultPadding = 16.0;
-var cardDetailConstatBorderThikness = SizeConfig.safeBlockHorizontal * 0.5;
+var cardDetailConstatBorderThikness = SizeConfig.safeBlockHorizontal * 0.2;
 //******************** Text Styles *************************
 
 var kBigTitleBlackBold = GoogleFonts.poppins(
@@ -71,6 +73,12 @@ var kSmallTitleWhiteSemiBold = GoogleFonts.poppins(
 var kSmallTitleBlackBold = GoogleFonts.poppins(
   color: const Color(0xFF333333),
   fontWeight: FontWeight.bold,
+  fontSize: 16.0,
+);
+
+var kDrawerText = GoogleFonts.poppins(
+  color: secondaryColor,
+  fontWeight: FontWeight.w600,
   fontSize: 16.0,
 );
 
@@ -189,4 +197,34 @@ var kRedRoundedButtonStyle = ElevatedButton.styleFrom(
     fontWeight: FontWeight.w600,
     fontSize: 16,
   ),
+);
+
+var kSmallTitleWhiteBold = GoogleFonts.poppins(
+  color: const Color(0xFFFFFFFF),
+  fontWeight: FontWeight.bold,
+  fontSize: 16.2,
+);
+
+var kBigTextBlackBold = GoogleFonts.poppins(
+  color: Palette.textColor,
+  fontWeight: FontWeight.w600,
+  fontSize: 16,
+);
+
+var kBigTextBlack = GoogleFonts.poppins(
+  color: Palette.textSecondaryColor,
+  fontWeight: FontWeight.w600,
+  fontSize: 14,
+);
+
+var kMediumTextBlackBold = GoogleFonts.poppins(
+  color: Palette.textColor,
+  fontWeight: FontWeight.w600,
+  fontSize: 14,
+);
+
+var kMediumTextBlack = GoogleFonts.poppins(
+  color: Palette.textSecondaryColor,
+  fontWeight: FontWeight.w600,
+  fontSize: 12,
 );

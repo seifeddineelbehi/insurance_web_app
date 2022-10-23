@@ -49,17 +49,17 @@ class _IncendiesRejeteState extends State<IncendiesRejete> {
         child: Scaffold(
           backgroundColor: kBackgroundColor,
           key: context.read<MenuController>().scaffoldKey,
-          drawer: SideMenu(role),
+          drawer: SideMenu(role, "Sinistre_rejeter_incendie"),
           body: SafeArea(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // We want this side menu only for large screen
-                if (Responsive.isDesktop(context))
+                if (Responsive.isDesktop(context) || Responsive.isTablet(context))
                   Expanded(
                     // default flex = 1
                     // and it takes 1/6 part of the screen
-                    child: SideMenu(role),
+                    child: SideMenu(role, "Sinistre_rejeter_incendie"),
                   ),
                 Expanded(
                   // It takes 5/6 part of the screen
@@ -70,8 +70,7 @@ class _IncendiesRejeteState extends State<IncendiesRejete> {
                       padding: const EdgeInsets.all(defaultPadding),
                       child: Column(
                         children: [
-                          const Header(
-                              headerTitle: "Archive Incendies Rejetés"),
+                          const Header(headerTitle: "Archive Incendies Rejetés"),
                           const SizedBox(height: defaultPadding),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,

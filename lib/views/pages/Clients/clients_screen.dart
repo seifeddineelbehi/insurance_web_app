@@ -54,7 +54,7 @@ class _ClientDashboardState extends State<ClientDashboard> {
       child: Scaffold(
         backgroundColor: kBackgroundColor,
         key: context.read<MenuController>().scaffoldKey,
-        drawer: SideMenu(role),
+        drawer: SideMenu(role, "Clients"),
         body: SafeArea(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +64,7 @@ class _ClientDashboardState extends State<ClientDashboard> {
                 Expanded(
                   // default flex = 1
                   // and it takes 1/6 part of the screen
-                  child: SideMenu(role),
+                  child: SideMenu(role, "Clients"),
                 ),
               const Expanded(
                 // It takes 5/6 part of the screen

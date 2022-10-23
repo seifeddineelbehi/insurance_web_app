@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_template/utils/responsive.dart';
 import 'package:flutter_template/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,14 +16,23 @@ class CustomConstatHeaderDetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var kDetailBigText = Responsive.isDesktop(context)
+        ? kBigTextBlackBold
+        : Responsive.isTablet(context)
+            ? kBigTextBlackBold
+            : kMediumTextBlackBold;
+    var kDetailSmallText = Responsive.isDesktop(context)
+        ? kBigTextBlack
+        : Responsive.isTablet(context)
+            ? kBigTextBlack
+            : kMediumTextBlack;
+
     return Container(
       //width: SizeConfig.safeBlockHorizontal,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(
-            width: cardDetailConstatBorderThikness,
-            color: kCardConstatDetailBordeColor),
+        border: Border.all(width: cardDetailConstatBorderThikness, color: kCardConstatDetailBordeColor),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
@@ -42,11 +52,7 @@ class CustomConstatHeaderDetailWidget extends StatelessWidget {
               title,
               maxLines: 1,
               showCursor: true,
-              style: GoogleFonts.poppins(
-                color: Palette.textColor,
-                fontWeight: FontWeight.w600,
-                fontSize: SizeConfig.kDefaultSize * 2,
-              ),
+              style: kDetailBigText,
             ),
             SizedBox(
               height: SizeConfig.safeBlockVertical * 0.5,
@@ -55,11 +61,7 @@ class CustomConstatHeaderDetailWidget extends StatelessWidget {
               text,
               maxLines: 1,
               showCursor: true,
-              style: GoogleFonts.poppins(
-                color: Palette.textSecondaryColor,
-                fontWeight: FontWeight.w600,
-                fontSize: SizeConfig.kDefaultSize * 1.75,
-              ),
+              style: kDetailSmallText,
             ),
           ],
         ),

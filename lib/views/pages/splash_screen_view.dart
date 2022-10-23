@@ -37,8 +37,12 @@ class _SplashScreenState extends State<SplashScreen> {
             context.read<HomeViewModel>().setrole(value.toString());
           }
         });
+        String result =
+            Uri.base.toString().substring(Uri.base.toString().indexOf('//') + 2, Uri.base.toString().length);
+        result = result.toString().substring(result.toString().indexOf('/'), result.toString().length);
+
         //context.read<HomeViewModel>().getAllConstatNonTraite();
-        return context.beamToNamed(MainScreen.path);
+        return context.beamToNamed(result);
       } else {
         return context.beamToNamed(LoginPage.path);
       }

@@ -54,54 +54,69 @@ class ConstatInfoCardGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 16),
-      child: Column(
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: CustomConstatHeaderDetailWidget(
-                    title: 'Date de l\'accident',
-                    text: constat.dateAccident.toString()),
-              ),
-              Expanded(
-                child: CustomConstatHeaderDetailWidget(
-                    title: 'Heure', text: constat.heureAccident.toString()),
-              ),
-              Expanded(
-                child: CustomConstatHeaderDetailWidget(
-                    title: 'Lieu', text: constat.lieuAccident.toString()),
-              ),
-              Expanded(
-                child: CustomConstatHeaderDetailWidget(
-                    title: 'Blessés même leger',
-                    text: constat.blesse.toString()),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Expanded(
-                flex: 2,
-                child: CustomConstatHeaderDetailWidget(
-                    title: 'Dégats materiels',
-                    text: constat.degatMateriel.toString()),
-              ),
-              /*ConstatHeaderInfoCard(
+      child: (Responsive.isDesktop(context) || Responsive.isTablet(context))
+          ? Column(
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: CustomConstatHeaderDetailWidget(
+                          title: 'Date de l\'accident', text: constat.dateAccident.toString()),
+                    ),
+                    Expanded(
+                      child: CustomConstatHeaderDetailWidget(title: 'Heure', text: constat.heureAccident.toString()),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: CustomConstatHeaderDetailWidget(title: 'Lieu', text: constat.lieuAccident.toString()),
+                    ),
+                    Expanded(
+                      child:
+                          CustomConstatHeaderDetailWidget(title: 'Blessés même leger', text: constat.blesse.toString()),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: CustomConstatHeaderDetailWidget(
+                          title: 'Dégats materiels', text: constat.degatMateriel.toString()),
+                    ),
+                    /*ConstatHeaderInfoCard(
                   title: 'Dégats materiels',
                   subTitle: constat.degatMateriel.toString(),
                   icon: Icons.car_rental),*/
-              Expanded(
-                flex: 4,
-                child: CustomTemoinsHeaderDetailWidget(
-                    title: 'Temoins', temoins: constat.temoins!),
+                    Expanded(
+                      flex: 4,
+                      child: CustomTemoinsHeaderDetailWidget(title: 'Temoins', temoins: constat.temoins!),
+                    ),
+                  ],
+                )
+              ],
+            )
+          : Flexible(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  CustomConstatHeaderDetailWidget(title: 'Date de l\'accident', text: constat.dateAccident.toString()),
+                  const SizedBox(height: defaultPadding / 2),
+                  CustomConstatHeaderDetailWidget(title: 'Heure', text: constat.heureAccident.toString()),
+                  const SizedBox(height: defaultPadding / 2),
+                  CustomConstatHeaderDetailWidget(title: 'Lieu', text: constat.lieuAccident.toString()),
+                  const SizedBox(height: defaultPadding / 2),
+                  CustomConstatHeaderDetailWidget(title: 'Blessés même leger', text: constat.blesse.toString()),
+                  const SizedBox(height: defaultPadding / 2),
+                  CustomConstatHeaderDetailWidget(title: 'Dégats materiels', text: constat.degatMateriel.toString()),
+                  const SizedBox(height: defaultPadding / 2),
+                  CustomTemoinsHeaderDetailWidget(title: 'Temoins', temoins: constat.temoins!),
+                  const SizedBox(height: defaultPadding / 2),
+                ],
               ),
-            ],
-          )
-        ],
-      ),
+            ),
     );
   }
 }

@@ -30,8 +30,7 @@ class _LoginPageState extends State<LoginPage> {
     _prefService.readCache("token").then((value) {
       print("login screen cache token : " + value.toString());
       if (value != null) {
-        return Timer(const Duration(seconds: 2),
-            () => context.beamToNamed(MainScreen.path));
+        return Timer(const Duration(seconds: 2), () => context.beamToNamed(MainScreen.path));
       }
     });
     super.initState();
@@ -45,8 +44,7 @@ class _LoginPageState extends State<LoginPage> {
       child: Scaffold(
         //backgroundColor: const Color(0xFFf5f5f5),
         body: ListView(
-          padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width / 8),
+          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width / 8),
           children: const [
             Menu(),
             // MediaQuery.of(context).size.width >= 980
@@ -98,8 +96,7 @@ class Menu extends StatelessWidget {
             ),
             isActive
                 ? Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
                     decoration: BoxDecoration(
                       color: Colors.deepPurple,
                       borderRadius: BorderRadius.circular(30),
@@ -162,26 +159,21 @@ class _BodyState extends State<Body> {
           children: [
             Expanded(
               child: SizedBox(
-                width: Responsive.isDesktop(context)
-                    ? SizeConfig.screenWidth * 0.35
-                    : SizeConfig.screenWidth,
+                width: Responsive.isDesktop(context) ? SizeConfig.screenWidth * 0.35 : SizeConfig.screenWidth,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
                       'Une assurance \npour chaque détail de votre vie',
-                      style: TextStyle(
-                          fontSize: Responsive.isDesktop(context) ? 45 : 20,
-                          fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: Responsive.isDesktop(context) ? 45 : 20, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 30,
                     ),
                     const Text(
                       "Se connecter au tableau de board",
-                      style: TextStyle(
-                          color: Colors.black54, fontWeight: FontWeight.bold),
+                      style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 10,
@@ -207,8 +199,7 @@ class _BodyState extends State<Body> {
             if (Responsive.isDesktop(context))
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: MediaQuery.of(context).size.height / 6),
+                  padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height / 6),
                   child: SizedBox(
                     width: SizeConfig.screenWidth * 0.35,
                     child: _formLogin(context),
@@ -230,8 +221,7 @@ class _BodyState extends State<Body> {
         if (!Responsive.isDesktop(context))
           Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.height / 6),
+              padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height / 6),
               child: SizedBox(
                 width: SizeConfig.screenWidth,
                 child: _formLogin(context),
@@ -339,28 +329,32 @@ class _BodyState extends State<Body> {
               ],
             ),
             child: ElevatedButton(
-              child: const SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: Center(child: Text("Sign In"))),
-              onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  _formKey.currentState!.save();
-                  await context
-                      .read<LoginViewModel>()
-                      .Login(_username, _password);
-                  var response = context.read<LoginViewModel>().loggedin;
-                  log("---------------------------------------" +
-                      response.toString());
-                  if (response == true) {
-                    context.beamToNamed(MainScreen.path);
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('invalid credentials')),
-                    );
-                  }
-                }
-              },
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: Center(
+                  child: !context.watch<LoginViewModel>().Loading
+                      ? const Text("Sign In")
+                      : const CircularProgressIndicator(),
+                ),
+              ),
+              onPressed: !context.watch<LoginViewModel>().Loading
+                  ? () async {
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
+                        await context.read<LoginViewModel>().Login(_username, _password);
+                        var response = context.read<LoginViewModel>().loggedin;
+                        log("---------------------------------------" + response.toString());
+                        if (response == true) {
+                          context.beamToNamed(MainScreen.path);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('invalid credentials')),
+                          );
+                        }
+                      }
+                    }
+                  : () {},
               style: ElevatedButton.styleFrom(
                 primary: Colors.deepPurple,
                 onPrimary: Colors.white,

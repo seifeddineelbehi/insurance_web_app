@@ -1,6 +1,7 @@
 //end points
 
-const String localURL = "http://127.0.0.1:8000";
+// const String localURL = "http://127.0.0.1:8000";
+const String localURL = "https://assurance-backend.herokuapp.com";
 //const String localURL = "https://assurance-backend.herokuapp.com";
 //const String localURL = "https://assurance-backend.softago.tech";
 

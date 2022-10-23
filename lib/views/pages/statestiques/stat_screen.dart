@@ -58,7 +58,7 @@ class _StatScreenState extends State<StatScreen> {
       child: Scaffold(
         backgroundColor: kBackgroundColor,
         key: context.read<MenuController>().scaffoldKey,
-        drawer: SideMenu(role),
+        drawer: SideMenu(role, "Statistique"),
         body: SafeArea(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +68,7 @@ class _StatScreenState extends State<StatScreen> {
                 Expanded(
                   // default flex = 1
                   // and it takes 1/6 part of the screen
-                  child: SideMenu(role),
+                  child: SideMenu(role, "Statistique"),
                 ),
               Expanded(
                 // It takes 5/6 part of the screen
@@ -88,15 +88,12 @@ class _StatScreenState extends State<StatScreen> {
                                 children: [
                                   //const MyFiles(),
                                   const ConstatsStat(),
-                                  if (Responsive.isMobile(context))
-                                    const SizedBox(height: defaultPadding),
-                                  if (Responsive.isMobile(context))
-                                    const VolsStat(),
+                                  if (Responsive.isMobile(context)) const SizedBox(height: defaultPadding),
+                                  if (Responsive.isMobile(context)) const VolsStat(),
                                 ],
                               ),
                             ),
-                            if (!Responsive.isMobile(context))
-                              const SizedBox(width: defaultPadding * 2),
+                            if (!Responsive.isMobile(context)) const SizedBox(width: defaultPadding * 2),
                             // On Mobile means if the screen is less than 850 we dont want to show it
                             if (!Responsive.isMobile(context))
                               const Expanded(
@@ -112,15 +109,12 @@ class _StatScreenState extends State<StatScreen> {
                               child: Column(
                                 children: [
                                   const IncendiesStat(),
-                                  if (Responsive.isMobile(context))
-                                    const SizedBox(height: defaultPadding),
-                                  if (Responsive.isMobile(context))
-                                    const BriseStat(),
+                                  if (Responsive.isMobile(context)) const SizedBox(height: defaultPadding),
+                                  if (Responsive.isMobile(context)) const BriseStat(),
                                 ],
                               ),
                             ),
-                            if (!Responsive.isMobile(context))
-                              const SizedBox(width: defaultPadding * 2),
+                            if (!Responsive.isMobile(context)) const SizedBox(width: defaultPadding * 2),
                             // On Mobile means if the screen is less than 850 we dont want to show it
                             if (!Responsive.isMobile(context))
                               const Expanded(

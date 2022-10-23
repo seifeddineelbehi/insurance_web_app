@@ -51,7 +51,7 @@ class _AdminsDashboardState extends State<AdminsDashboard> {
       child: Scaffold(
         backgroundColor: kBackgroundColor,
         key: context.read<MenuController>().scaffoldKey,
-        drawer: SideMenu(role),
+        drawer: SideMenu(role, "Administrateur"),
         body: SafeArea(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +61,7 @@ class _AdminsDashboardState extends State<AdminsDashboard> {
                 Expanded(
                   // default flex = 1
                   // and it takes 1/6 part of the screen
-                  child: SideMenu(role),
+                  child: SideMenu(role, "Administrateur"),
                 ),
               const Expanded(
                 // It takes 5/6 part of the screen
@@ -103,8 +103,7 @@ class AdminScreenBody extends StatelessWidget {
                           if (!Responsive.isDesktop(context))
                             IconButton(
                               icon: const Icon(Icons.menu),
-                              onPressed:
-                                  context.read<MenuController>().controlMenu,
+                              onPressed: context.read<MenuController>().controlMenu,
                             ),
                           Text(
                             "Liste des Administrateurs",
@@ -116,8 +115,7 @@ class AdminScreenBody extends StatelessWidget {
                               onPrimary: Colors.white,
                               padding: EdgeInsets.symmetric(
                                 horizontal: defaultPadding * 1.5,
-                                vertical: defaultPadding /
-                                    (Responsive.isMobile(context) ? 2 : 1),
+                                vertical: defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
                               ),
                             ),
                             onPressed: () {

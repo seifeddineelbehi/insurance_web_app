@@ -20,8 +20,7 @@ class IncendiesNonTraiteScreen extends StatefulWidget {
   const IncendiesNonTraiteScreen({Key? key}) : super(key: key);
 
   @override
-  _IncendiesNonTraiteScreenState createState() =>
-      _IncendiesNonTraiteScreenState();
+  _IncendiesNonTraiteScreenState createState() => _IncendiesNonTraiteScreenState();
 }
 
 class _IncendiesNonTraiteScreenState extends State<IncendiesNonTraiteScreen> {
@@ -50,17 +49,17 @@ class _IncendiesNonTraiteScreenState extends State<IncendiesNonTraiteScreen> {
       child: Scaffold(
         backgroundColor: kBackgroundColor,
         key: context.read<MenuController>().scaffoldKey,
-        drawer: SideMenu(role),
+        drawer: SideMenu(role, "Sinistre_recent_incendie"),
         body: SafeArea(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // We want this side menu only for large screen
-              if (Responsive.isDesktop(context))
+              if (Responsive.isDesktop(context) || Responsive.isTablet(context))
                 Expanded(
                   // default flex = 1
                   // and it takes 1/6 part of the screen
-                  child: SideMenu(role),
+                  child: SideMenu(role, "Sinistre_recent_incendie"),
                 ),
               Expanded(
                 // It takes 5/6 part of the screen

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_template/model/temoin_model.dart';
+import 'package:flutter_template/utils/responsive.dart';
 import 'package:flutter_template/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,6 +19,16 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var kDetailBigText = Responsive.isDesktop(context)
+        ? kBigTextBlackBold
+        : Responsive.isTablet(context)
+            ? kBigTextBlackBold
+            : kMediumTextBlackBold;
+    var kDetailSmallText = Responsive.isDesktop(context)
+        ? kBigTextBlack
+        : Responsive.isTablet(context)
+            ? kBigTextBlack
+            : kMediumTextBlack;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Container(
@@ -25,9 +36,7 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-              width: cardDetailConstatBorderThikness,
-              color: kCardConstatDetailBordeColor),
+          border: Border.all(width: cardDetailConstatBorderThikness, color: kCardConstatDetailBordeColor),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.2),
@@ -38,8 +47,7 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
           ],
         ),
         child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 22.0, vertical: 15.0),
+            padding: const EdgeInsets.symmetric(horizontal: 22.0, vertical: 15.0),
             child: Row(
               children: [
                 Column(
@@ -53,11 +61,7 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
                         children: [
                           Text(
                             title,
-                            style: GoogleFonts.poppins(
-                              color: Palette.textColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: SizeConfig.kDefaultSize * 2,
-                            ),
+                            style: kDetailBigText,
                           ),
                           SizedBox(
                             height: SizeConfig.safeBlockVertical * 0.5,
@@ -74,7 +78,7 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
                               ),
                             )
                           else
-                            for (var item in temoins) itemTemoin(item),
+                            for (var item in temoins) itemTemoin(item, kDetailSmallText),
 
                           /*ListView.builder(
                             shrinkWrap: true,
@@ -95,7 +99,7 @@ class CustomTemoinsHeaderDetailWidget extends StatelessWidget {
   }
 }
 
-Widget itemTemoin(TemoinModel temoin) {
+Widget itemTemoin(TemoinModel temoin, var kDetailSmallText) {
   return SelectableText(
     temoin.nom.toString() +
         " " +
@@ -104,10 +108,6 @@ Widget itemTemoin(TemoinModel temoin) {
         temoin.tel.toString() +
         " " +
         temoin.appartenance.toString(),
-    style: GoogleFonts.poppins(
-      color: Palette.textSecondaryColor,
-      fontWeight: FontWeight.w600,
-      fontSize: SizeConfig.kDefaultSize * 1.75,
-    ),
+    style: kDetailSmallText,
   );
 }

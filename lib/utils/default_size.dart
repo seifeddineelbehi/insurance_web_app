@@ -37,8 +37,8 @@ class DefaultSize {
           ? max(constraints.maxHeight, 700)
           : constraints.maxHeight;
 
-    var window = WidgetsBinding.instance.window;
-    _instance._pixelRatio = window.devicePixelRatio;
+    var window = WidgetsBinding.instance?.window;
+    _instance._pixelRatio = window!.devicePixelRatio;
     _instance._statusBarHeight = window.padding.top;
     _instance._bottomBarHeight = window.padding.bottom;
     _instance._textScaleFactor = window.textScaleFactor;

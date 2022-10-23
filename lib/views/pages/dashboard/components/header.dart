@@ -43,7 +43,7 @@ class _HeaderState extends State<Header> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        if (!Responsive.isDesktop(context))
+        if (!Responsive.isDesktop(context) && !Responsive.isTablet(context))
           IconButton(
             icon: const Icon(Icons.menu),
             onPressed: context.read<MenuController>().controlMenu,
@@ -53,8 +53,7 @@ class _HeaderState extends State<Header> {
             widget.headerTitle,
             style: kBigTitleBlackBold,
           ),
-        if (!Responsive.isMobile(context))
-          Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
+        if (!Responsive.isMobile(context)) Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
         //const Expanded(child: SearchField()),
         ProfileCard(
           username: username,
@@ -88,8 +87,7 @@ class ProfileCard extends StatelessWidget {
           ),
           if (!Responsive.isMobile(context))
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+              padding: const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
               child: Text(username.toString()),
             ),
         ],

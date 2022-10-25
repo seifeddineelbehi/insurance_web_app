@@ -31,7 +31,10 @@ class IncendiesTraiteTable extends StatefulWidget {
 
 class _IncendiesTraiteTableState extends State<IncendiesTraiteTable> {
   TextEditingController controller = TextEditingController();
-  String _searchResult = '';
+  String _searchResult = "";
+  String _searchValue = "";
+  bool taped = false;
+  bool empty = true;
   List<IncendiesModel> constatFiltered = [];
   List<IncendiesModel> AllConstats = [];
 
@@ -60,6 +63,52 @@ class _IncendiesTraiteTableState extends State<IncendiesTraiteTable> {
           const Divider(
             thickness: 10,
           ),
+          ListTile(
+            title: TextField(
+              controller: controller,
+              decoration: InputDecoration(
+                hintText: "Search",
+                fillColor: kPageColor,
+                filled: true,
+                border: const OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                suffixIcon: InkWell(
+                  onTap: () {
+                    setState(() {
+                      taped = true;
+                      _searchResult = _searchValue;
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(defaultPadding * 0.75),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: defaultPadding / 2),
+                    decoration: const BoxDecoration(
+                      color: const Color(0xFFFFA113),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: SvgPicture.asset("assets/icons/Search.svg"),
+                  ),
+                ),
+              ),
+              onChanged: (value) {
+                log('searche value :' + value);
+                _searchValue = value;
+              },
+            ),
+            trailing: IconButton(
+              icon: const Icon(Icons.cancel),
+              onPressed: () {
+                setState(() {
+                  controller.clear();
+                  _searchResult = '';
+                  constatFiltered = AllConstats;
+                });
+              },
+            ),
+          ),
           SizedBox(
             width: double.infinity,
             child: FutureBuilder<List<IncendiesModel>>(
@@ -69,62 +118,12 @@ class _IncendiesTraiteTableState extends State<IncendiesTraiteTable> {
                 if (snapshot.hasData &&
                     snapshot.connectionState == ConnectionState.done) {
                   if (snapshot.data!.isNotEmpty) {
+                    empty = false;
+
                     AllConstats = snapshot.data!;
                     constatFiltered = snapshot.data!;
                     return Column(
                       children: [
-                        ListTile(
-                          title: TextField(
-                              controller: controller,
-                              decoration: InputDecoration(
-                                hintText: "Search",
-                                fillColor: kPageColor,
-                                filled: true,
-                                border: const OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                ),
-                                suffixIcon: InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    padding: const EdgeInsets.all(
-                                        defaultPadding * 0.75),
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: defaultPadding / 2),
-                                    decoration: const BoxDecoration(
-                                      color: const Color(0xFFFFA113),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                    ),
-                                    child: SvgPicture.asset(
-                                        "assets/icons/Search.svg"),
-                                  ),
-                                ),
-                              ),
-                              onChanged: (value) {
-                                setState(() {
-                                  log('searche value :' + value);
-                                  _searchResult = value;
-                                  constatFiltered = constatFiltered
-                                      .where((vol) =>
-                                          vol.date!.contains(_searchResult))
-                                      .toList();
-                                  log('constatFiltered length : ' +
-                                      constatFiltered.length.toString());
-                                });
-                              }),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.cancel),
-                            onPressed: () {
-                              setState(() {
-                                controller.clear();
-                                _searchResult = '';
-                                constatFiltered = AllConstats;
-                              });
-                            },
-                          ),
-                        ),
                         DataTable2(
                           showCheckboxColumn: false,
                           columnSpacing: defaultPadding,

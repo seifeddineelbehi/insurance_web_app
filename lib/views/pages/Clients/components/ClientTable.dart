@@ -22,7 +22,10 @@ class ClientsTable extends StatefulWidget {
 class _ClientsTableState extends State<ClientsTable> {
   late Future<List<ClientModel>> fetchedClients;
   TextEditingController controller = TextEditingController();
-  String _searchResult = '';
+  String _searchResult = "";
+  String _searchValue = "";
+  bool taped = false;
+  bool empty = true;
   List<ClientModel> clientFiltered = [];
   List<ClientModel> Allclients = [];
   @override
@@ -57,6 +60,52 @@ class _ClientsTableState extends State<ClientsTable> {
           const Divider(
             thickness: 10,
           ),
+          ListTile(
+            title: TextField(
+              controller: controller,
+              decoration: InputDecoration(
+                hintText: "Search",
+                fillColor: kPageColor,
+                filled: true,
+                border: const OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                suffixIcon: InkWell(
+                  onTap: () {
+                    setState(() {
+                      taped = true;
+                      _searchResult = _searchValue;
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(defaultPadding * 0.75),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: defaultPadding / 2),
+                    decoration: const BoxDecoration(
+                      color: const Color(0xFFFFA113),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: SvgPicture.asset("assets/icons/Search.svg"),
+                  ),
+                ),
+              ),
+              onChanged: (value) {
+                log('searche value :' + value);
+                _searchValue = value;
+              },
+            ),
+            trailing: IconButton(
+              icon: const Icon(Icons.cancel),
+              onPressed: () {
+                setState(() {
+                  controller.clear();
+                  _searchResult = '';
+                  clientFiltered = Allclients;
+                });
+              },
+            ),
+          ),
           SizedBox(
             width: double.infinity,
             child: FutureBuilder<List<ClientModel>>(
@@ -65,62 +114,12 @@ class _ClientsTableState extends State<ClientsTable> {
                 if (snapshot.hasData &&
                     snapshot.connectionState == ConnectionState.done) {
                   if (snapshot.data!.isNotEmpty) {
+                    empty = false;
+
                     Allclients = snapshot.data!;
                     clientFiltered = snapshot.data!;
                     return Column(
                       children: [
-                        ListTile(
-                          title: TextField(
-                              controller: controller,
-                              decoration: InputDecoration(
-                                hintText: "Search",
-                                fillColor: kPageColor,
-                                filled: true,
-                                border: const OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                ),
-                                suffixIcon: InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    padding: const EdgeInsets.all(
-                                        defaultPadding * 0.75),
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: defaultPadding / 2),
-                                    decoration: const BoxDecoration(
-                                      color: const Color(0xFFFFA113),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                    ),
-                                    child: SvgPicture.asset(
-                                        "assets/icons/Search.svg"),
-                                  ),
-                                ),
-                              ),
-                              onChanged: (value) {
-                                setState(() {
-                                  log('searche value :' + value);
-                                  _searchResult = value;
-                                  clientFiltered = clientFiltered
-                                      .where((client) =>
-                                          client.email!.contains(_searchResult))
-                                      .toList();
-                                  log('constatFiltered length : ' +
-                                      clientFiltered.length.toString());
-                                });
-                              }),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.cancel),
-                            onPressed: () {
-                              setState(() {
-                                controller.clear();
-                                _searchResult = '';
-                                clientFiltered = Allclients;
-                              });
-                            },
-                          ),
-                        ),
                         DataTable2(
                           showCheckboxColumn: false,
                           columnSpacing: defaultPadding,

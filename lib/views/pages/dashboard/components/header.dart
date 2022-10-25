@@ -1,12 +1,15 @@
 import 'package:beamer/beamer.dart';
+import 'package:confirm_dialog/confirm_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_template/model/admin_model.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../Services/shared_preferences_service.dart';
 import '../../../../controllers/MenuController.dart';
 import '../../../../utils/constants.dart';
+import '../../../../utils/palette.dart';
 import '../../../../utils/responsive.dart';
 import '../../../../viewModel/login_view_model.dart';
 import '../../login/login_screen.dart';
@@ -53,10 +56,14 @@ class _HeaderState extends State<Header> {
             widget.headerTitle,
             style: kBigTitleBlackBold,
           ),
-        if (!Responsive.isMobile(context)) Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
+        if (!Responsive.isMobile(context))
+          Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
         //const Expanded(child: SearchField()),
-        ProfileCard(
-          username: username,
+        Expanded(
+          child: ProfileCard(
+            username: username,
+            prefService: _prefService,
+          ),
         )
       ],
     );
@@ -64,8 +71,10 @@ class _HeaderState extends State<Header> {
 }
 
 class ProfileCard extends StatelessWidget {
-  ProfileCard({Key? key, required this.username}) : super(key: key);
+  ProfileCard({Key? key, required this.username, required this.prefService})
+      : super(key: key);
   String username;
+  PrefService prefService;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -79,17 +88,91 @@ class ProfileCard extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         border: Border.all(color: Colors.white10),
       ),
-      child: Row(
-        children: [
-          Image.asset(
-            "assets/images/profile.png",
-            height: 38,
-          ),
-          if (!Responsive.isMobile(context))
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-              child: Text(username.toString()),
+      child: ExpansionTile(
+        title: Row(
+          children: [
+            Image.asset(
+              "assets/images/profile.png",
+              height: 38,
             ),
+            if (!Responsive.isMobile(context))
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+                child: Text(username.toString()),
+              ),
+          ],
+        ),
+        children: [
+          ListTile(
+            onTap: () async {
+              if (await confirm(
+                context,
+                title: Text(
+                  'Se déconnecter',
+                  style: GoogleFonts.poppins(
+                    color: secondaryColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                content: Text(
+                  'Vous êtes sur de se déconnecter?',
+                  style: GoogleFonts.poppins(
+                    color: secondaryColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                textOK: Text(
+                  'Oui',
+                  style: GoogleFonts.poppins(
+                    color: Palette.drawerItemSelectedColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                textCancel: Text(
+                  'Annuler',
+                  style: GoogleFonts.poppins(
+                    color: Palette.drawerItemSelectedColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              )) {
+                prefService.removeCache("token");
+                prefService.removeRole("role");
+                prefService.removeUsername("username");
+                context.read<LoginViewModel>().setLoggedIn(false);
+                context.beamToReplacementNamed(LoginPage.path);
+              }
+            },
+            selected: true,
+            horizontalTitleGap: 0.0,
+            leading: Container(
+              decoration: const BoxDecoration(
+                color: Palette.drawerItemSelectedColor,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(6),
+                ),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Icon(
+                  Icons.power_settings_new,
+                  color: Colors.white,
+                  size: 20,
+                ),
+              ),
+            ),
+            title: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Text(
+                "Se déconnecter",
+                style: GoogleFonts.poppins(
+                  color: secondaryColor,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

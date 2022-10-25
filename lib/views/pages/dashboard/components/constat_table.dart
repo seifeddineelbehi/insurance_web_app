@@ -32,12 +32,15 @@ class _ConstatTableState extends State<ConstatTable> {
   String _searchResult = "";
   String _searchValue = "";
   bool taped = false;
+  bool empty = true;
   List<ConstatModel> constatFiltered = [];
   List<ConstatModel> AllConstats = [];
 
   _getConstat() async {
-    HomeViewModel homeViewModel = Provider.of<HomeViewModel>(context, listen: false);
-    var Response = await ConstatService.getAllConstatNonTraite() as List<ConstatModel>;
+    HomeViewModel homeViewModel =
+        Provider.of<HomeViewModel>(context, listen: false);
+    var Response =
+        await ConstatService.getAllConstatNonTraite() as List<ConstatModel>;
     if (Response.isNotEmpty) {
       homeViewModel.setAllConstatNonTraite(Response);
       setState(() {
@@ -83,39 +86,39 @@ class _ConstatTableState extends State<ConstatTable> {
           ),
           ListTile(
             title: TextField(
-                controller: controller,
-                decoration: InputDecoration(
-                  hintText: "Search",
-                  fillColor: kPageColor,
-                  filled: true,
-                  border: const OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  suffixIcon: InkWell(
-                    onTap: () {
-                      setState(() {
-                        taped = true;
-                        _searchResult = _searchValue;
-                      });
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(defaultPadding * 0.75),
-                      margin: const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-                      decoration: const BoxDecoration(
-                        color: const Color(0xFFFFA113),
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: SvgPicture.asset("assets/icons/Search.svg"),
+              controller: controller,
+              decoration: InputDecoration(
+                hintText: "Search",
+                fillColor: kPageColor,
+                filled: true,
+                border: const OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                suffixIcon: InkWell(
+                  onTap: () {
+                    setState(() {
+                      taped = true;
+                      _searchResult = _searchValue;
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(defaultPadding * 0.75),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: defaultPadding / 2),
+                    decoration: const BoxDecoration(
+                      color: const Color(0xFFFFA113),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
+                    child: SvgPicture.asset("assets/icons/Search.svg"),
                   ),
                 ),
-                onChanged: (value) {
-                  setState(() {
-                    log('searche value :' + value);
-                    _searchValue = value;
-                  });
-                }),
+              ),
+              onChanged: (value) {
+                log('searche value :' + value);
+                _searchValue = value;
+              },
+            ),
             trailing: IconButton(
               icon: const Icon(Icons.cancel),
               onPressed: () {
@@ -132,80 +135,81 @@ class _ConstatTableState extends State<ConstatTable> {
             child: FutureBuilder<List<ConstatModel>>(
               future: context.read<HomeViewModel>().getAllConstatNonTraite(),
               builder: (context, snapshot) {
-                if (snapshot.hasData && snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.hasData &&
+                    snapshot.connectionState == ConnectionState.done) {
                   if (snapshot.data!.isNotEmpty) {
+                    empty = false;
+
                     AllConstats = snapshot.data!;
                     constatFiltered = snapshot.data!;
 
-                    return Column(
-                      children: [
-                        DataTable2(
-                            empty: Text(
-                              "Aucun constat pour le moment",
-                              style: kMediumTitleWhiteBold.copyWith(
-                                color: kPrimaryColor,
+                    return DataTable2(
+                        empty: Text(
+                          "Aucun constat pour le moment",
+                          style: kMediumTitleWhiteBold.copyWith(
+                            color: kPrimaryColor,
+                          ),
+                        ),
+                        showCheckboxColumn: false,
+                        columnSpacing: defaultPadding,
+                        minWidth: 600,
+                        columns: [
+                          DataColumn(
+                            label: Text(
+                              "Date",
+                              style: kMediumTableColumnWhiteBold.copyWith(
+                                color: bgColor,
                               ),
                             ),
-                            showCheckboxColumn: false,
-                            columnSpacing: defaultPadding,
-                            minWidth: 600,
-                            columns: [
-                              DataColumn(
-                                label: Text(
-                                  "Date",
-                                  style: kMediumTableColumnWhiteBold.copyWith(
-                                    color: bgColor,
-                                  ),
-                                ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              "Client 1",
+                              style: kMediumTableColumnWhiteBold.copyWith(
+                                color: bgColor,
                               ),
-                              DataColumn(
-                                label: Text(
-                                  "Client 1",
-                                  style: kMediumTableColumnWhiteBold.copyWith(
-                                    color: bgColor,
-                                  ),
-                                ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              "Client 2",
+                              style: kMediumTableColumnWhiteBold.copyWith(
+                                color: bgColor,
                               ),
-                              DataColumn(
-                                label: Text(
-                                  "Client 2",
-                                  style: kMediumTableColumnWhiteBold.copyWith(
-                                    color: bgColor,
-                                  ),
-                                ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              "Actions",
+                              style: kMediumTableColumnWhiteBold.copyWith(
+                                color: bgColor,
                               ),
-                              DataColumn(
-                                label: Text(
-                                  "Actions",
-                                  style: kMediumTableColumnWhiteBold.copyWith(
-                                    color: bgColor,
-                                  ),
-                                ),
-                              ),
-                            ],
-                            rows:
-                                //taped ?
-                                List.generate(
-                                    constatFiltered
-                                        .where((element) => element.dateAccident!.contains(_searchResult))
-                                        .toList()
-                                        .length, (index) {
+                            ),
+                          ),
+                        ],
+                        rows:
+                            //taped ?
+                            List.generate(
+                                constatFiltered
+                                    .where((element) => element.dateAccident!
+                                        .contains(_searchResult))
+                                    .toList()
+                                    .length, (index) {
+                          return listConstatDataRow(
+                              constatFiltered
+                                  .where((element) => element.dateAccident!
+                                      .contains(_searchResult))
+                                  .toList()[index],
+                              context,
+                              constatFiltered);
+                        })
+                        /* : List.generate(constatFiltered.length, (index) {
                               return listConstatDataRow(
-                                  constatFiltered
-                                      .where((element) => element.dateAccident!.contains(_searchResult))
-                                      .toList()[index],
+                                  constatFiltered[index],
                                   context,
                                   constatFiltered);
-                            })
-                            /* : List.generate(constatFiltered.length, (index) {
-                                  return listConstatDataRow(
-                                      constatFiltered[index],
-                                      context,
-                                      constatFiltered);
-                                }),*/
-                            ),
-                      ],
-                    );
+                            }),*/
+                        );
                   } else {
                     return Text(
                       "Aucun constat pour le moment",
@@ -228,7 +232,8 @@ class _ConstatTableState extends State<ConstatTable> {
     );
   }
 
-  DataRow listConstatDataRow(ConstatModel constat, BuildContext context, List<ConstatModel> list) {
+  DataRow listConstatDataRow(
+      ConstatModel constat, BuildContext context, List<ConstatModel> list) {
     final Nomclient1 = constat.vehiculeA?.nomAssure.toString();
     final Prenomclient1 = constat.vehiculeA?.prenomAssure.toString();
     final Nomclient2 = constat.vehiculeB?.nomAssure.toString();
@@ -237,7 +242,8 @@ class _ConstatTableState extends State<ConstatTable> {
       onSelectChanged: (selected) {
         if (selected!) {
           log('row-selected: ${constat.temoins!.isEmpty.toString()}');
-          context.beamToNamed(DetailsConstat.path + "/" + constat.id!, data: constat);
+          context.beamToNamed(DetailsConstat.path + "/" + constat.id!,
+              data: constat);
         }
       },
       cells: [
@@ -282,11 +288,16 @@ class _ConstatTableState extends State<ConstatTable> {
                 Expanded(
                   child: InkWell(
                     onTap: () {
-                      context.beamToNamed(DetailsConstat.path + "/" + constat.id!, data: constat);
+                      context.beamToNamed(
+                          DetailsConstat.path + "/" + constat.id!,
+                          data: constat);
                     },
                     child: Container(
-                      padding: const EdgeInsets.only(left: defaultPadding * 0.4, right: defaultPadding * 0.4),
-                      margin: const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+                      padding: const EdgeInsets.only(
+                          left: defaultPadding * 0.4,
+                          right: defaultPadding * 0.4),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: defaultPadding / 2),
                       decoration: const BoxDecoration(
                         color: Color(0xFFFFA113),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -305,16 +316,21 @@ class _ConstatTableState extends State<ConstatTable> {
                       if (await confirm(
                         context,
                         title: const Text('Marqué constat comme terminé'),
-                        content: const Text('Vous êtes sur de valider ce constat?'),
+                        content:
+                            const Text('Vous êtes sur de valider ce constat?'),
                         textOK: const Text('Oui'),
                         textCancel: const Text('Annuler'),
                       )) {
-                        var res = await context.read<HomeViewModel>().updateConstat(constat.id!, "Traité");
+                        var res = await context
+                            .read<HomeViewModel>()
+                            .updateConstat(constat.id!, "Traité");
 
                         log("res : " + res.toString());
                         if (res == true) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Constat modifier avec succés ! ')),
+                            const SnackBar(
+                                content:
+                                    Text('Constat modifier avec succés ! ')),
                           );
                           setState(() {
                             constatFiltered.removeAt(list.indexOf(constat));
@@ -322,14 +338,19 @@ class _ConstatTableState extends State<ConstatTable> {
                           //context.beamToReplacementNamed(MainScreen.path);
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Erreur de validation de constat ! ')),
+                            const SnackBar(
+                                content:
+                                    Text('Erreur de validation de constat ! ')),
                           );
                         }
                       }
                     },
                     child: Container(
-                      padding: const EdgeInsets.only(left: defaultPadding * 0.4, right: defaultPadding * 0.4),
-                      margin: const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+                      padding: const EdgeInsets.only(
+                          left: defaultPadding * 0.4,
+                          right: defaultPadding * 0.4),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: defaultPadding / 2),
                       decoration: const BoxDecoration(
                         color: Color(0xFF66F601),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -348,16 +369,21 @@ class _ConstatTableState extends State<ConstatTable> {
                       if (await confirm(
                         context,
                         title: const Text('Rejet du constat'),
-                        content: const Text('Vous êtes sur de rejeter ce constat?'),
+                        content:
+                            const Text('Vous êtes sur de rejeter ce constat?'),
                         textOK: const Text('Oui'),
                         textCancel: const Text('Annuler'),
                       )) {
-                        var res = await context.read<HomeViewModel>().updateConstat(constat.id!, "Rejeté");
+                        var res = await context
+                            .read<HomeViewModel>()
+                            .updateConstat(constat.id!, "Rejeté");
 
                         log("res : " + res.toString());
                         if (res == true) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Constat modifier avec succés ! ')),
+                            const SnackBar(
+                                content:
+                                    Text('Constat modifier avec succés ! ')),
                           );
                           setState(() {
                             constatFiltered.removeAt(list.indexOf(constat));
@@ -366,8 +392,11 @@ class _ConstatTableState extends State<ConstatTable> {
                       }
                     },
                     child: Container(
-                      padding: const EdgeInsets.only(left: defaultPadding * 0.4, right: defaultPadding * 0.4),
-                      margin: const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+                      padding: const EdgeInsets.only(
+                          left: defaultPadding * 0.4,
+                          right: defaultPadding * 0.4),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: defaultPadding / 2),
                       decoration: const BoxDecoration(
                         color: Color(0xFFEF040C),
                         borderRadius: BorderRadius.all(Radius.circular(10)),

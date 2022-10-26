@@ -14,7 +14,7 @@ class VolService {
 
   static Future<Object?> getAllVolsNonTraite() async {
     var token = "";
-    await VolService()._prefService.readCache("token").then((value) {
+    await VolService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
 
@@ -51,7 +51,7 @@ class VolService {
 
   static Future<Object?> getAllVolsTraite() async {
     var token = "";
-    await VolService()._prefService.readCache("token").then((value) {
+    await VolService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
 
@@ -89,7 +89,7 @@ class VolService {
 
   static Future<Object?> getAllVolsRejete() async {
     var token = "";
-    await VolService()._prefService.readCache("token").then((value) {
+    await VolService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
 
@@ -126,7 +126,7 @@ class VolService {
 
   static Future<Object?> getLength() async {
     var token = "";
-    await VolService()._prefService.readCache("token").then((value) {
+    await VolService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
     Map<String, dynamic> data = {};
@@ -164,7 +164,7 @@ class VolService {
 
   static Future<Object?> updateVols(String idVol, String response) async {
     var token = "";
-    await VolService()._prefService.readCache("token").then((value) {
+    await VolService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
     Map<String, dynamic> data = {};
@@ -186,9 +186,7 @@ class VolService {
       if (response.statusCode == 200) {
         var res = json.decode(response.body);
 
-
         return res["success"];
-
       }
       if (response.body == 'Unauthorized') {
         return false;

@@ -18,7 +18,7 @@ class SharedService {
   static Future<bool> isLoggedIn() async {
     final PrefService _prefService = PrefService();
 
-    var isKeyExist = await _prefService.readCache("token");
+    var isKeyExist = await _prefService.readToken("token");
     if (isKeyExist) {
       return true;
     } else {
@@ -28,7 +28,7 @@ class SharedService {
 
   static logout(BuildContext context) async {
     final PrefService _prefService = PrefService();
-    await _prefService.removeCache("token");
+    await _prefService.removeToken();
     context.beamToNamed(LoginPage.path);
   }
 
@@ -54,10 +54,10 @@ class SharedService {
 
   static Future<String?> getUserToken() async {
     final PrefService _prefService = PrefService();
-    var isKeyExist = await _prefService.readCache("token");
+    var isKeyExist = await _prefService.readToken("token");
 
     if (isKeyExist) {
-      var token = await _prefService.readCache("token");
+      var token = await _prefService.readToken("token");
       return token;
     }
   }

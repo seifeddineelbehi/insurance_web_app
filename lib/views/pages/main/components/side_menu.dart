@@ -117,7 +117,8 @@ class _SideMenuState extends State<SideMenu> {
                 colorScheme: const ColorScheme.light(
                   primary: Palette.drawerItemSelectedColor,
                 ), // here for open state in replacement of deprecated accentColor
-                dividerColor: Colors.transparent, // if you want to remove the border
+                dividerColor:
+                    Colors.transparent, // if you want to remove the border
               ),
               child: ExpansionTile(
                 onExpansionChanged: (expanded) {
@@ -137,7 +138,8 @@ class _SideMenuState extends State<SideMenu> {
                 },
                 key: Key(recentTile.toString()),
                 initiallyExpanded: recentTile == selectedTile,
-                leading: const Icon(Icons.history, color: Colors.blueGrey, size: 20),
+                leading:
+                    const Icon(Icons.history, color: Colors.blueGrey, size: 20),
                 title: Transform.translate(
                   offset: const Offset(-16, 0),
                   child: Text(
@@ -147,7 +149,9 @@ class _SideMenuState extends State<SideMenu> {
                 ),
                 children: [
                   DrawerListTile(
-                    active: widget.pageActive == "Sinistre_recent_materiel" ? true : false,
+                    active: widget.pageActive == "Sinistre_recent_materiel"
+                        ? true
+                        : false,
                     title: "Matériels",
                     icon: Icons.apps,
                     press: () {
@@ -158,7 +162,9 @@ class _SideMenuState extends State<SideMenu> {
                     },
                   ),
                   DrawerListTile(
-                    active: widget.pageActive == "Sinistre_recent_vol" ? true : false,
+                    active: widget.pageActive == "Sinistre_recent_vol"
+                        ? true
+                        : false,
                     title: "Vols ",
                     icon: Icons.apps,
                     press: () {
@@ -169,22 +175,28 @@ class _SideMenuState extends State<SideMenu> {
                     },
                   ),
                   DrawerListTile(
-                    active: widget.pageActive == "Sinistre_recent_incendie" ? true : false,
+                    active: widget.pageActive == "Sinistre_recent_incendie"
+                        ? true
+                        : false,
                     title: "Incendies ",
                     icon: Icons.apps,
                     press: () {
-                      Beamer.of(context).beamToNamed(IncendiesNonTraiteScreen.path);
+                      Beamer.of(context)
+                          .beamToNamed(IncendiesNonTraiteScreen.path);
                       setState(() {
                         selectedTile = 1;
                       });
                     },
                   ),
                   DrawerListTile(
-                    active: widget.pageActive == "Sinistre_recent_brise_glass" ? true : false,
+                    active: widget.pageActive == "Sinistre_recent_brise_glass"
+                        ? true
+                        : false,
                     title: "Bris de glaces ",
                     icon: Icons.apps,
                     press: () {
-                      Beamer.of(context).beamToNamed(BriseGlaceNonTraiteScreen.path);
+                      Beamer.of(context)
+                          .beamToNamed(BriseGlaceNonTraiteScreen.path);
                       setState(() {
                         selectedTile = 1;
                       });
@@ -201,7 +213,8 @@ class _SideMenuState extends State<SideMenu> {
                 colorScheme: const ColorScheme.light(
                   primary: Palette.drawerItemSelectedColor,
                 ), // here for open state in replacement of deprecated accentColor
-                dividerColor: Colors.transparent, // if you want to remove the border
+                dividerColor:
+                    Colors.transparent, // if you want to remove the border
               ),
               child: ExpansionTile(
                 onExpansionChanged: (expanded) {
@@ -221,7 +234,8 @@ class _SideMenuState extends State<SideMenu> {
                 },
                 key: Key(traiteTile.toString()),
                 initiallyExpanded: traiteTile == selectedTile,
-                leading: const Icon(Icons.event, color: Colors.blueGrey, size: 20),
+                leading:
+                    const Icon(Icons.event, color: Colors.blueGrey, size: 20),
                 title: Transform.translate(
                   offset: const Offset(-16, 0),
                   child: Text(
@@ -231,7 +245,9 @@ class _SideMenuState extends State<SideMenu> {
                 ),
                 children: [
                   DrawerListTile(
-                    active: widget.pageActive == "Sinistre_traite_materiel" ? true : false,
+                    active: widget.pageActive == "Sinistre_traite_materiel"
+                        ? true
+                        : false,
                     title: "Matériels",
                     icon: Icons.access_time,
                     press: () {
@@ -242,7 +258,9 @@ class _SideMenuState extends State<SideMenu> {
                     },
                   ),
                   DrawerListTile(
-                    active: widget.pageActive == "Sinistre_traite_vol" ? true : false,
+                    active: widget.pageActive == "Sinistre_traite_vol"
+                        ? true
+                        : false,
                     title: " Vols ",
                     icon: Icons.access_time,
                     press: () {
@@ -253,7 +271,9 @@ class _SideMenuState extends State<SideMenu> {
                     },
                   ),
                   DrawerListTile(
-                    active: widget.pageActive == "Sinistre_traite_incendie" ? true : false,
+                    active: widget.pageActive == "Sinistre_traite_incendie"
+                        ? true
+                        : false,
                     title: " Incendies ",
                     icon: Icons.access_time,
                     press: () {
@@ -264,7 +284,9 @@ class _SideMenuState extends State<SideMenu> {
                     },
                   ),
                   DrawerListTile(
-                    active: widget.pageActive == "Sinistre_traite_brisse_glace" ? true : false,
+                    active: widget.pageActive == "Sinistre_traite_brisse_glace"
+                        ? true
+                        : false,
                     title: " Bris de glace ",
                     icon: Icons.access_time,
                     press: () {
@@ -285,7 +307,8 @@ class _SideMenuState extends State<SideMenu> {
                 colorScheme: const ColorScheme.light(
                   primary: Palette.drawerItemSelectedColor,
                 ), // here for open state in replacement of deprecated accentColor
-                dividerColor: Colors.transparent, // if you want to remove the border
+                dividerColor:
+                    Colors.transparent, // if you want to remove the border
               ),
               child: ExpansionTile(
                 onExpansionChanged: (expanded) {
@@ -305,7 +328,8 @@ class _SideMenuState extends State<SideMenu> {
                 },
                 key: Key(rejeterTile.toString()),
                 initiallyExpanded: rejeterTile == selectedTile,
-                leading: const Icon(Icons.event, color: Colors.blueGrey, size: 20),
+                leading:
+                    const Icon(Icons.event, color: Colors.blueGrey, size: 20),
                 title: Transform.translate(
                   offset: const Offset(-16, 0),
                   child: Text(
@@ -316,7 +340,9 @@ class _SideMenuState extends State<SideMenu> {
                 children: [
                   DrawerListTile(
                     title: " Matériels ",
-                    active: widget.pageActive == "Sinistre_rejeter_materiel" ? true : false,
+                    active: widget.pageActive == "Sinistre_rejeter_materiel"
+                        ? true
+                        : false,
                     icon: Icons.access_time,
                     press: () {
                       Beamer.of(context).beamToNamed(ConstatRejete.path);
@@ -326,7 +352,9 @@ class _SideMenuState extends State<SideMenu> {
                     },
                   ),
                   DrawerListTile(
-                    active: widget.pageActive == "Sinistre_rejeter_vol" ? true : false,
+                    active: widget.pageActive == "Sinistre_rejeter_vol"
+                        ? true
+                        : false,
                     title: " Vols ",
                     icon: Icons.access_time,
                     press: () {
@@ -337,7 +365,9 @@ class _SideMenuState extends State<SideMenu> {
                     },
                   ),
                   DrawerListTile(
-                    active: widget.pageActive == "Sinistre_rejeter_incendie" ? true : false,
+                    active: widget.pageActive == "Sinistre_rejeter_incendie"
+                        ? true
+                        : false,
                     title: " Incendies ",
                     icon: Icons.access_time,
                     press: () {
@@ -348,7 +378,9 @@ class _SideMenuState extends State<SideMenu> {
                     },
                   ),
                   DrawerListTile(
-                    active: widget.pageActive == "Sinistre_rejeter_brisse_glass" ? true : false,
+                    active: widget.pageActive == "Sinistre_rejeter_brisse_glass"
+                        ? true
+                        : false,
                     title: " Bris de glace ",
                     icon: Icons.access_time,
                     press: () {
@@ -439,9 +471,9 @@ class _SideMenuState extends State<SideMenu> {
                   ),
                 ),
               )) {
-                _prefService.removeCache("token");
-                _prefService.removeRole("role");
-                _prefService.removeUsername("username");
+                _prefService.removeToken();
+                _prefService.removeRole();
+                _prefService.removeUsername();
                 context.read<LoginViewModel>().setLoggedIn(false);
                 context.beamToReplacementNamed(LoginPage.path);
               }

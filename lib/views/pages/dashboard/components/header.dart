@@ -137,9 +137,9 @@ class ProfileCard extends StatelessWidget {
                   ),
                 ),
               )) {
-                prefService.removeCache("token");
-                prefService.removeRole("role");
-                prefService.removeUsername("username");
+                prefService.removeToken();
+                prefService.removeRole();
+                prefService.removeUsername();
                 context.read<LoginViewModel>().setLoggedIn(false);
                 context.beamToReplacementNamed(LoginPage.path);
               }

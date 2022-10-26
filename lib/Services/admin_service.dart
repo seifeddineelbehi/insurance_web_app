@@ -1,9 +1,11 @@
 import 'dart:developer';
 import 'dart:io';
 import 'dart:convert';
+import 'dart:js_util';
 import 'package:flutter_template/Services/shared_preferences_service.dart';
 import 'package:flutter_template/Services/shared_service.dart';
 import 'package:flutter_template/model/admin_model.dart';
+import 'package:flutter_template/model/agent_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../utils/apis.dart';
@@ -49,7 +51,12 @@ class AdminService {
 
   static Future<Object?> getUserDetails() async {
     var token = "";
-    await AdminService()._prefService.readCache("token").then((value) {
+    var role = "";
+    await AdminService()._prefService.readRole().then((value) {
+      role = value.toString();
+      log('role adeazdeadeada: ' + role);
+    });
+    await AdminService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
     Map<String, String> requestHeaders = {
@@ -65,9 +72,21 @@ class AdminService {
         var res = json.decode(response.body);
 
         if (res != null) {
-          AdminModel admin = AdminModel.fromJson(res['Admin']);
-          await SharedService.registerUserName(admin.username!);
-          return admin;
+          if (role == 'Super admin') {
+            AdminModel admin = AdminModel.fromJson(res['Admin']);
+            log('username : ' + admin.username!);
+            await SharedService.registerUserName(admin.username!);
+
+            return admin;
+          }
+          if (role == 'Admin') {
+            AgentModel admin = AgentModel.fromJson(res['Admin']);
+            log('username : ' + admin.nom! + ' ' + admin.prenom!);
+            await SharedService.registerUserName(
+                admin.nom! + ' ' + admin.prenom!);
+
+            return admin;
+          }
         }
       }
     } catch (exception) {
@@ -77,7 +96,7 @@ class AdminService {
 
   static Future<Object?> AddAdmin(String endpoint, AdminModel admin) async {
     var token = "";
-    await AdminService()._prefService.readCache("token").then((value) {
+    await AdminService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
     log('admin token add admin :' + token);
@@ -114,7 +133,7 @@ class AdminService {
 
   static Future<Object?> UpdateAdmin(AdminModel admin) async {
     var token = "";
-    await AdminService()._prefService.readCache("token").then((value) {
+    await AdminService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
     log('admin token update admin :' + token);
@@ -152,7 +171,7 @@ class AdminService {
 
   static Future<Object?> getAllAdmins() async {
     var token = "";
-    await AdminService()._prefService.readCache("token").then((value) {
+    await AdminService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
 

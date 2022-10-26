@@ -18,7 +18,7 @@ class PrefService {
     _preferences.setString("username", username);
   }
 
-  Future readCache(String token) async {
+  Future readToken(String token) async {
     SharedPreferences _preferences = await SharedPreferences.getInstance();
     var cache = _preferences.getString("token");
     return cache;
@@ -38,18 +38,18 @@ class PrefService {
     return cache;
   }
 
-  Future removeCache(String token) async {
+  Future removeToken() async {
     SharedPreferences _preferences = await SharedPreferences.getInstance();
-    _preferences.remove(token);
+    _preferences.remove("token");
   }
 
-  Future removeRole(String role) async {
+  Future removeRole() async {
     SharedPreferences _preferences = await SharedPreferences.getInstance();
-    _preferences.remove(role);
+    _preferences.remove("role");
   }
 
-  Future removeUsername(String username) async {
+  Future removeUsername() async {
     SharedPreferences _preferences = await SharedPreferences.getInstance();
-    _preferences.remove(username);
+    _preferences.remove("username");
   }
 }

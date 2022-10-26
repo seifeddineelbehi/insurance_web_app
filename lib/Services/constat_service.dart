@@ -13,7 +13,7 @@ class ConstatService {
   final PrefService _prefService = PrefService();
   static Future<Object?> getAllConstatNonTraite() async {
     var token = "";
-    await ConstatService()._prefService.readCache("token").then((value) {
+    await ConstatService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
 
@@ -50,7 +50,7 @@ class ConstatService {
 
   static Future<Object?> getAllConstatTraite() async {
     var token = "";
-    await ConstatService()._prefService.readCache("token").then((value) {
+    await ConstatService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
 
@@ -88,7 +88,7 @@ class ConstatService {
 
   static Future<Object?> getAllConstatRejete() async {
     var token = "";
-    await ConstatService()._prefService.readCache("token").then((value) {
+    await ConstatService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
 
@@ -125,7 +125,7 @@ class ConstatService {
 
   static Future<Object?> getConstatLength() async {
     var token = "";
-    await ConstatService()._prefService.readCache("token").then((value) {
+    await ConstatService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
     Map<String, dynamic> data = {};
@@ -164,7 +164,7 @@ class ConstatService {
   static Future<Object?> updateConstat(
       String idAccident, String response) async {
     var token = "";
-    await ConstatService()._prefService.readCache("token").then((value) {
+    await ConstatService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
     Map<String, dynamic> data = {};

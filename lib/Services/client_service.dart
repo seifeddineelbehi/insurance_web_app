@@ -15,7 +15,7 @@ class ClientsService {
 
   static Future<Object?> getAllClients() async {
     var token = "";
-    await ClientsService()._prefService.readCache("token").then((value) {
+    await ClientsService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
 
@@ -84,7 +84,7 @@ class ClientsService {
 
   static Future<Object?> AddClient(String endpoint, ClientModel client) async {
     var token = "";
-    await ClientsService()._prefService.readCache("token").then((value) {
+    await ClientsService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
     log('admin token add client :' + token);
@@ -121,7 +121,7 @@ class ClientsService {
 
   static Future<Object?> getClientDetailsByCodeClient(String codeClient) async {
     var token = "";
-    await ClientsService()._prefService.readCache("token").then((value) {
+    await ClientsService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
     Map<String, String> requestHeaders = {

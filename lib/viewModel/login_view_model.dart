@@ -1,8 +1,10 @@
 import 'dart:developer';
+import 'dart:js_util';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_template/Services/admin_service.dart';
 import 'package:flutter_template/model/admin_model.dart';
+import 'package:flutter_template/model/agent_model.dart';
 
 import '../Services/shared_preferences_service.dart';
 import '../Services/shared_service.dart';
@@ -14,11 +16,18 @@ abstract class AdminRepository {
 
 class LoginViewModel with ChangeNotifier implements AdminRepository {
   AdminModel? _admin;
+  AgentModel? _agent;
   bool? _loading = false;
   AdminModel get admin => _admin!;
+  final PrefService _prefService = PrefService();
 
   setAdmin(AdminModel value) {
     _admin = value;
+    notifyListeners();
+  }
+
+  setAgent(AgentModel value) {
+    _agent = value;
     notifyListeners();
   }
 
@@ -77,7 +86,13 @@ class LoginViewModel with ChangeNotifier implements AdminRepository {
   getUserInformation() async {
     var admin = await AdminService.getUserDetails();
 
-    setAdmin(admin as AdminModel);
-    log(admin.username! + " getUserInformation set user");
+    if (_prefService.readRole().toString() == 'Super Admin') {
+      setAdmin(admin as AdminModel);
+      log(admin.username! + " getUserInformation set user");
+    }
+    if (_prefService.readRole().toString() == 'Admin') {
+      setAgent(admin as AgentModel);
+      log(admin.email! + " getUserInformation set user");
+    }
   }
 }

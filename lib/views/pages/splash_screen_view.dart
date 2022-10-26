@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    _prefService.readCache("token").then((value) async {
+    _prefService.readToken("token").then((value) async {
       print("splash screen cache token : " + value.toString());
       if (value != null) {
         log("valuuuuuuue : " + value);
@@ -37,9 +37,10 @@ class _SplashScreenState extends State<SplashScreen> {
             context.read<HomeViewModel>().setrole(value.toString());
           }
         });
-        String result =
-            Uri.base.toString().substring(Uri.base.toString().indexOf('//') + 2, Uri.base.toString().length);
-        result = result.toString().substring(result.toString().indexOf('/'), result.toString().length);
+        String result = Uri.base.toString().substring(
+            Uri.base.toString().indexOf('//') + 2, Uri.base.toString().length);
+        result = result.toString().substring(
+            result.toString().indexOf('/'), result.toString().length);
 
         //context.read<HomeViewModel>().getAllConstatNonTraite();
         return context.beamToNamed(result);

@@ -15,7 +15,7 @@ class IncendiesService {
 
   static Future<Object?> getAllNonTraite() async {
     var token = "";
-    await IncendiesService()._prefService.readCache("token").then((value) {
+    await IncendiesService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
 
@@ -52,7 +52,7 @@ class IncendiesService {
 
   static Future<Object?> getAllTraite() async {
     var token = "";
-    await IncendiesService()._prefService.readCache("token").then((value) {
+    await IncendiesService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
 
@@ -90,7 +90,7 @@ class IncendiesService {
 
   static Future<Object?> getAllRejete() async {
     var token = "";
-    await IncendiesService()._prefService.readCache("token").then((value) {
+    await IncendiesService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
 
@@ -127,7 +127,7 @@ class IncendiesService {
 
   static Future<Object?> getLength() async {
     var token = "";
-    await IncendiesService()._prefService.readCache("token").then((value) {
+    await IncendiesService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
     Map<String, dynamic> data = {};
@@ -165,7 +165,7 @@ class IncendiesService {
 
   static Future<Object?> update(String id, String response) async {
     var token = "";
-    await IncendiesService()._prefService.readCache("token").then((value) {
+    await IncendiesService()._prefService.readToken("token").then((value) {
       token = value.toString();
     });
     Map<String, dynamic> data = {};
@@ -187,9 +187,7 @@ class IncendiesService {
       if (response.statusCode == 200) {
         var res = json.decode(response.body);
 
-
         return res["success"];
-
       }
       if (response.body == 'Unauthorized') {
         return false;

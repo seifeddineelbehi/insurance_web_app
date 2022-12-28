@@ -21,7 +21,9 @@ class DetailsConstat extends StatefulWidget {
   static const path = "/home/detailConstat";
   final String ConstatId;
   final ConstatModel constat;
-  const DetailsConstat({Key? key, required this.ConstatId, required this.constat}) : super(key: key);
+  const DetailsConstat(
+      {Key? key, required this.ConstatId, required this.constat})
+      : super(key: key);
 
   @override
   _DetailsConstatState createState() => _DetailsConstatState();
@@ -45,14 +47,15 @@ class _DetailsConstatState extends State<DetailsConstat> {
       body: SafeArea(
         child: SingleChildScrollView(
           primary: false,
-          padding: (Responsive.isMobile(context)) || (Responsive.isMobileLarge(context))
-              ? const EdgeInsets.fromLTRB(
-                  defaultPadding * 3, defaultPadding * 2, defaultPadding * 3, defaultPadding * 2)
-              : const EdgeInsets.fromLTRB(
-                  defaultPadding * 7, defaultPadding * 5, defaultPadding * 7, defaultPadding * 5),
+          padding: (Responsive.isMobile(context)) ||
+                  (Responsive.isMobileLarge(context))
+              ? const EdgeInsets.fromLTRB(defaultPadding * 3,
+                  defaultPadding * 2, defaultPadding * 3, defaultPadding * 2)
+              : const EdgeInsets.fromLTRB(defaultPadding * 7,
+                  defaultPadding * 5, defaultPadding * 7, defaultPadding * 5),
           child: Container(
-            padding: const EdgeInsets.fromLTRB(
-                defaultPadding * 3, defaultPadding * 4, defaultPadding * 3, defaultPadding * 4),
+            padding: const EdgeInsets.fromLTRB(defaultPadding * 3,
+                defaultPadding * 4, defaultPadding * 3, defaultPadding * 4),
             decoration: const BoxDecoration(
               color: kPageColor,
               borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -60,10 +63,12 @@ class _DetailsConstatState extends State<DetailsConstat> {
             child: Column(
               children: [
                 if (widget.constat.status! == "En cours de traitement")
-                  (Responsive.isDesktop(context)) || (Responsive.isTablet(context))
+                  (Responsive.isDesktop(context)) ||
+                          (Responsive.isTablet(context))
                       ? ButtonsRow(kButtonsText, context)
                       : ButtonsColumn(kButtonsText, context),
-                if (widget.constat.status! == "En cours de traitement") const SizedBox(height: defaultPadding),
+                if (widget.constat.status! == "En cours de traitement")
+                  const SizedBox(height: defaultPadding),
                 constatHeader(constat: widget.constat),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,24 +83,33 @@ class _DetailsConstatState extends State<DetailsConstat> {
                             nomVehicule: 'Vehicule A',
                             color: kVehiculeAColor,
                           ),
-                          if (!Responsive.isDesktop(context)) const SizedBox(height: defaultPadding),
-                          if (Responsive.isMobile(context) || Responsive.isMobileLarge(context))
+                          if (!Responsive.isDesktop(context))
+                            const SizedBox(height: defaultPadding),
+                          if (Responsive.isMobile(context) ||
+                              Responsive.isMobileLarge(context))
                             Container(
                               padding: const EdgeInsets.all(defaultPadding),
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                border: Border.all(width: cardDetailConstatBorderThikness, color: Colors.grey),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                                border: Border.all(
+                                    width: cardDetailConstatBorderThikness,
+                                    color: Colors.grey),
                               ),
                               child: Column(
                                 children: [
                                   CustomCirconstance(
-                                      vehiculeA: widget.constat.vehiculeA!, vehiculeB: widget.constat.vehiculeB!),
-                                  CustomCroquis(croquis: widget.constat.croquis.toString()),
+                                      vehiculeA: widget.constat.vehiculeA!,
+                                      vehiculeB: widget.constat.vehiculeB!),
+                                  CustomCroquis(
+                                      croquis:
+                                          widget.constat.croquis.toString()),
                                 ],
                               ),
                             ),
-                          if (!Responsive.isDesktop(context)) const SizedBox(height: defaultPadding),
+                          if (!Responsive.isDesktop(context))
+                            const SizedBox(height: defaultPadding),
                           if (!Responsive.isDesktop(context))
                             CustumVehiculedetails(
                               vehicule: widget.constat.vehiculeB!,
@@ -107,20 +121,24 @@ class _DetailsConstatState extends State<DetailsConstat> {
                     ),
                     /* if (Responsive.isDesktop(context))
                       const SizedBox(width: defaultPadding),*/
-                    if (Responsive.isDesktop(context) || Responsive.isTablet(context))
+                    if (Responsive.isDesktop(context) ||
+                        Responsive.isTablet(context))
                       Flexible(
                         fit: FlexFit.tight,
                         child: Column(
                           children: [
                             CustomCirconstance(
-                                vehiculeA: widget.constat.vehiculeA!, vehiculeB: widget.constat.vehiculeB!),
-                            CustomCroquis(croquis: widget.constat.croquis.toString()),
+                                vehiculeA: widget.constat.vehiculeA!,
+                                vehiculeB: widget.constat.vehiculeB!),
+                            CustomCroquis(
+                                croquis: widget.constat.croquis.toString()),
                           ],
                         ),
                       ),
                     /*if (Responsive.isDesktop(context))
                       const SizedBox(width: defaultPadding),*/
-                    if (Responsive.isDesktop(context) || Responsive.isTablet(context))
+                    if (Responsive.isDesktop(context) ||
+                        Responsive.isTablet(context))
                       Flexible(
                         fit: FlexFit.tight,
                         child: CustumVehiculedetails(
@@ -131,10 +149,12 @@ class _DetailsConstatState extends State<DetailsConstat> {
                       ),
                   ],
                 ),
-                if (widget.constat.status! == "En cours de traitement") const SizedBox(height: defaultPadding),
+                if (widget.constat.status! == "En cours de traitement")
+                  const SizedBox(height: defaultPadding),
                 if (widget.constat.status! == "En cours de traitement")
                   if (widget.constat.status! == "En cours de traitement")
-                    (Responsive.isDesktop(context)) || (Responsive.isTablet(context))
+                    (Responsive.isDesktop(context)) ||
+                            (Responsive.isTablet(context))
                         ? ButtonsRow(kButtonsText, context)
                         : ButtonsColumn(kButtonsText, context),
               ],
@@ -174,7 +194,7 @@ class _DetailsConstatState extends State<DetailsConstat> {
               ),
             ),
             onPressed: () async {
-              PDFGeneration(widget.constat);
+              //PDFGeneration(widget.constat);
               if (await confirm(
                 context,
                 title: const Text('Marquer constat comme terminé'),
@@ -182,17 +202,21 @@ class _DetailsConstatState extends State<DetailsConstat> {
                 textOK: const Text('Oui'),
                 textCancel: const Text('Annuler'),
               )) {
-                var res = await context.read<HomeViewModel>().updateConstat(widget.constat.id!, "Traité");
+                var res = await context
+                    .read<HomeViewModel>()
+                    .updateConstat(widget.constat.id!, "Traité");
 
                 log("res : " + res.toString());
                 if (res == true) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Constat modifier avec succés ! ')),
+                    const SnackBar(
+                        content: Text('Constat modifier avec succés ! ')),
                   );
                   context.beamBack();
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Erreur de validation de constat ! ')),
+                    const SnackBar(
+                        content: Text('Erreur de validation de constat ! ')),
                   );
                 }
               }
@@ -238,12 +262,15 @@ class _DetailsConstatState extends State<DetailsConstat> {
                 textOK: const Text('Oui'),
                 textCancel: const Text('Annuler'),
               )) {
-                var res = await context.read<HomeViewModel>().updateConstat(widget.constat.id!, "Rejeté");
+                var res = await context
+                    .read<HomeViewModel>()
+                    .updateConstat(widget.constat.id!, "Rejeté");
 
                 log("res : " + res.toString());
                 if (res == true) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Constat modifier avec succés ! ')),
+                    const SnackBar(
+                        content: Text('Constat modifier avec succés ! ')),
                   );
                   context.beamBack();
                 }
@@ -300,17 +327,21 @@ class _DetailsConstatState extends State<DetailsConstat> {
                   textOK: const Text('Oui'),
                   textCancel: const Text('Annuler'),
                 )) {
-                  var res = await context.read<HomeViewModel>().updateConstat(widget.constat.id!, "Traité");
+                  var res = await context
+                      .read<HomeViewModel>()
+                      .updateConstat(widget.constat.id!, "Traité");
 
                   log("res : " + res.toString());
                   if (res == true) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Constat modifier avec succés ! ')),
+                      const SnackBar(
+                          content: Text('Constat modifier avec succés ! ')),
                     );
                     context.beamBack();
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Erreur de validation de constat ! ')),
+                      const SnackBar(
+                          content: Text('Erreur de validation de constat ! ')),
                     );
                   }
                 }
@@ -358,12 +389,15 @@ class _DetailsConstatState extends State<DetailsConstat> {
                   textOK: const Text('Oui'),
                   textCancel: const Text('Annuler'),
                 )) {
-                  var res = await context.read<HomeViewModel>().updateConstat(widget.constat.id!, "Rejeté");
+                  var res = await context
+                      .read<HomeViewModel>()
+                      .updateConstat(widget.constat.id!, "Rejeté");
 
                   log("res : " + res.toString());
                   if (res == true) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Constat modifier avec succés ! ')),
+                      const SnackBar(
+                          content: Text('Constat modifier avec succés ! ')),
                     );
                     context.beamBack();
                   }
@@ -407,7 +441,8 @@ Widget body(ConstatModel constat) {
           flex: 2,
           child: Column(
             children: [
-              CustomCirconstance(vehiculeA: constat.vehiculeA!, vehiculeB: constat.vehiculeB!),
+              CustomCirconstance(
+                  vehiculeA: constat.vehiculeA!, vehiculeB: constat.vehiculeB!),
               CustomCroquis(croquis: constat.croquis.toString()),
             ],
           ),

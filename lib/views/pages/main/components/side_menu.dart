@@ -4,8 +4,10 @@ import 'package:beamer/beamer.dart';
 import 'package:confirm_dialog/confirm_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_template/model/stat_data.dart';
 import 'package:flutter_template/utils/palette.dart';
 import 'package:flutter_template/utils/responsive.dart';
+import 'package:flutter_template/viewModel/stat_view_model.dart';
 import 'package:flutter_template/views/pages/BriseGlace/brise_glace_screen.dart';
 import 'package:flutter_template/views/pages/Incendies/incendie_screen.dart';
 import 'package:flutter_template/views/pages/Vols/vols_screen.dart';
@@ -19,7 +21,6 @@ import 'package:flutter_template/views/pages/archive/VolTraite/vols_rejete.dart'
 import 'package:flutter_template/views/pages/main/components/side_menu_item_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:pusher_channels_flutter/pusher_channels_flutter.dart';
 
 import '../../../../Services/shared_preferences_service.dart';
 import '../../../../utils/constants.dart';
@@ -49,9 +50,7 @@ class _SideMenuState extends State<SideMenu> {
   @override
   void initState() {
     // TODO: implement initState
-    print("bbbbbbbbbbbbbbbbbbbb");
     super.initState();
-    initPusher();
     if (widget.pageActive == "Sinistre_recent_materiel" ||
         widget.pageActive == "Sinistre_recent_vol" ||
         widget.pageActive == "Sinistre_recent_incendie" ||
@@ -86,6 +85,8 @@ class _SideMenuState extends State<SideMenu> {
   int rejeterTile = 3;
   @override
   Widget build(BuildContext context) {
+    final statViewModel = Provider.of<StatViewModel>(context);
+    StatData data = statViewModel.data;
     var kSideMenuText = Responsive.isDesktop(context)
         ? GoogleFonts.poppins(
             color: secondaryColor,
@@ -154,6 +155,7 @@ class _SideMenuState extends State<SideMenu> {
                         : false,
                     title: "Matériels",
                     icon: Icons.apps,
+                    length: data.materielNonTraite!,
                     press: () {
                       Beamer.of(context).beamToNamed(MainScreen.path);
                       setState(() {
@@ -167,6 +169,7 @@ class _SideMenuState extends State<SideMenu> {
                         : false,
                     title: "Vols ",
                     icon: Icons.apps,
+                    length: data.volNonTraite!,
                     press: () {
                       Beamer.of(context).beamToNamed(VolNonTraiteScreen.path);
                       setState(() {
@@ -180,6 +183,7 @@ class _SideMenuState extends State<SideMenu> {
                         : false,
                     title: "Incendies ",
                     icon: Icons.apps,
+                    length: data.incendieNonTraite!,
                     press: () {
                       Beamer.of(context)
                           .beamToNamed(IncendiesNonTraiteScreen.path);
@@ -194,6 +198,7 @@ class _SideMenuState extends State<SideMenu> {
                         : false,
                     title: "Bris de glaces ",
                     icon: Icons.apps,
+                    length: data.brisNonTraite!,
                     press: () {
                       Beamer.of(context)
                           .beamToNamed(BriseGlaceNonTraiteScreen.path);
@@ -250,6 +255,7 @@ class _SideMenuState extends State<SideMenu> {
                         : false,
                     title: "Matériels",
                     icon: Icons.access_time,
+                    length: data.materielTraite!,
                     press: () {
                       Beamer.of(context).beamToNamed(ConstatTraite.path);
                       setState(() {
@@ -263,6 +269,7 @@ class _SideMenuState extends State<SideMenu> {
                         : false,
                     title: " Vols ",
                     icon: Icons.access_time,
+                    length: data.volTraite!,
                     press: () {
                       Beamer.of(context).beamToNamed(VolTraite.path);
                       setState(() {
@@ -276,6 +283,7 @@ class _SideMenuState extends State<SideMenu> {
                         : false,
                     title: " Incendies ",
                     icon: Icons.access_time,
+                    length: data.incendieTraite!,
                     press: () {
                       Beamer.of(context).beamToNamed(IncendiesTraite.path);
                       setState(() {
@@ -289,6 +297,7 @@ class _SideMenuState extends State<SideMenu> {
                         : false,
                     title: " Bris de glace ",
                     icon: Icons.access_time,
+                    length: data.brisTraite!,
                     press: () {
                       Beamer.of(context).beamToNamed(BriseTraite.path);
                       setState(() {
@@ -344,6 +353,7 @@ class _SideMenuState extends State<SideMenu> {
                         ? true
                         : false,
                     icon: Icons.access_time,
+                    length: data.materielRejeter!,
                     press: () {
                       Beamer.of(context).beamToNamed(ConstatRejete.path);
                       setState(() {
@@ -357,6 +367,7 @@ class _SideMenuState extends State<SideMenu> {
                         : false,
                     title: " Vols ",
                     icon: Icons.access_time,
+                    length: data.volRejeter!,
                     press: () {
                       Beamer.of(context).beamToNamed(VolRejete.path);
                       setState(() {
@@ -370,6 +381,7 @@ class _SideMenuState extends State<SideMenu> {
                         : false,
                     title: " Incendies ",
                     icon: Icons.access_time,
+                    length: data.incendieRejeter!,
                     press: () {
                       Beamer.of(context).beamToNamed(IncendiesRejete.path);
                       setState(() {
@@ -383,6 +395,7 @@ class _SideMenuState extends State<SideMenu> {
                         : false,
                     title: " Bris de glace ",
                     icon: Icons.access_time,
+                    length: data.brisRejeter!,
                     press: () {
                       Beamer.of(context).beamToNamed(BriseRejete.path);
                       setState(() {
@@ -398,6 +411,7 @@ class _SideMenuState extends State<SideMenu> {
             active: widget.pageActive == "Clients" ? true : false,
             title: "Clients",
             icon: Icons.person,
+            length: 0,
             press: () {
               Beamer.of(context).beamToNamed(ClientDashboard.path);
               setState(() {
@@ -413,6 +427,7 @@ class _SideMenuState extends State<SideMenu> {
               active: widget.pageActive == "Administrateur" ? true : false,
               title: "Administrateurs",
               icon: Icons.admin_panel_settings,
+              length: 0,
               press: () {
                 Beamer.of(context).beamToNamed(AdminsDashboard.path);
                 setState(() {
@@ -427,6 +442,7 @@ class _SideMenuState extends State<SideMenu> {
             active: widget.pageActive == "Statistique" ? true : false,
             title: "Statistique",
             icon: Icons.bar_chart,
+            length: 0,
             press: () {
               Beamer.of(context).beamToNamed(StatScreen.path);
               setState(() {
@@ -513,28 +529,5 @@ class _SideMenuState extends State<SideMenu> {
         ],
       ),
     );
-  }
-
-  void initPusher() async {
-    try {
-      log('teeeest 0');
-      PusherChannelsFlutter pusher = PusherChannelsFlutter.getInstance();
-      log('teeeest 1');
-
-      await pusher.init(
-          apiKey: 'e5936ef5024909d4f2d3',
-          cluster: 'eu',
-          onEvent: (event) {
-            log("Got channel event: $event");
-          });
-      log('teeeest');
-      await pusher.subscribe(
-        channelName: 'assurance',
-      );
-
-      await pusher.connect();
-    } catch (e) {
-      log("ERROR: $e");
-    }
   }
 }

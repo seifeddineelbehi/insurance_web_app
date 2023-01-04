@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +21,20 @@ class ConstatNonTraiteScreen extends StatefulWidget {
 }
 
 class _ConstatNonTraiteScreenState extends State<ConstatNonTraiteScreen> {
+  getTokent() async {
+    print("*******get tokent*******");
+    String? deviceToken = await FirebaseMessaging.instance.getToken();
+    print('DEVICE TOKEN ' + deviceToken!);
+  }
+
+  @override
+  void initState() {
+    Future.delayed(const Duration(microseconds: 0), () async {
+      await getTokent();
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

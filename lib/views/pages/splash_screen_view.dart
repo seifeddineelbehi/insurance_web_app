@@ -3,9 +3,8 @@ import 'dart:developer';
 
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_template/views/pages/home_test_view.dart';
+import 'package:flutter_template/viewModel/stat_view_model.dart';
 import 'package:flutter_template/views/pages/login/login_screen.dart';
-import 'package:flutter_template/views/pages/main/main_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../Services/shared_preferences_service.dart';
@@ -27,28 +26,33 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    _prefService.readToken("token").then((value) async {
-      print("splash screen cache token : " + value.toString());
-      if (value != null) {
-        log("valuuuuuuue : " + value);
-        _prefService.readRole().then((value) {
-          print("Main screen cache role : " + value.toString());
-          if (value != null) {
-            context.read<HomeViewModel>().setrole(value.toString());
-          }
-        });
-        String result = Uri.base.toString().substring(
-            Uri.base.toString().indexOf('//') + 2, Uri.base.toString().length);
-        result = result.toString().substring(
-            result.toString().indexOf('/'), result.toString().length);
+    Future.delayed(const Duration(microseconds: 0), () async {
+      await context.read<StatViewModel>().getAllDataLength();
+      _prefService.readToken("token").then((value) async {
+        print("splash screen cache token : " + value.toString());
+        if (value != null) {
+          print("*************************");
 
-        //context.read<HomeViewModel>().getAllConstatNonTraite();
-        return context.beamToNamed(result);
-      } else {
-        return context.beamToNamed(LoginPage.path);
-      }
+          log("valuuuuuuue : " + value);
+          _prefService.readRole().then((value) {
+            print("Main screen cache role : " + value.toString());
+            if (value != null) {
+              context.read<HomeViewModel>().setrole(value.toString());
+            }
+          });
+          String result = Uri.base.toString().substring(
+              Uri.base.toString().indexOf('//') + 2,
+              Uri.base.toString().length);
+          result = result.toString().substring(
+              result.toString().indexOf('/'), result.toString().length);
+
+          //context.read<HomeViewModel>().getAllConstatNonTraite();
+          return context.beamToNamed(result);
+        } else {
+          return context.beamToNamed(LoginPage.path);
+        }
+      });
     });
-
     super.initState();
   }
 

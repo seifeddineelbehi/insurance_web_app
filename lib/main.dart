@@ -1,13 +1,16 @@
 import 'package:beamer/beamer.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_template/model/admin_model.dart';
 import 'package:flutter_template/model/brise_glace_model.dart';
 import 'package:flutter_template/model/client_model.dart';
 import 'package:flutter_template/model/constat_model.dart';
 import 'package:flutter_template/model/incendies_model.dart';
 import 'package:flutter_template/model/vol_model.dart';
-import 'package:flutter_template/utils/utils.dart';
 import 'package:flutter_template/utils/dependency_injection.dart' as di;
 import 'package:flutter_template/viewModel/add_admin_view_model.dart';
 import 'package:flutter_template/viewModel/admins_screen_view_model.dart';
@@ -45,18 +48,42 @@ import 'package:flutter_template/views/pages/main/main_screen.dart';
 import 'package:flutter_template/views/pages/statestiques/stat_screen.dart';
 import 'package:flutter_template/views/views.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'controllers/MenuController.dart';
+import 'firebase_options.dart';
 
-void main() async {
+AndroidNotificationChannel channel = const AndroidNotificationChannel(
+  'high_importance_channel', // id
+  'High Importance Notifications', // title
+  description:
+      'This channel is used for important notifications.', // description
+  importance: Importance.high,
+);
+
+FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
   await di.init();
   await GetStorage.init();
   await EasyLocalization.ensureInitialized();
+
   await Future.delayed(const Duration(milliseconds: 300));
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: "AIzaSyBGdyWfYIqg0iAx3kGIjQkkue1OQ3LLvhk",
+      appId: "1:328779793810:web:55f80444ed831e956aad4b",
+      messagingSenderId: "328779793810",
+      projectId: "insurancewebapp-7d311",
+      measurementId: "G-Y6Y3FF6CFT",
+      storageBucket: "insurancewebapp-7d311.appspot.com",
+    ),
+  );
+
   runApp(const MyApp());
 }
 
@@ -179,6 +206,45 @@ class _MyAppState extends State<MyApp> {
     ),
     notFoundRedirectNamed: SplashScreen.path,
   );
+
+  @override
+  void initState() {
+    print("**************");
+    //getTokent();
+    print("**************");
+    FirebaseMessaging.onMessage.listen(showFlutterNotification);
+    super.initState();
+  }
+
+  getTokent() async {
+    print("*******get tokent*******");
+    String? deviceToken = await FirebaseMessaging.instance.getToken();
+    print('DEVICE TOKEN ' + deviceToken!);
+  }
+
+  void showFlutterNotification(RemoteMessage message) {
+    RemoteNotification? notification = message.notification;
+    AndroidNotification? android = message.notification?.android;
+    print('NOTIFICATION TITLE ' + notification!.title.toString());
+    if (android != null) {
+      flutterLocalNotificationsPlugin.show(
+        notification.hashCode,
+        notification.title,
+        notification.body,
+        NotificationDetails(
+          android: AndroidNotificationDetails(
+            channel.id,
+            channel.name,
+            channelDescription: channel.description,
+            // TODO add a proper drawable resource to android, for now using
+            //      one that already exists in example app.
+            icon: 'launch_background',
+          ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     /*return MultiProvider(

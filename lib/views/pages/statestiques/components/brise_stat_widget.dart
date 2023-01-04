@@ -37,7 +37,7 @@ class _BriseStatState extends State<BriseStat> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  "Brises Glaces Statestiques",
+                  "Brise de Glaces Statestiques",
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,

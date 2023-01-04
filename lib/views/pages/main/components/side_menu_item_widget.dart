@@ -15,12 +15,14 @@ class DrawerListTile extends StatelessWidget {
     required this.icon,
     required this.press,
     required this.active,
+    required this.length,
   }) : super(key: key);
 
   final String title;
   final IconData icon;
   final VoidCallback press;
   final bool active;
+  final int length;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,17 @@ class DrawerListTile extends StatelessWidget {
           onTap: press,
           selected: true,
           horizontalTitleGap: 0.0,
-          leading: Icon(icon, color: active ? Colors.white : Colors.blueGrey, size: 20),
+          leading: Icon(icon,
+              color: active ? Colors.white : Colors.blueGrey, size: 20),
+          trailing: length > 0
+              ? Text(
+                  length.toString(),
+                  style: kSideMenuText,
+                )
+              : Text(
+                  "",
+                  style: kSideMenuText,
+                ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,

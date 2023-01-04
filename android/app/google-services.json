@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "328779793810",
+    "project_id": "insurancewebapp-7d311",
+    "storage_bucket": "insurancewebapp-7d311.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328779793810:android:106aa0669fb05b3a6aad4b",
+        "android_client_info": {
+          "package_name": "com.example.flutter_template"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328779793810-4cupc76k0dkq81grd7ehmf6mr13ggoqp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArT4r2hWdq-Ib_U5Jr1tD6k6BqVUPZ1YM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328779793810-4cupc76k0dkq81grd7ehmf6mr13ggoqp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

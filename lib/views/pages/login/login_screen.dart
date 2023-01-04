@@ -1,11 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
-
 import 'package:beamer/beamer.dart';
-import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_template/utils/constants.dart';
 import 'package:flutter_template/utils/responsive.dart';
 import 'package:flutter_template/utils/size_config.dart';
@@ -14,7 +10,6 @@ import 'package:flutter_template/views/pages/main/main_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Services/shared_preferences_service.dart';
-import '../../../Services/shared_service.dart';
 
 class LoginPage extends StatefulWidget {
   static const String id = "login_screen";
@@ -27,8 +22,6 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final PrefService _prefService = PrefService();
-  static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
-  Map<String, dynamic> _deviceData = <String, dynamic>{};
 
   @override
   void initState() {
@@ -39,58 +32,8 @@ class _LoginPageState extends State<LoginPage> {
             () => context.beamToNamed(MainScreen.path));
       }
     });
+
     super.initState();
-    initPlatformState();
-  }
-
-  Future<void> initPlatformState() async {
-    var deviceData = <String, dynamic>{};
-
-    try {
-      if (kIsWeb) {
-        deviceData = _readWebBrowserInfo(await deviceInfoPlugin.webBrowserInfo);
-        log('device data browserName: ' + deviceData['browserName']);
-        log('device data appCodeName: ' + deviceData['appCodeName']);
-        log('device data appName: ' + deviceData['appName']);
-        log('device data appVersion: ' + deviceData['appVersion']);
-        log('device data platform: ' + deviceData['platform']);
-        log('device data product: ' + deviceData['product']);
-        log('device data productSub: ' + deviceData['productSub']);
-        log('device data userAgent: ' + deviceData['userAgent']);
-        log('device data vendor: ' + deviceData['vendor']);
-        log('device data vendorSub: ' + deviceData['vendorSub']);
-      }
-    } on PlatformException {
-      deviceData = <String, dynamic>{
-        'Error:': 'Failed to get platform version.'
-      };
-    }
-
-    if (!mounted) return;
-
-    setState(() {
-      _deviceData = deviceData;
-    });
-  }
-
-  Map<String, dynamic> _readWebBrowserInfo(WebBrowserInfo data) {
-    return <String, dynamic>{
-      'browserName': describeEnum(data.browserName),
-      'appCodeName': data.appCodeName,
-      'appName': data.appName,
-      'appVersion': data.appVersion,
-      'deviceMemory': data.deviceMemory,
-      'language': data.language,
-      'languages': data.languages,
-      'platform': data.platform,
-      'product': data.product,
-      'productSub': data.productSub,
-      'userAgent': data.userAgent,
-      'vendor': data.vendor,
-      'vendorSub': data.vendorSub,
-      'hardwareConcurrency': data.hardwareConcurrency,
-      'maxTouchPoints': data.maxTouchPoints,
-    };
   }
 
   @override
@@ -206,7 +149,6 @@ class _BodyState extends State<Body> {
 
   var _password = "1";
   var _username = "";
-  var _submitActive = true;
 
   @override
   Widget build(BuildContext context) {
@@ -408,6 +350,7 @@ class _BodyState extends State<Body> {
                   ? () async {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
+
                         await context
                             .read<LoginViewModel>()
                             .Login(_username, _password);
